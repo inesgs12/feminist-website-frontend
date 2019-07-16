@@ -1,26 +1,68 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Switch, withRouter } from "react-router-dom";
+import "./App.css";
+import SignInForm from "./pages/SignInForm";
+import Header from "./pages/Header";
+import HomePage from "../src/pages/Homepage";
+import MyAccount from "../src/pages/MyAccount";
+import { validate } from "./services/api";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    user: {}
+  };
+
+  signin = user => {
+    this.setState({
+      user: user
+    });
+    localStorage.setItem("token", user.token); 
+    this.props.history.push(`/${user.username}`);
+  };
+
+  signout = () => {
+    this.setState({
+      user: {}
+    });
+    this.props.history.push("/");
+    localStorage.removeItem("token");
+  };
+
+  componentDidMount() {
+    //this should only run if there is a token not everytime the page loads, the alerts are annoying.
+    if (localStorage.token) {
+      validate().then(data => {
+        if (data.error) {
+          alert(data.error);
+        } else {
+          this.signin(data);
+        }
+      });
+    }
+  }
+
+  render() {
+    const { signin, signout } = this;
+    const { user } = this.state;
+
+    return (
+      <div className="App">
+        <Header user={user} signout={signout} />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route
+            path="/signin"
+            component={props => <SignInForm signin={signin} {...props} />}
+          />
+          <Route
+            path={`/${user.username}`}
+            component={props => <MyAccount user={user} {...props} />}
+          />
+          {/* <Route component={() => <h1> Page not found </h1>} /> */}
+        </Switch>
+      </div>
+    );
+  }
 }
-
-export default App;
+export default withRouter(App);
+// by exporting withRouter I will also allow APP to have match, location and history props.
