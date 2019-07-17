@@ -1,13 +1,12 @@
 import React from "react";
 
-class MyAccount extends React.Component {
-  
-componentDidUpdate() {
+class Dashboard extends React.Component {
+  componentDidUpdate() {
     if (!this.props.user.username) {
       debugger;
       this.props.history.push("/signin");
     } //why is this not redirecting me to the signin page?
-}
+  }
 
   render() {
     return (
@@ -18,4 +17,4 @@ componentDidUpdate() {
   }
 }
 
-export default MyAccount;
+export default Dashboard;

@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import "./App.css";
-import SignInForm from "./pages/SignInForm";
-import Header from "./pages/Header";
-import HomePage from "../src/pages/Homepage";
-import MyAccount from "../src/pages/MyAccount";
+import SignInForm from "./containers/SignInForm";
+import Header from "./components/Header";
+import HomePage from "./containers/HomePage";
+import Dashboard from "./containers/Dashboard";
 import { validate } from "./services/api";
 
 class App extends React.Component {
@@ -16,7 +16,7 @@ class App extends React.Component {
     this.setState({
       user: user
     });
-    localStorage.setItem("token", user.token); 
+    localStorage.setItem("token", user.token);
     this.props.history.push(`/${user.username}`);
   };
 
@@ -56,7 +56,7 @@ class App extends React.Component {
           />
           <Route
             path={`/${user.username}`}
-            component={props => <MyAccount user={user} {...props} />}
+            component={props => <Dashboard user={user} {...props} />}
           />
           {/* <Route component={() => <h1> Page not found </h1>} /> */}
         </Switch>
