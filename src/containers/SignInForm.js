@@ -16,6 +16,7 @@ class SignInForm extends React.Component {
         alert(data.error);
       } else {
         this.props.signin(data);
+        this.props.history.push(`/${this.props.user.username}`);
       }
     });
   };

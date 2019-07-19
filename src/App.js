@@ -2,14 +2,19 @@ import React from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import "./App.css";
 import SignInForm from "./containers/SignInForm";
+import SignUpForm from "./containers/SignUpForm";
 import Header from "./components/Header";
 import HomePage from "./containers/HomePage";
 import Dashboard from "./containers/Dashboard";
 import { validate } from "./services/api";
+import BooksList from "./containers/BooksList";
+import BookId from "./containers/BookId";
 
+const booksUrl = "http://localhost:3000/books";
 class App extends React.Component {
   state = {
-    user: {}
+    user: {},
+    books: []
   };
 
   signin = user => {
@@ -17,7 +22,7 @@ class App extends React.Component {
       user: user
     });
     localStorage.setItem("token", user.token);
-    this.props.history.push(`/${user.username}`);
+    // this.props.history.push(`/${user.username}`);
   };
 
   signout = () => {
@@ -39,24 +44,57 @@ class App extends React.Component {
         }
       });
     }
+    this.getBooks();
   }
 
+  getBooks = () => {
+    fetch(booksUrl)
+      .then(response => response.json())
+      .then(books => this.setState({ books: books }));
+  };
+
   render() {
-    const { signin, signout } = this;
-    const { user } = this.state;
+    const { signin, signout, getBooks, selectBook } = this;
+    const { user, books, selectedBook } = this.state;
 
     return (
       <div className="App">
-        <Header user={user} signout={signout} />
+        <Header user={user} signout={signout} signin={signin} />
         <Switch>
-          <Route exact path="/" component={HomePage} />
+          <Route exact path="/" render={props => <HomePage {...props} />} />
           <Route
             path="/signin"
-            component={props => <SignInForm signin={signin} {...props} />}
+            render={props => (
+              <SignInForm signin={signin} user={user} {...props} />
+            )}
+          />
+          <Route
+            path="/signup"
+            component={props => <SignUpForm signin={signin} {...props} />}
           />
           <Route
             path={`/${user.username}`}
-            component={props => <Dashboard user={user} {...props} />}
+            render={props => <Dashboard user={user} {...props} />}
+          />
+          <Route
+            exact
+            path="/books"
+            render={props => (
+              <BooksList
+                user={user}
+                books={books}
+                selectBook={selectBook}
+                getBooks={getBooks}
+                {...props}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/books/:title"
+            render={props => (
+              <BookId user={user} book={selectedBook} {...props} />
+            )}
           />
           {/* <Route component={() => <h1> Page not found </h1>} /> */}
         </Switch>

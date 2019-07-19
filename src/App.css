@@ -2,21 +2,18 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.App-header {
+  /* font-family: 'Montserrat', sans-serif; */
+  /* font-family: 'Raleway', sans-serif; */
+  /* font-family: 'Open Sans Condensed', sans-serif; */
+  font-family: "Quicksand", sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.App-logo {
+  /* animation: App-logo-spin infinite 20s linear; */
+  height: 10vmin;
+  margin: none;
+  padding: none;
 }
 
 .App-link {
@@ -31,3 +28,66 @@
     transform: rotate(360deg);
   }
 }
+
+.App-logo {
+  /* animation: App-logo-spin infinite 20s linear; */
+  height: 10vmin;
+  margin: none;
+  padding: none;
+}
+
+.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+}
+
+.Homepage-link,
+.Homepage-link:active,
+.Homepage-link:hover {
+  float: right;
+  font-size: larger;
+  font-weight: bold;
+}
+
+a,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: #716f72;
+  position: relative;
+}
+
+.navbar-link,
+.navbar-link:active,
+.navbar-link:hover {
+  float: left;
+  display: block;
+  color: #716f72;
+  padding: 10px 12px;
+  text-decoration: none;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.title {
+  margin-right: auto;
+  font-size: larger;
+}
+
+.sign-in-up-form {
+  text-align: center;
+  margin: 30px 30px;
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+  margin: 10px 20px;
+}
+
