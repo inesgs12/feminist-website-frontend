@@ -124,3 +124,25 @@ grid {
 a.item {
   font-family: "Quicksand", sans-serif;
 }
+
+.book-liked,
+.author-liked,
+.theory-liked {
+  color: rgb(78, 14, 78);
+}
+
+.book-not-liked,
+.author-not-liked,
+.theory-not-liked {
+  color: rgb(184, 182, 182);
+}
+
+.i.icon,
+i.icons {
+  font-size: 2em;
+}
+
+.like-button {
+  color: transparent;
+  font-size: 2em;
+}

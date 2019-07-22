@@ -6,7 +6,11 @@ import SignUpForm from "./containers/SignUpForm";
 import Header from "./components/Header";
 import HomePage from "./containers/HomePage";
 import Dashboard from "./containers/Dashboard";
-import { validate, createFavouriteBooks } from "./services/api";
+import {
+  validate,
+  createFavouriteBook,
+  deleteFavouriteBook
+} from "./services/api";
 import BooksList from "./containers/BooksList";
 import BookId from "./containers/BookId";
 import AuthorsList from "./containers/AuthorsList";
@@ -14,6 +18,7 @@ import AuthorId from "./containers/AuthorId";
 
 const booksUrl = "http://localhost:3000/books";
 const authorsUrl = "http://localhost:3000/authors";
+const favouriteBooksUrl = "http://localhost:3000/favourite_books";
 class App extends React.Component {
   state = {
     user: {},
@@ -54,6 +59,7 @@ class App extends React.Component {
     }
     this.getBooks();
     this.getAuthors();
+    this.getMyBooks();
   }
 
   getBooks = () => {
@@ -68,12 +74,36 @@ class App extends React.Component {
       .then(authors => this.setState({ authors: authors }));
   };
 
-  updateFavouriteBooks = (book, user) => {
-    createFavouriteBooks(book.id, user.id);
+  getMyBooks = () => {
+    fetch(favouriteBooksUrl)
+      .then(response => response.json())
+      .then(favouriteBooks => this.mapFavouriteBooks(favouriteBooks));
+  };
+
+  mapFavouriteBooks = favouriteBooks => {
+    let myArray = favouriteBooks.map(data => data.book);
+    this.setState({
+      myBooks: myArray
+    });
+  };
+
+  addFavouriteBook = (book, user) => {
+    this.setState({
+      myBooks: [...this.state.myBooks, book]
+    });
+    createFavouriteBook(book.id, user.id);
+    //too optimistic
+  };
+
+  removeFavouriteBook = (book, user) => {
+    this.setState({
+      myBooks: this.state.myBooks.filter(b => b.id !== book.id)
+    });
+    deleteFavouriteBook(book.id, user.id);
   };
 
   render() {
-    const { signin, signout, updateFavouriteBooks } = this;
+    const { signin, signout, addFavouriteBook, removeFavouriteBook } = this;
     const {
       user,
       books,
@@ -110,7 +140,8 @@ class App extends React.Component {
               <BooksList
                 user={user}
                 myBooks={myBooks}
-                updatefavouriteBook={updateFavouriteBooks}
+                addFavouriteBook={addFavouriteBook}
+                removeFavouriteBook={removeFavouriteBook}
                 books={books}
                 {...props}
               />
@@ -123,8 +154,12 @@ class App extends React.Component {
               <BookId
                 user={user}
                 myBooks={myBooks}
-                updateFavouriteBooks={updateFavouriteBooks}
+                addFavouriteBook={addFavouriteBook}
+                removeFavouriteBook={removeFavouriteBook}
                 {...props}
+                isLiked={myBooks
+                  .map(b => b.title)
+                  .includes(props.match.params.title)}
               />
             )}
           />

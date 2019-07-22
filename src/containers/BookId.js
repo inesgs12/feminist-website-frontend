@@ -1,9 +1,10 @@
 import React from "react";
-import { Button, Icon } from "semantic-ui-react";
+import { Icon } from "semantic-ui-react";
 
 class BookId extends React.Component {
   state = {
     book: null
+    // liked: false
   };
 
   getBookInfo = () => {
@@ -14,9 +15,32 @@ class BookId extends React.Component {
       .then(book => this.setState({ book }));
   };
 
-  addBook = book => {
-    this.props.myBooks.push(book);
-    this.props.updateFavouriteBooks(book, this.props.user);
+  // getLikeState = () => {
+  //   console.log(this.props.myBooks); //no books at this time
+  //   this.props.myBooks.includes(this.state.book)
+  //     ? this.setState({
+  //         liked: true
+  //       })
+  //     : this.setState({
+  //         liked: false
+  //       });
+  // };
+
+  // updateLikeColor = (book, user) => {
+  //   this.setState(
+  //     {
+  //       liked: !this.state.liked
+  //     },
+  //     () => {
+  //       this.updateFavouriteBooks(book, user);
+  //     }
+  //   );
+  // };
+
+  updateFavouriteBooks = (book, user) => {
+    !this.props.isLiked
+      ? this.props.addFavouriteBook(book, user)
+      : this.props.removeFavouriteBook(book, user);
   };
 
   componentDidMount() {
@@ -25,16 +49,20 @@ class BookId extends React.Component {
 
   render() {
     const { book } = this.state;
-    const { addBook } = this;
+    const { user } = this.props;
 
     if (book === null) return <h1>No book.</h1>;
 
     return (
       <div className="book-details">
         <h1>{book.title}</h1> <br />
-        <Button icon onClick={() => addBook(book)}>
-          <Icon name="like" />
-        </Button>{" "}
+        <div onClick={() => this.updateFavouriteBooks(book, user)}>
+          <Icon
+            className={this.props.isLiked ? "book-liked" : "book-not-liked"}
+            name="like"
+            size="big"
+          />
+        </div>
         <br />
         <img src={book.cover} alt={book.title} />
         <p>Year: {book.year} </p>

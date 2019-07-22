@@ -22,7 +22,7 @@ export function validate() {
   }).then(response => response.json());
 }
 
-export function createFavouriteBooks(bookId, userId) {
+export function createFavouriteBook(bookId, userId) {
   return fetch(baseUrl + "/favourite_books", {
     method: "POST",
     headers: {
@@ -35,4 +35,10 @@ export function createFavouriteBooks(bookId, userId) {
   }).then(response => response.json());
 }
 
-export default { signin, validate };
+export function deleteFavouriteBook(bookId, userId) {
+  return fetch(baseUrl + "/favourite_books/" + bookId + "/" + userId, {
+    method: "DELETE"
+  });
+}
+
+export default { signin, validate, createFavouriteBook, deleteFavouriteBook };
