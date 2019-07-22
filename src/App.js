@@ -6,19 +6,29 @@ import SignUpForm from "./containers/SignUpForm";
 import Header from "./components/Header";
 import HomePage from "./containers/HomePage";
 import Dashboard from "./containers/Dashboard";
+
 import {
   validate,
   createFavouriteBook,
-  deleteFavouriteBook
+  deleteFavouriteBook,
+  createFavouriteAuthor,
+  deleteFavouriteAuthor,
+  createFavouriteTheory,
+  deleteFavouriteTheory
 } from "./services/api";
+
 import BooksList from "./containers/BooksList";
 import BookId from "./containers/BookId";
 import AuthorsList from "./containers/AuthorsList";
 import AuthorId from "./containers/AuthorId";
+import TheoriesList from "./containers/TheoriesList";
 
 const booksUrl = "http://localhost:3000/books";
 const authorsUrl = "http://localhost:3000/authors";
 const favouriteBooksUrl = "http://localhost:3000/favourite_books";
+const favouriteAuthorsUrl = "http://localhost:3000/favourite_authors";
+const favouriteTheoriesUrl = "http://localhost:3000/favourite_theories";
+
 class App extends React.Component {
   state = {
     user: {},
@@ -60,6 +70,7 @@ class App extends React.Component {
     this.getBooks();
     this.getAuthors();
     this.getMyBooks();
+    this.getMyAuthors();
   }
 
   getBooks = () => {
@@ -87,6 +98,32 @@ class App extends React.Component {
     });
   };
 
+  getMyAuthors = () => {
+    fetch(favouriteAuthorsUrl)
+      .then(response => response.json())
+      .then(favouriteAuthors => this.mapFavouriteAuthors(favouriteAuthors));
+  };
+
+  mapFavouriteAuthors = favouriteAuthors => {
+    let myArray = favouriteAuthors.map(data => data.author);
+    this.setState({
+      myAuthors: myArray
+    });
+  };
+
+  getMyTheories = () => {
+    fetch(favouriteTheoriesUrl)
+      .then(response => response.json())
+      .then(favouriteTheories => this.mapFavouriteTheories(favouriteTheories));
+  };
+
+  mapFavouriteTheories = favouriteTheories => {
+    let myArray = favouriteTheories.map(data => data.theory);
+    this.setState({
+      myTheories: myArray
+    });
+  };
+
   addFavouriteBook = (book, user) => {
     this.setState({
       myBooks: [...this.state.myBooks, book]
@@ -102,8 +139,47 @@ class App extends React.Component {
     deleteFavouriteBook(book.id, user.id);
   };
 
+  addFavouriteAuthor = (author, user) => {
+    this.setState({
+      myAuthors: [...this.state.myAuthors, author]
+    });
+    createFavouriteAuthor(author.id, user.id);
+    //too optimistic
+  };
+
+  removeFavouriteAuthor = (author, user) => {
+    this.setState({
+      myAuthors: this.state.myAuthors.filter(a => a.id !== author.id)
+    });
+    deleteFavouriteAuthor(author.id, user.id);
+  };
+
+  addFavouriteTheory = (theory, user) => {
+    this.setState({
+      myTheories: [...this.state.myTheories, theory]
+    });
+    createFavouriteTheory(theory.id, user.id);
+    //too optimistic
+  };
+
+  removeFavouriteTheory = (theory, user) => {
+    this.setState({
+      myTheories: this.state.myTheories.filter(t => t.id !== theory.id)
+    });
+    deleteFavouriteTheory(theory.id, user.id);
+  };
+
   render() {
-    const { signin, signout, addFavouriteBook, removeFavouriteBook } = this;
+    const {
+      signin,
+      signout,
+      addFavouriteBook,
+      removeFavouriteBook,
+      addFavouriteAuthor,
+      removeFavouriteAuthor,
+      addFavouriteTheory,
+      removeFavouriteTheory
+    } = this;
     const {
       user,
       books,
@@ -171,6 +247,8 @@ class App extends React.Component {
                 user={user}
                 authors={authors}
                 myAuthors={myAuthors}
+                addFavouriteAuthor={addFavouriteAuthor}
+                removeFavouriteAuthor={removeFavouriteAuthor}
                 {...props}
               />
             )}
@@ -179,7 +257,33 @@ class App extends React.Component {
             exact
             path="/authors/:name"
             render={props => (
-              <AuthorId user={user} myAuthors={myAuthors} {...props} />
+              <AuthorId
+                user={user}
+                addFavouriteAuthor={addFavouriteAuthor}
+                removeFavouriteAuthor={removeFavouriteAuthor}
+                myAuthors={myAuthors}
+                isLiked={myAuthors
+                  .map(a => a.name)
+                  .includes(props.match.params.name)}
+                {...props}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/theories"
+            render={props => (
+              <TheoriesList
+                user={user}
+                myTheories={myTheories}
+                addFavouriteTheory={addFavouriteTheory}
+                removeFavouriteTheory={removeFavouriteTheory}
+                theories={theories}
+                isLiked={myTheories
+                  .map(t => t.name)
+                  .includes(props.match.params.name)}
+                {...props}
+              />
             )}
           />
           {/* <Route component={() => <h1> Page not found </h1>} /> */}

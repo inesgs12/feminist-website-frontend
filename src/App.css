@@ -92,7 +92,8 @@ body {
   margin: 50px;
 }
 
-.book-details {
+.book-detail,
+.author-details {
   margin: 50px;
   text-align: justify;
   font-family: "Quicksand", sans-serif;
@@ -145,4 +146,12 @@ i.icons {
 .like-button {
   color: transparent;
   font-size: 2em;
+}
+
+.ui.card >,
+.content,
+.header,
+div,
+.ui.four.cards {
+  font-family: "Quicksand", sans-serif;
 }

@@ -4,7 +4,6 @@ import { Icon } from "semantic-ui-react";
 class BookId extends React.Component {
   state = {
     book: null
-    // liked: false
   };
 
   getBookInfo = () => {
@@ -14,28 +13,6 @@ class BookId extends React.Component {
       .then(resp => resp.json())
       .then(book => this.setState({ book }));
   };
-
-  // getLikeState = () => {
-  //   console.log(this.props.myBooks); //no books at this time
-  //   this.props.myBooks.includes(this.state.book)
-  //     ? this.setState({
-  //         liked: true
-  //       })
-  //     : this.setState({
-  //         liked: false
-  //       });
-  // };
-
-  // updateLikeColor = (book, user) => {
-  //   this.setState(
-  //     {
-  //       liked: !this.state.liked
-  //     },
-  //     () => {
-  //       this.updateFavouriteBooks(book, user);
-  //     }
-  //   );
-  // };
 
   updateFavouriteBooks = (book, user) => {
     !this.props.isLiked

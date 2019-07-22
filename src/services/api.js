@@ -41,4 +41,51 @@ export function deleteFavouriteBook(bookId, userId) {
   });
 }
 
-export default { signin, validate, createFavouriteBook, deleteFavouriteBook };
+export function createFavouriteAuthor(authorId, userId) {
+  return fetch(baseUrl + "/favourite_authors", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      user_id: userId,
+      author_id: authorId
+    })
+  }).then(response => response.json());
+}
+
+export function deleteFavouriteAuthor(authorId, userId) {
+  return fetch(baseUrl + "/favourite_authors/" + authorId + "/" + userId, {
+    method: "DELETE"
+  });
+}
+
+export function createFavouriteTheory(theoryId, userId) {
+  return fetch(baseUrl + "/favourite_theories", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      user_id: userId,
+      theory_id: theoryId
+    })
+  }).then(response => response.json());
+}
+
+export function deleteFavouriteTheory(theoryId, userId) {
+  return fetch(baseUrl + "/favourite_theories/" + theoryId + "/" + userId, {
+    method: "DELETE"
+  });
+}
+
+export default {
+  signin,
+  validate,
+  createFavouriteBook,
+  deleteFavouriteBook,
+  createFavouriteAuthor,
+  deleteFavouriteAuthor,
+  createFavouriteTheory,
+  deleteFavouriteTheory
+};

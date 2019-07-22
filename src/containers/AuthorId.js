@@ -1,4 +1,5 @@
 import React from "react";
+import { Icon } from "semantic-ui-react";
 
 class AuthorId extends React.Component {
   state = {
@@ -13,17 +14,36 @@ class AuthorId extends React.Component {
       .then(author => this.setState({ author: author }));
   };
 
+  updateFavouriteAuthors = (author, user) => {
+    !this.props.isLiked
+      ? this.props.addFavouriteAuthor(author, user)
+      : this.props.removeFavouriteAuthor(author, user);
+  };
+
   componentDidMount() {
     this.getAuthorInfo();
   }
 
   render() {
+    const { author } = this.state;
+    const { user } = this.props;
+
     if (this.state.author === null) {
       return <h1>Author not found</h1>;
     } else {
       return (
-        <div className="author-info">
+        <div className="author-details">
           <h1>{this.state.author.name}</h1>
+          <div onClick={() => this.updateFavouriteAuthors(author, user)}>
+            <Icon
+              className={
+                this.props.isLiked ? "author-liked" : "author-not-liked"
+              }
+              name="like"
+              size="big"
+            />
+          </div>
+          <br />
           <h3>{this.state.author.bio}</h3>
         </div>
       );
