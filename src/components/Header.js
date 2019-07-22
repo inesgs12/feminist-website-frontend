@@ -64,6 +64,11 @@ class Header extends React.Component {
               Authors
             </NavLink>
           </div>
+          <div className="navbar-link">
+            <NavLink className="Homepage-link" to="/theories">
+              Feminisms
+            </NavLink>
+          </div>
           <div className="navbar-link">{this.sessionHeader()}</div>
         </nav>
       </header>

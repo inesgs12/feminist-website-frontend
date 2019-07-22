@@ -178,7 +178,7 @@ class App extends React.Component {
       addFavouriteAuthor,
       removeFavouriteAuthor,
       addFavouriteTheory,
-      removeFavouriteTheory
+      removeFavouriteTheory,
     } = this;
     const {
       user,
@@ -232,10 +232,12 @@ class App extends React.Component {
                 myBooks={myBooks}
                 addFavouriteBook={addFavouriteBook}
                 removeFavouriteBook={removeFavouriteBook}
-                {...props}
                 isLiked={myBooks
                   .map(b => b.title)
                   .includes(props.match.params.title)}
+                authors={authors}
+                {...props}
+                
               />
             )}
           />
