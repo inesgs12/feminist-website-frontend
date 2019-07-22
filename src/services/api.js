@@ -22,4 +22,17 @@ export function validate() {
   }).then(response => response.json());
 }
 
+export function createFavouriteBooks(bookId, userId) {
+  return fetch(baseUrl + "/favourite_books", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      user_id: userId,
+      book_id: bookId
+    })
+  }).then(response => response.json());
+}
+
 export default { signin, validate };

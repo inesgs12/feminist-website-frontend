@@ -6,15 +6,23 @@ import SignUpForm from "./containers/SignUpForm";
 import Header from "./components/Header";
 import HomePage from "./containers/HomePage";
 import Dashboard from "./containers/Dashboard";
-import { validate } from "./services/api";
+import { validate, createFavouriteBooks } from "./services/api";
 import BooksList from "./containers/BooksList";
 import BookId from "./containers/BookId";
+import AuthorsList from "./containers/AuthorsList";
+import AuthorId from "./containers/AuthorId";
 
 const booksUrl = "http://localhost:3000/books";
+const authorsUrl = "http://localhost:3000/authors";
 class App extends React.Component {
   state = {
     user: {},
-    books: []
+    books: [],
+    authors: [],
+    theories: [],
+    myBooks: [],
+    myAuthors: [],
+    myTheories: []
   };
 
   signin = user => {
@@ -45,6 +53,7 @@ class App extends React.Component {
       });
     }
     this.getBooks();
+    this.getAuthors();
   }
 
   getBooks = () => {
@@ -53,9 +62,27 @@ class App extends React.Component {
       .then(books => this.setState({ books: books }));
   };
 
+  getAuthors = () => {
+    fetch(authorsUrl)
+      .then(response => response.json())
+      .then(authors => this.setState({ authors: authors }));
+  };
+
+  updateFavouriteBooks = (book, user) => {
+    createFavouriteBooks(book.id, user.id);
+  };
+
   render() {
-    const { signin, signout, getBooks, selectBook } = this;
-    const { user, books, selectedBook } = this.state;
+    const { signin, signout, updateFavouriteBooks } = this;
+    const {
+      user,
+      books,
+      authors,
+      theories,
+      myBooks,
+      myAuthors,
+      myTheories
+    } = this.state;
 
     return (
       <div className="App">
@@ -82,9 +109,9 @@ class App extends React.Component {
             render={props => (
               <BooksList
                 user={user}
+                myBooks={myBooks}
+                updatefavouriteBook={updateFavouriteBooks}
                 books={books}
-                selectBook={selectBook}
-                getBooks={getBooks}
                 {...props}
               />
             )}
@@ -93,7 +120,31 @@ class App extends React.Component {
             exact
             path="/books/:title"
             render={props => (
-              <BookId user={user} book={selectedBook} {...props} />
+              <BookId
+                user={user}
+                myBooks={myBooks}
+                updateFavouriteBooks={updateFavouriteBooks}
+                {...props}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/authors"
+            render={props => (
+              <AuthorsList
+                user={user}
+                authors={authors}
+                myAuthors={myAuthors}
+                {...props}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/authors/:name"
+            render={props => (
+              <AuthorId user={user} myAuthors={myAuthors} {...props} />
             )}
           />
           {/* <Route component={() => <h1> Page not found </h1>} /> */}

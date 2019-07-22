@@ -9,14 +9,13 @@ class BooksList extends React.Component {
 
   render() {
     return (
-      <Card.Group itemsPerRow={5}>
+      <Card.Group itemsPerRow={4}>
         {this.props.books.map(book => (
           <BookCard
             key={`book-${book.id}`}
             book={book}
             user={this.props.user}
             showBook={this.showBook}
-            selectBook={this.props}
           />
         ))}
       </Card.Group>

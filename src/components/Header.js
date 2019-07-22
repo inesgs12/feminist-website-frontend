@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import logo from "./images/logo.png";
 
 class Header extends React.Component {
   sessionHeader = () => {
@@ -43,18 +44,9 @@ class Header extends React.Component {
     return (
       <header className="App-header">
         <nav className="navbar">
-          <div className="navbar-link">
-            <NavLink to="/">
-              <img
-                src="https://images-na.ssl-images-amazon.com/images/I/61QQXwsBWmL._SX466_.jpg"
-                className="App-logo"
-                alt="logo"
-              />
-            </NavLink>
-          </div>
           <div className="navbar-link title">
             <NavLink to="/">
-              <h1>FemHub</h1>
+              <img src={logo} className="App-logo" alt="logo" />
             </NavLink>
           </div>
           <div className="navbar-link">
@@ -65,6 +57,11 @@ class Header extends React.Component {
           <div className="navbar-link">
             <NavLink className="Homepage-link" to="/books">
               Books
+            </NavLink>
+          </div>
+          <div className="navbar-link">
+            <NavLink className="Homepage-link" to="/authors">
+              Authors
             </NavLink>
           </div>
           <div className="navbar-link">{this.sessionHeader()}</div>

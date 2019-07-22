@@ -39,7 +39,7 @@
 .navbar {
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 10px 30px 0 30px;
   overflow: hidden;
   background-color: white;
   position: sticky;
@@ -54,6 +54,7 @@
   float: right;
   font-size: larger;
   font-weight: bold;
+  color: grey;
 }
 
 a,
@@ -88,6 +89,38 @@ a:active {
 
 body {
   font-family: "Quicksand", sans-serif;
-  margin: 10px 20px;
+  margin: 50px;
 }
 
+.book-details {
+  margin: 50px;
+  text-align: justify;
+  font-family: "Quicksand", sans-serif;
+}
+
+h1:last-child,
+h2:last-child,
+h3:last-child,
+h4:last-child,
+h5:last-child {
+  font-family: "Quicksand", sans-serif;
+}
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child {
+  font-family: "Quicksand", sans-serif;
+}
+
+.user-info-grid,
+grid {
+  margin-left: 50px;
+  margin-top: 50px;
+  font-family: "Quicksand", sans-serif;
+}
+
+a.item {
+  font-family: "Quicksand", sans-serif;
+}
