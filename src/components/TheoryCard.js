@@ -1,22 +1,30 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
+import { Icon } from "semantic-ui-react";
 
 class TheoryCard extends React.Component {
+  updateFavouriteTheories = (theory, user) => {
+    !this.props.isLiked
+      ? this.props.addFavouriteTheory(theory, user)
+      : this.props.removeFavouriteTheory(theory, user);
+  };
+
   render() {
-    const { theory } = this.props;
+    const { theory, user } = this.props;
     return (
-        // <div className="ui card" onClick={() => showTheory(theory)}>
-            <Card>
-                <Card.Content header={theory.name} />
-                <Card.Content description={theory.history} />
-                {/* <Card.Content extra>
-                <Icon name='user' />
-                4 Friends */}
-                {/* </Card.Content> */}
-            </Card>
-        // </div>
-      );
-    }
+      <Card>
+        <div onClick={() => this.updateFavouriteTheories(theory, user)}>
+          <Icon
+            className={this.props.isLiked ? "theory-liked" : "theory-not-liked"}
+            name="like"
+            size="big"
+          />
+        </div>
+        <Card.Content header={theory.name} />
+        <Card.Content description={theory.history} />
+      </Card>
+    );
   }
+}
 
 export default TheoryCard;

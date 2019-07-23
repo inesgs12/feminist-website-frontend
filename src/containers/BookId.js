@@ -13,8 +13,8 @@ class BookId extends React.Component {
     fetch(url)
       .then(resp => resp.json())
       .then(book => {
-        this.setState({ book })
-      })
+        this.setState({ book });
+      });
   };
 
   updateFavouriteBooks = (book, user) => {
@@ -23,13 +23,15 @@ class BookId extends React.Component {
       : this.props.removeFavouriteBook(book, user);
   };
 
-  // setAuthor = () => {
-  //   debugger
-  //   let author = this.props.authors.filter(author => author.id === this.state.book.author_id)
-  //   this.setState({
-  //     author: author
-  //   })
-  // }
+  setAuthor = () => {
+    // debugger;
+    // let author = this.props.authors.filter(
+    //   author => author.id === this.state.book.author_id
+    // );
+    // this.setState({
+    //   author: author
+    // });
+  };
 
   componentDidMount() {
     this.getBookInfo();
@@ -58,7 +60,7 @@ class BookId extends React.Component {
         <p>Isbn-13: {book.isbn13} </p>
         <p>Language: {book.language} </p>
         <h4>Synopsis: {book.synopsis} </h4>
-        {/* <h5>Author: {book.author.name} </h5> */}
+        {/* <h5>Author: {this.setAuthor().name} </h5> */}
       </div>
     );
   }

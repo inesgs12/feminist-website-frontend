@@ -25,6 +25,8 @@ import TheoriesList from "./containers/TheoriesList";
 
 const booksUrl = "http://localhost:3000/books";
 const authorsUrl = "http://localhost:3000/authors";
+const theoriesUrl = "http://localhost:3000/theories";
+
 const favouriteBooksUrl = "http://localhost:3000/favourite_books";
 const favouriteAuthorsUrl = "http://localhost:3000/favourite_authors";
 const favouriteTheoriesUrl = "http://localhost:3000/favourite_theories";
@@ -71,6 +73,7 @@ class App extends React.Component {
     this.getAuthors();
     this.getMyBooks();
     this.getMyAuthors();
+    this.getTheories();
   }
 
   getBooks = () => {
@@ -83,6 +86,12 @@ class App extends React.Component {
     fetch(authorsUrl)
       .then(response => response.json())
       .then(authors => this.setState({ authors: authors }));
+  };
+
+  getTheories = () => {
+    fetch(theoriesUrl)
+      .then(response => response.json())
+      .then(theories => this.setState({ theories: theories }));
   };
 
   getMyBooks = () => {
@@ -169,6 +178,12 @@ class App extends React.Component {
     deleteFavouriteTheory(theory.id, user.id);
   };
 
+  findBookAuthor = () => {
+    // debugger;
+    //   const book = this.state.books.find(book => book.title === title);
+    //   return this.state.authors.find(book.author_id);
+  };
+
   render() {
     const {
       signin,
@@ -178,7 +193,7 @@ class App extends React.Component {
       addFavouriteAuthor,
       removeFavouriteAuthor,
       addFavouriteTheory,
-      removeFavouriteTheory,
+      removeFavouriteTheory
     } = this;
     const {
       user,
@@ -235,9 +250,11 @@ class App extends React.Component {
                 isLiked={myBooks
                   .map(b => b.title)
                   .includes(props.match.params.title)}
-                authors={authors}
+                // author={this.findBookAuthor(
+                //   this.props,
+                //   props.match.params.title
+                // )}
                 {...props}
-                
               />
             )}
           />
@@ -281,9 +298,6 @@ class App extends React.Component {
                 addFavouriteTheory={addFavouriteTheory}
                 removeFavouriteTheory={removeFavouriteTheory}
                 theories={theories}
-                isLiked={myTheories
-                  .map(t => t.name)
-                  .includes(props.match.params.name)}
                 {...props}
               />
             )}
