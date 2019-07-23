@@ -42,6 +42,8 @@ class App extends React.Component {
     myTheories: []
   };
 
+  //signin/out
+
   signin = user => {
     this.setState({
       user: user
@@ -76,6 +78,36 @@ class App extends React.Component {
     this.getTheories();
     this.getMyTheories();
   }
+
+  //sort books, authors and theories
+
+  sortBooksByTitle = () => {
+    this.setState({
+      books: this.state.books.sort((a, b) => a.title.localeCompare(b.title))
+    });
+  };
+
+  sortBooksByAuthor = () => {
+    this.setState({
+      books: this.state.books.sort((a, b) =>
+        a.author.name.localeCompare(b.author.name)
+      )
+    });
+  };
+
+  sortAuthorsByName = () => {
+    this.setState({
+      authors: this.state.authors.sort((a, b) => a.name.localeCompare(b.name))
+    });
+  };
+
+  sortTheoriesByName = () => {
+    this.setState({
+      theories: this.state.theories.sort((a, b) => a.name.localeCompare(b.name))
+    });
+  };
+
+  //fetch books, authors, theories and favourites
 
   getBooks = () => {
     fetch(booksUrl)
@@ -134,6 +166,8 @@ class App extends React.Component {
     });
   };
 
+  // add favourites to the backend
+
   addFavouriteBook = (book, user) => {
     this.setState({
       myBooks: [...this.state.myBooks, book]
@@ -179,12 +213,6 @@ class App extends React.Component {
     deleteFavouriteTheory(theory.id, user.id);
   };
 
-  findBookAuthor = () => {
-    // debugger;
-    //   const book = this.state.books.find(book => book.title === title);
-    //   return this.state.authors.find(book.author_id);
-  };
-
   render() {
     const {
       signin,
@@ -194,7 +222,11 @@ class App extends React.Component {
       addFavouriteAuthor,
       removeFavouriteAuthor,
       addFavouriteTheory,
-      removeFavouriteTheory
+      removeFavouriteTheory,
+      sortAuthorsByName,
+      sortBooksByTitle,
+      sortBooksByAuthor,
+      sortTheoriesByName
     } = this;
     const {
       user,
@@ -253,6 +285,8 @@ class App extends React.Component {
                 myBooks={myBooks}
                 addFavouriteBook={addFavouriteBook}
                 removeFavouriteBook={removeFavouriteBook}
+                sortBooksByTitle={sortBooksByTitle}
+                sortBooksByAuthor={sortBooksByAuthor}
                 books={books}
                 {...props}
               />
@@ -285,6 +319,7 @@ class App extends React.Component {
                 myAuthors={myAuthors}
                 addFavouriteAuthor={addFavouriteAuthor}
                 removeFavouriteAuthor={removeFavouriteAuthor}
+                sortAuthorsByName={sortAuthorsByName}
                 {...props}
               />
             )}
@@ -315,6 +350,7 @@ class App extends React.Component {
                 myTheories={myTheories}
                 addFavouriteTheory={addFavouriteTheory}
                 removeFavouriteTheory={removeFavouriteTheory}
+                sortTheoriesByName={sortTheoriesByName}
                 theories={theories}
                 {...props}
               />

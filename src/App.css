@@ -120,7 +120,7 @@ grid {
   /* margin-left: 50px;
   margin-top: 50px; */
   font-family: "Quicksand", sans-serif;
-  margin: 50px
+  margin: 50px;
 }
 
 a.item {
@@ -169,4 +169,9 @@ div,
   border: none;
   border-style: none;
   float: left;
+}
+
+.options-bar {
+  display: flexbox;
+  text-align: left;
 }

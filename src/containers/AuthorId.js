@@ -4,8 +4,7 @@ import { NavLink } from "react-router-dom";
 
 class AuthorId extends React.Component {
   state = {
-    author: null,
-    // authorsBooks: null
+    author: null
   };
 
   getAuthorInfo = () => {
@@ -39,7 +38,7 @@ class AuthorId extends React.Component {
 // }
 
   componentDidMount() {
-    this.getAuthorInfo();
+    this.getAuthorInfo()
   }
 
   render() {
@@ -47,10 +46,10 @@ class AuthorId extends React.Component {
     const { user } = this.props;
 
     if (this.state.author === null) {
-      return <h1>Author not found</h1>;
+      return (<h1>Author not found</h1>)
     } else {
       return (
-        <div key={author.id} className="author-details">
+      <div key={author.id} className="author-details">
           <h1>{this.state.author.name}</h1>
           <div onClick={() => this.updateFavouriteAuthors(author, user)}>
             <Icon
@@ -63,13 +62,12 @@ class AuthorId extends React.Component {
           </div>
           <br />
           <h3>{this.state.author.bio}</h3>
-          <div>
+        <div>
           <h4> Books: {author.books.map((book, index) => (<NavLink key={index} to={`/books/${book.title}`}> {book.title} </NavLink>))}</h4>
-          </div>
         </div>
-      );
+      </div>)
     }
   }
 }
 
-export default AuthorId;
+export default AuthorId

@@ -80,9 +80,10 @@ class Dashboard extends React.Component {
   render() {
     const { activeItem } = this.state;
     const { displayInfo } = this;
+    const { user } = this.props
 
     return (
-      <div className="user-info-grid">
+      <div className="user-info-grid" key={user.id}>
         <Grid>
           <Grid.Column width={4}>
             <Menu fluid vertical tabular>

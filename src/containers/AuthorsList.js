@@ -1,6 +1,7 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
 import AuthorCard from "../components/AuthorCard";
+import OptionsBar from "../components/OptionsBar";
 
 class AuthorsList extends React.Component {
   showAuthor = author => {
@@ -9,18 +10,21 @@ class AuthorsList extends React.Component {
   };
 
   render() {
-    const { authors, user } = this.props
+    const { authors, user, sortAuthorsByName } = this.props;
     return (
-      <Card.Group itemsPerRow={4}>
-        {authors.map(author => (
-          <AuthorCard
-            key={`author-${author.id}`}
-            author={author}
-            user={user}
-            showAuthor={this.showAuthor}
-          />
-        ))}
-      </Card.Group>
+      <div>
+        <OptionsBar handleClick={sortAuthorsByName} />
+        <Card.Group itemsPerRow={4}>
+          {authors.map((author, index) => (
+            <AuthorCard
+              key={`author-${index}`}
+              author={author}
+              user={user}
+              showAuthor={this.showAuthor}
+            />
+          ))}
+        </Card.Group>
+      </div>
     );
   }
 }
