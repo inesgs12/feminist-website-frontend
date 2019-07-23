@@ -1,10 +1,11 @@
 import React from "react";
 import { Icon } from "semantic-ui-react";
+import { NavLink } from "react-router-dom";
 
 class BookId extends React.Component {
   state = {
     book: null,
-    author: null
+    // author: null
   };
 
   getBookInfo = () => {
@@ -23,15 +24,24 @@ class BookId extends React.Component {
       : this.props.removeFavouriteBook(book, user);
   };
 
-  setAuthor = () => {
-    // debugger;
-    // let author = this.props.authors.filter(
-    //   author => author.id === this.state.book.author_id
-    // );
-    // this.setState({
-    //   author: author
-    // });
-  };
+  // componentDidUpdate(prevProps) {
+  //   if (
+  //     prevProps.authors.length !== this.props.authors.length &&
+  //     this.props.authors.length > 0
+  //   ) {
+  //     this.setAuthor();
+  //   }
+  // }
+
+  // setAuthor = () => {
+  //   // console.log(this.props.authors);
+  //   let author = this.props.authors.find(
+  //     author => author.id === this.state.book.author_id
+  //   );
+  //   this.setState({
+  //     author: author
+  //   });
+  // };
 
   componentDidMount() {
     this.getBookInfo();
@@ -44,7 +54,7 @@ class BookId extends React.Component {
     if (book === null) return <h1>No book.</h1>;
 
     return (
-      <div className="book-details">
+      <div className="book-details" key={book.id}>
         <h1>{book.title}</h1> <br />
         <div onClick={() => this.updateFavouriteBooks(book, user)}>
           <Icon
@@ -59,8 +69,12 @@ class BookId extends React.Component {
         <p>Publisher: {book.publisher} </p>
         <p>Isbn-13: {book.isbn13} </p>
         <p>Language: {book.language} </p>
-        <h4>Synopsis: {book.synopsis} </h4>
-        {/* <h5>Author: {this.setAuthor().name} </h5> */}
+        <p>Synopsis: {book.synopsis} </p>
+        <div>
+        <h5>
+    Author: <NavLink key={book.author.id} to={`/authors/${book.author.name}`}>{book.author.name}</NavLink>
+        </h5>
+        </div>
       </div>
     );
   }
