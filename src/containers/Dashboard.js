@@ -27,9 +27,8 @@ class Dashboard extends React.Component {
       case "info":
         return (
           <div className="user-display">
-            <h3> First Name: {user.first_name}</h3>
-            <h3> Last Name: {user.last_name}</h3>
-            <h3> Username: {user.username}</h3>
+            <h3> {user.first_name} {user.last_name}</h3>
+            <p> Username: {user.username}</p>
             <img className="user-photo" alt={user.photo} src={image} />
           </div>
         );
@@ -49,21 +48,27 @@ class Dashboard extends React.Component {
       case "My Authors":
         return myAuthors.map(author => {
           return (
+            <div>
             <NavLink className="authors-display" to={`/authors/${author.name}`}>
               {author.name}
             </NavLink>
+            <br/>
+            </div>
           );
         });
 
       case "My Theories":
         return myTheories.map((theory, key) => {
           return (
+            <div>
             <NavLink
               className="theories-display" id={key}
               to={`/theories/${theory.name}`}
             >
               {theory.name}
             </NavLink>
+            <br/>
+            </div>
           );
         });
 

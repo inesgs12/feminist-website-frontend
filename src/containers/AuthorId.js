@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 class AuthorId extends React.Component {
   state = {
     author: null,
-    authorsBooks: null
+    // authorsBooks: null
   };
 
   getAuthorInfo = () => {

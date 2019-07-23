@@ -9,12 +9,12 @@ class HomePage extends React.Component {
   render() {
     return (
       <div className="container">
-        <img className="feminism-definition" src={feminism} alt={feminism} />
-        <img
+        <img className="feminism-definition" src={feminism}alt={feminism}/>
+        {/* <img
           className="book-cover-sample feminism-definition"
           src={feminism}
           alt="feminism-book-random"
-        />
+        /> */}
       </div>
     );
   }
