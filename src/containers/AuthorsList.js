@@ -9,13 +9,14 @@ class AuthorsList extends React.Component {
   };
 
   render() {
+    const { authors, user } = this.props
     return (
       <Card.Group itemsPerRow={4}>
-        {this.props.authors.map(author => (
+        {authors.map(author => (
           <AuthorCard
             key={`author-${author.id}`}
             author={author}
-            user={this.props.user}
+            user={user}
             showAuthor={this.showAuthor}
           />
         ))}
