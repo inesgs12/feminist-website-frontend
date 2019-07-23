@@ -92,7 +92,7 @@ body {
   margin: 50px;
 }
 
-.book-detail,
+.book-details,
 .author-details {
   margin: 50px;
   text-align: justify;
@@ -154,4 +154,18 @@ i.icons {
 div,
 .ui.four.cards {
   font-family: "Quicksand", sans-serif;
+}
+
+.user-photo {
+  height: 50%;
+  width: 50%;
+}
+
+.feminism-definition {
+  padding: 30px;
+  height: 50%;
+  width: 50%;
+  border: none;
+  border-style: none;
+  float: left;
 }

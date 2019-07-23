@@ -74,6 +74,7 @@ class App extends React.Component {
     this.getMyBooks();
     this.getMyAuthors();
     this.getTheories();
+    this.getMyTheories();
   }
 
   getBooks = () => {
@@ -209,7 +210,18 @@ class App extends React.Component {
       <div className="App">
         <Header user={user} signout={signout} signin={signin} />
         <Switch>
-          <Route exact path="/" render={props => <HomePage {...props} />} />
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <HomePage
+                {...props}
+                books={books}
+                authors={authors}
+                theories={theories}
+              />
+            )}
+          />
           <Route
             path="/signin"
             render={props => (
@@ -222,7 +234,15 @@ class App extends React.Component {
           />
           <Route
             path={`/${user.username}`}
-            render={props => <Dashboard user={user} {...props} />}
+            render={props => (
+              <Dashboard
+                user={user}
+                myBooks={myBooks}
+                myAuthors={myAuthors}
+                myTheories={myTheories}
+                {...props}
+              />
+            )}
           />
           <Route
             exact
@@ -250,10 +270,7 @@ class App extends React.Component {
                 isLiked={myBooks
                   .map(b => b.title)
                   .includes(props.match.params.title)}
-                // author={this.findBookAuthor(
-                //   this.props,
-                //   props.match.params.title
-                // )}
+                authors={authors}
                 {...props}
               />
             )}
@@ -281,6 +298,7 @@ class App extends React.Component {
                 addFavouriteAuthor={addFavouriteAuthor}
                 removeFavouriteAuthor={removeFavouriteAuthor}
                 myAuthors={myAuthors}
+                books={books}
                 isLiked={myAuthors
                   .map(a => a.name)
                   .includes(props.match.params.name)}
