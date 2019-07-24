@@ -100,6 +100,21 @@ export function deleteFavouriteTheory(theoryId, userId) {
   });
 }
 
+export function createReview(bookId, userId, stars, comment) {
+  return fetch(baseUrl + "/reviews", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      book_id: bookId,
+      user_id: userId,
+      star_rating: stars,
+      comment: comment
+    })
+  }).then(response => response.json());
+}
+
 export default {
   signin,
   validate,
@@ -109,5 +124,6 @@ export default {
   deleteFavouriteAuthor,
   createFavouriteTheory,
   deleteFavouriteTheory,
-  createUser
+  createUser,
+  createReview
 };

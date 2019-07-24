@@ -14,7 +14,8 @@ import {
   createFavouriteAuthor,
   deleteFavouriteAuthor,
   createFavouriteTheory,
-  deleteFavouriteTheory
+  deleteFavouriteTheory,
+  createReview
 } from "./services/api";
 
 import BooksList from "./containers/BooksList";
@@ -42,7 +43,7 @@ class App extends React.Component {
     myTheories: []
   };
 
-  //signin/out
+  //signin/out ----------------------------------------
 
   signin = user => {
     this.setState({
@@ -59,6 +60,8 @@ class App extends React.Component {
     this.props.history.push("/");
     localStorage.removeItem("token");
   };
+
+  //onLoad -------------------------------------------
 
   componentDidMount() {
     //this should only run if there is a token not everytime the page loads, the alerts are annoying.
@@ -79,7 +82,7 @@ class App extends React.Component {
     this.getMyTheories();
   }
 
-  //sort books, authors and theories
+  //sort books, authors and theories -----------------
 
   sortBooksByTitle = () => {
     this.setState({
@@ -107,7 +110,7 @@ class App extends React.Component {
     });
   };
 
-  //fetch books, authors, theories and favourites
+  //fetch books, authors, theories and favourites --------
 
   getBooks = () => {
     fetch(booksUrl)
@@ -166,7 +169,7 @@ class App extends React.Component {
     });
   };
 
-  // add favourites to the backend
+  // add favourites ---------------------------------
 
   addFavouriteBook = (book, user) => {
     this.setState({
@@ -212,6 +215,8 @@ class App extends React.Component {
     });
     deleteFavouriteTheory(theory.id, user.id);
   };
+
+  // Reviews ------------------------------------------
 
   render() {
     const {

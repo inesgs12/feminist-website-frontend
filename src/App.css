@@ -112,9 +112,7 @@ h5:first-child {
 }
 
 .user-info-grid,
-grid {
-  /* margin-left: 50px;
-  margin-top: 50px; */
+.grid {
   font-family: "Quicksand", sans-serif;
   margin: 50px;
 }
@@ -170,4 +168,16 @@ div,
 .options-bar {
   display: flexbox;
   text-align: left;
+}
+
+.review-card {
+  font-family: "Quicksand", sans-serif;
+}
+
+.review-comment {
+  text-align: justify;
+}
+
+.ui.two.cards {
+  padding: 0 50px 40px 50px;
 }
