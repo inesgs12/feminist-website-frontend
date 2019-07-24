@@ -3,14 +3,10 @@
 }
 
 .App-header {
-  /* font-family: 'Montserrat', sans-serif; */
-  /* font-family: 'Raleway', sans-serif; */
-  /* font-family: 'Open Sans Condensed', sans-serif; */
   font-family: "Quicksand", sans-serif;
 }
 
 .App-logo {
-  /* animation: App-logo-spin infinite 20s linear; */
   height: 10vmin;
   margin: none;
   padding: none;
