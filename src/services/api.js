@@ -22,6 +22,27 @@ export function validate() {
   }).then(response => response.json());
 }
 
+export function createUser(username, password, firstName, lastName) {
+  return fetch(baseUrl + "/signup", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      username: username,
+      password: password,
+      first_name: firstName,
+      last_name: lastName
+    })
+  }).then(resp => {
+    if (resp.ok) {
+      return resp.json();
+    } else {
+      throw new Error("Signup failed!");
+    }
+  });
+}
+
 export function createFavouriteBook(bookId, userId) {
   return fetch(baseUrl + "/favourite_books", {
     method: "POST",
@@ -87,5 +108,6 @@ export default {
   createFavouriteAuthor,
   deleteFavouriteAuthor,
   createFavouriteTheory,
-  deleteFavouriteTheory
+  deleteFavouriteTheory,
+  createUser
 };
