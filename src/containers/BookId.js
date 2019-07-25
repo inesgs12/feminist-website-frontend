@@ -1,12 +1,13 @@
 import React from "react";
-import { Icon } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 import ReviewCard from "../components/ReviewCard";
-import { Card } from "semantic-ui-react";
+import { Card, Icon } from "semantic-ui-react";
+import ReviewDashboard from "../components/ReviewDashboard";
 
 class BookId extends React.Component {
   state = {
-    book: null
+    book: null,
+    reviews: null
   };
 
   getBookInfo = () => {
@@ -15,10 +16,18 @@ class BookId extends React.Component {
     fetch(url)
       .then(resp => resp.json())
       .then(book => {
-        this.setState({ book });
+        this.setState({
+          book: book,
+          reviews: book.reviews
+        });
       });
   };
 
+  handleChange = review => {
+    this.setState({
+      reviews: [ ...this.state.reviews, review ]
+    });
+  };
   updateFavouriteBooks = (book, user) => {
     !this.props.isLiked
       ? this.props.addFavouriteBook(book, user)
@@ -30,8 +39,9 @@ class BookId extends React.Component {
   }
 
   render() {
-    const { book } = this.state;
+    const { book, reviews } = this.state;
     const { user } = this.props;
+    const { handleChange } = this;
 
     if (book === null) return <h1>No book.</h1>;
 
@@ -48,6 +58,9 @@ class BookId extends React.Component {
           </div>
           <br />
           <img src={book.cover} alt={book.title} />
+          <br />
+          <ReviewDashboard book={book} user={user} handleChange={handleChange}/>
+          <br />
           <div>
             <p>
               Author:{" "}
@@ -64,7 +77,7 @@ class BookId extends React.Component {
         </div>
         <div className="review-card">
           <Card.Group itemsPerRow={2}>
-            {book.reviews.map(review => (
+            {reviews.map(review => (
               <ReviewCard
                 key={`review-${review.id}`}
                 user={user}

@@ -15,7 +15,6 @@ import {
   deleteFavouriteAuthor,
   createFavouriteTheory,
   deleteFavouriteTheory,
-  createReview
 } from "./services/api";
 
 import BooksList from "./containers/BooksList";

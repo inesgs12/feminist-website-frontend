@@ -181,3 +181,10 @@ div,
 .ui.two.cards {
   padding: 0 50px 40px 50px;
 }
+
+.username-review {
+  float: left;
+}
+.edit-review-button {
+  float: right;
+}
