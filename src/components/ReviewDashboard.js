@@ -6,7 +6,12 @@ class ReviewDashboard extends Component {
   state = { show: false };
 
   handleClick = () => {
-    this.setState({ show: !this.state.show });
+    const { user } = this.props;
+    if (user) {
+      this.setState({ show: !this.state.show });
+    } else {
+      alert("Log in to leave a review");
+    }
   };
 
   render() {

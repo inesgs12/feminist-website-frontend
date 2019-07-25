@@ -30,9 +30,13 @@ class BookId extends React.Component {
   };
 
   updateFavouriteBooks = (book, user) => {
-    !this.props.isLiked
-      ? this.props.addFavouriteBook(book, user)
-      : this.props.removeFavouriteBook(book, user);
+    if (user) {
+      !this.props.isLiked
+        ? this.props.addFavouriteBook(book, user)
+        : this.props.removeFavouriteBook(book, user);
+    } else {
+      alert("Log in to add book to your favourites");
+    }
   };
 
   componentDidMount() {
@@ -50,16 +54,14 @@ class BookId extends React.Component {
       <div>
         <div className="book-details" key={book.id}>
           <h1>{book.title}</h1> <br />
-          {user && (
-            <div onClick={() => this.updateFavouriteBooks(book, user)}>
-              <Icon
-                className={this.props.isLiked ? "book-liked" : "book-not-liked"}
-                name="like"
-                size="big"
-              />
-              <br />
-            </div>
-          )}
+          <div onClick={() => this.updateFavouriteBooks(book, user)}>
+            <Icon
+              className={this.props.isLiked ? "book-liked" : "book-not-liked"}
+              name="like"
+              size="big"
+            />
+            <br />
+          </div>
           <br />
           <img src={book.cover} alt={book.title} />
           <br />

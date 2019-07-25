@@ -16,9 +16,13 @@ class AuthorId extends React.Component {
   };
 
   updateFavouriteAuthors = (author, user) => {
-    !this.props.isLiked
-      ? this.props.addFavouriteAuthor(author, user)
-      : this.props.removeFavouriteAuthor(author, user);
+    if (user) {
+      !this.props.isLiked
+        ? this.props.addFavouriteAuthor(author, user)
+        : this.props.removeFavouriteAuthor(author, user);
+    } else {
+      alert("Log in to add author to your favourites");
+    }
   };
 
   componentDidMount() {
@@ -35,18 +39,16 @@ class AuthorId extends React.Component {
       return (
         <div key={author.id} className="author-details">
           <h1>{this.state.author.name}</h1>
-          {user && (
-            <div onClick={() => this.updateFavouriteAuthors(author, user)}>
-              <Icon
-                className={
-                  this.props.isLiked ? "author-liked" : "author-not-liked"
-                }
-                name="like"
-                size="big"
-              />
-              <br />
-            </div>
-          )}
+          <div onClick={() => this.updateFavouriteAuthors(author, user)}>
+            <Icon
+              className={
+                this.props.isLiked ? "author-liked" : "author-not-liked"
+              }
+              name="like"
+              size="big"
+            />
+            <br />
+          </div>
           <br />
           <h3>{this.state.author.bio}</h3>
           <div>
