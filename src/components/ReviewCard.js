@@ -14,9 +14,11 @@ class ReviewCard extends React.Component {
             starSpacing="5px"
             starRatedColor="gold"
           />
-          <p className="review-comment">{review.comment}</p>
-          <p className="username-review">posted by: {user.username}</p>
-          {review.user_id === user.id && (
+          <p className="review-comment" contentEditable={true}>
+            {review.comment}
+          </p>
+          <p className="username-review">posted by: {review.user_id}</p>
+          {user && review.user_id === user.id && (
             <Button className="edit-review-button" size="tiny">
               Edit
             </Button>

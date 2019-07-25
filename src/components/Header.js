@@ -4,7 +4,7 @@ import logo from "./images/logo.png";
 
 class Header extends React.Component {
   sessionHeader = () => {
-    return this.props.user.username ? (
+    return this.props.user ? (
       <div>
         <div className="navbar-link">
           <NavLink

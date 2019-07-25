@@ -21,24 +21,8 @@ class AuthorId extends React.Component {
       : this.props.removeFavouriteAuthor(author, user);
   };
 
-//   componentDidUpdate(prevProps) {
-//     if (
-//       prevProps.books.length !== this.props.books.length &&
-//       this.props.books.length > 0
-//     ) {
-//       this.setBooks();
-//     }
-//   }
-
-//   setBooks = () => {
-//     let books = this.props.books.filter( book => book.author_id === this.state.author.id)
-//     this.setState({
-//     authorBooks: books
-//   })
-// }
-
   componentDidMount() {
-    this.getAuthorInfo()
+    this.getAuthorInfo();
   }
 
   render() {
@@ -46,28 +30,41 @@ class AuthorId extends React.Component {
     const { user } = this.props;
 
     if (this.state.author === null) {
-      return (<h1>Author not found</h1>)
+      return <h1>Author not found</h1>;
     } else {
       return (
-      <div key={author.id} className="author-details">
+        <div key={author.id} className="author-details">
           <h1>{this.state.author.name}</h1>
-          <div onClick={() => this.updateFavouriteAuthors(author, user)}>
-            <Icon
-              className={
-                this.props.isLiked ? "author-liked" : "author-not-liked"
-              }
-              name="like"
-              size="big"
-            />
-          </div>
+          {user && (
+            <div onClick={() => this.updateFavouriteAuthors(author, user)}>
+              <Icon
+                className={
+                  this.props.isLiked ? "author-liked" : "author-not-liked"
+                }
+                name="like"
+                size="big"
+              />
+              <br />
+            </div>
+          )}
           <br />
           <h3>{this.state.author.bio}</h3>
-        <div>
-          <h4> Books: {author.books.map((book, index) => (<NavLink key={index} to={`/books/${book.title}`}> {book.title} </NavLink>))}</h4>
+          <div>
+            <h4>
+              {" "}
+              Books:{" "}
+              {author.books.map((book, index) => (
+                <NavLink key={index} to={`/books/${book.title}`}>
+                  {" "}
+                  {book.title}{" "}
+                </NavLink>
+              ))}
+            </h4>
+          </div>
         </div>
-      </div>)
+      );
     }
   }
 }
 
-export default AuthorId
+export default AuthorId;

@@ -7,15 +7,7 @@ import Header from "./components/Header";
 import HomePage from "./containers/HomePage";
 import Dashboard from "./containers/Dashboard";
 
-import {
-  validate,
-  createFavouriteBook,
-  deleteFavouriteBook,
-  createFavouriteAuthor,
-  deleteFavouriteAuthor,
-  createFavouriteTheory,
-  deleteFavouriteTheory,
-} from "./services/api";
+import api from "./services/api";
 
 import BooksList from "./containers/BooksList";
 import BookId from "./containers/BookId";
@@ -23,23 +15,12 @@ import AuthorsList from "./containers/AuthorsList";
 import AuthorId from "./containers/AuthorId";
 import TheoriesList from "./containers/TheoriesList";
 
-const booksUrl = "http://localhost:3000/books";
-const authorsUrl = "http://localhost:3000/authors";
-const theoriesUrl = "http://localhost:3000/theories";
-
-const favouriteBooksUrl = "http://localhost:3000/favourite_books";
-const favouriteAuthorsUrl = "http://localhost:3000/favourite_authors";
-const favouriteTheoriesUrl = "http://localhost:3000/favourite_theories";
-
 class App extends React.Component {
   state = {
-    user: {},
+    user: null,
     books: [],
     authors: [],
-    theories: [],
-    myBooks: [],
-    myAuthors: [],
-    myTheories: []
+    theories: []
   };
 
   //signin/out ----------------------------------------
@@ -54,7 +35,7 @@ class App extends React.Component {
 
   signout = () => {
     this.setState({
-      user: {}
+      user: null
     });
     this.props.history.push("/");
     localStorage.removeItem("token");
@@ -65,7 +46,7 @@ class App extends React.Component {
   componentDidMount() {
     //this should only run if there is a token not everytime the page loads, the alerts are annoying.
     if (localStorage.token) {
-      validate().then(data => {
+      api.validate().then(data => {
         if (data.error) {
           alert(data.error);
         } else {
@@ -73,12 +54,9 @@ class App extends React.Component {
         }
       });
     }
-    this.getBooks();
-    this.getAuthors();
-    this.getMyBooks();
-    this.getMyAuthors();
-    this.getTheories();
-    this.getMyTheories();
+    api.getBooks().then(books => this.setState({ books: books }));
+    api.getTheories().then(theories => this.setState({ theories: theories }));
+    api.getAuthors().then(authors => this.setState({ authors: authors }));
   }
 
   //sort books, authors and theories -----------------
@@ -109,110 +87,72 @@ class App extends React.Component {
     });
   };
 
-  //fetch books, authors, theories and favourites --------
-
-  getBooks = () => {
-    fetch(booksUrl)
-      .then(response => response.json())
-      .then(books => this.setState({ books: books }));
-  };
-
-  getAuthors = () => {
-    fetch(authorsUrl)
-      .then(response => response.json())
-      .then(authors => this.setState({ authors: authors }));
-  };
-
-  getTheories = () => {
-    fetch(theoriesUrl)
-      .then(response => response.json())
-      .then(theories => this.setState({ theories: theories }));
-  };
-
-  getMyBooks = () => {
-    fetch(favouriteBooksUrl)
-      .then(response => response.json())
-      .then(favouriteBooks => this.mapFavouriteBooks(favouriteBooks));
-  };
-
-  mapFavouriteBooks = favouriteBooks => {
-    let myArray = favouriteBooks.map(data => data.book);
-    this.setState({
-      myBooks: myArray
-    });
-  };
-
-  getMyAuthors = () => {
-    fetch(favouriteAuthorsUrl)
-      .then(response => response.json())
-      .then(favouriteAuthors => this.mapFavouriteAuthors(favouriteAuthors));
-  };
-
-  mapFavouriteAuthors = favouriteAuthors => {
-    let myArray = favouriteAuthors.map(data => data.author);
-    this.setState({
-      myAuthors: myArray
-    });
-  };
-
-  getMyTheories = () => {
-    fetch(favouriteTheoriesUrl)
-      .then(response => response.json())
-      .then(favouriteTheories => this.mapFavouriteTheories(favouriteTheories));
-  };
-
-  mapFavouriteTheories = favouriteTheories => {
-    let myArray = favouriteTheories.map(data => data.theory);
-    this.setState({
-      myTheories: myArray
-    });
-  };
-
   // add favourites ---------------------------------
 
   addFavouriteBook = (book, user) => {
+    api.createFavouriteBook(book.id, user.id);
     this.setState({
-      myBooks: [...this.state.myBooks, book]
+      user: {
+        ...this.state.user,
+        favourite_books: [...this.state.user.favourite_books, book]
+      }
     });
-    createFavouriteBook(book.id, user.id);
-    //too optimistic
   };
 
   removeFavouriteBook = (book, user) => {
+    api.deleteFavouriteBook(book.id, user.id);
     this.setState({
-      myBooks: this.state.myBooks.filter(b => b.id !== book.id)
+      user: {
+        ...this.state.user,
+        favourite_books: this.state.user.favourite_books.filter(
+          b => b.id !== book.id
+        )
+      }
     });
-    deleteFavouriteBook(book.id, user.id);
   };
 
   addFavouriteAuthor = (author, user) => {
+    api.createFavouriteAuthor(author.id, user.id);
     this.setState({
-      myAuthors: [...this.state.myAuthors, author]
+      user: {
+        ...this.state.user,
+        favourite_authors: [...this.state.user.favourite_authors, author]
+      }
     });
-    createFavouriteAuthor(author.id, user.id);
-    //too optimistic
   };
 
   removeFavouriteAuthor = (author, user) => {
+    api.deleteFavouriteAuthor(author.id, user.id);
     this.setState({
-      myAuthors: this.state.myAuthors.filter(a => a.id !== author.id)
+      user: {
+        ...this.state.user,
+        favourite_authors: this.state.user.favourite_authors.filter(
+          a => a.id !== author.id
+        )
+      }
     });
-    deleteFavouriteAuthor(author.id, user.id);
   };
 
   addFavouriteTheory = (theory, user) => {
+    api.createFavouriteTheory(theory.id, user.id);
     this.setState({
-      myTheories: [...this.state.myTheories, theory]
+      user: {
+        ...this.state.user,
+        favourite_theories: [...this.state.user.favourite_theories, theory]
+      }
     });
-    createFavouriteTheory(theory.id, user.id);
-    //too optimistic
   };
 
   removeFavouriteTheory = (theory, user) => {
+    api.deleteFavouriteTheory(theory.id, user.id);
     this.setState({
-      myTheories: this.state.myTheories.filter(t => t.id !== theory.id)
+      user: {
+        ...this.state.user,
+        favourite_theories: this.state.user.favourite_theories.filter(
+          t => t.id !== theory.id
+        )
+      }
     });
-    deleteFavouriteTheory(theory.id, user.id);
   };
 
   // Reviews ------------------------------------------
@@ -232,15 +172,7 @@ class App extends React.Component {
       sortBooksByAuthor,
       sortTheoriesByName
     } = this;
-    const {
-      user,
-      books,
-      authors,
-      theories,
-      myBooks,
-      myAuthors,
-      myTheories
-    } = this.state;
+    const { user, books, authors, theories } = this.state;
 
     return (
       <div className="App">
@@ -268,25 +200,18 @@ class App extends React.Component {
             path="/signup"
             component={props => <SignUpForm signin={signin} {...props} />}
           />
-          <Route
-            path={`/${user.username}`}
-            render={props => (
-              <Dashboard
-                user={user}
-                myBooks={myBooks}
-                myAuthors={myAuthors}
-                myTheories={myTheories}
-                {...props}
-              />
-            )}
-          />
+          {user && (
+            <Route
+              path={`/${user.username}`}
+              render={props => <Dashboard user={user} {...props} />}
+            />
+          )}
           <Route
             exact
             path="/books"
             render={props => (
               <BooksList
                 user={user}
-                myBooks={myBooks}
                 addFavouriteBook={addFavouriteBook}
                 removeFavouriteBook={removeFavouriteBook}
                 sortBooksByTitle={sortBooksByTitle}
@@ -302,12 +227,14 @@ class App extends React.Component {
             render={props => (
               <BookId
                 user={user}
-                myBooks={myBooks}
                 addFavouriteBook={addFavouriteBook}
                 removeFavouriteBook={removeFavouriteBook}
-                isLiked={myBooks
-                  .map(b => b.title)
-                  .includes(props.match.params.title)}
+                isLiked={
+                  user &&
+                  user.favourite_books
+                    .map(b => b.title)
+                    .includes(props.match.params.title)
+                }
                 authors={authors}
                 {...props}
               />
@@ -320,7 +247,6 @@ class App extends React.Component {
               <AuthorsList
                 user={user}
                 authors={authors}
-                myAuthors={myAuthors}
                 addFavouriteAuthor={addFavouriteAuthor}
                 removeFavouriteAuthor={removeFavouriteAuthor}
                 sortAuthorsByName={sortAuthorsByName}
@@ -336,11 +262,13 @@ class App extends React.Component {
                 user={user}
                 addFavouriteAuthor={addFavouriteAuthor}
                 removeFavouriteAuthor={removeFavouriteAuthor}
-                myAuthors={myAuthors}
                 books={books}
-                isLiked={myAuthors
-                  .map(a => a.name)
-                  .includes(props.match.params.name)}
+                isLiked={
+                  user &&
+                  user.favourite_authors
+                    .map(a => a.name)
+                    .includes(props.match.params.name)
+                }
                 {...props}
               />
             )}
@@ -351,7 +279,6 @@ class App extends React.Component {
             render={props => (
               <TheoriesList
                 user={user}
-                myTheories={myTheories}
                 addFavouriteTheory={addFavouriteTheory}
                 removeFavouriteTheory={removeFavouriteTheory}
                 sortTheoriesByName={sortTheoriesByName}

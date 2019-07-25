@@ -13,13 +13,17 @@ class TheoryCard extends React.Component {
     const { theory, user } = this.props;
     return (
       <Card>
-        <div onClick={() => this.updateFavouriteTheories(theory, user)}>
-          <Icon
-            className={this.props.isLiked ? "theory-liked" : "theory-not-liked"}
-            name="like"
-            size="big"
-          />
-        </div>
+        {user && (
+          <div onClick={() => this.updateFavouriteTheories(theory, user)}>
+            <Icon
+              className={
+                this.props.isLiked ? "theory-liked" : "theory-not-liked"
+              }
+              name="like"
+              size="big"
+            />
+          </div>
+        )}
         <Card.Content header={theory.name} />
         <Card.Content description={theory.history} />
       </Card>

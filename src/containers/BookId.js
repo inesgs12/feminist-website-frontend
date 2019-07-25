@@ -25,9 +25,10 @@ class BookId extends React.Component {
 
   handleChange = review => {
     this.setState({
-      reviews: [ ...this.state.reviews, review ]
+      reviews: [...this.state.reviews, review]
     });
   };
+
   updateFavouriteBooks = (book, user) => {
     !this.props.isLiked
       ? this.props.addFavouriteBook(book, user)
@@ -49,17 +50,24 @@ class BookId extends React.Component {
       <div>
         <div className="book-details" key={book.id}>
           <h1>{book.title}</h1> <br />
-          <div onClick={() => this.updateFavouriteBooks(book, user)}>
-            <Icon
-              className={this.props.isLiked ? "book-liked" : "book-not-liked"}
-              name="like"
-              size="big"
-            />
-          </div>
+          {user && (
+            <div onClick={() => this.updateFavouriteBooks(book, user)}>
+              <Icon
+                className={this.props.isLiked ? "book-liked" : "book-not-liked"}
+                name="like"
+                size="big"
+              />
+              <br />
+            </div>
+          )}
           <br />
           <img src={book.cover} alt={book.title} />
           <br />
-          <ReviewDashboard book={book} user={user} handleChange={handleChange}/>
+          <ReviewDashboard
+            book={book}
+            user={user}
+            handleChange={handleChange}
+          />
           <br />
           <div>
             <p>

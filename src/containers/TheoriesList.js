@@ -10,7 +10,6 @@ class TheoriesList extends React.Component {
       user,
       addFavouriteTheory,
       removeFavouriteTheory,
-      myTheories,
       sortTheoriesByName
     } = this.props;
 
@@ -25,7 +24,10 @@ class TheoriesList extends React.Component {
               user={user}
               addFavouriteTheory={addFavouriteTheory}
               removeFavouriteTheory={removeFavouriteTheory}
-              isLiked={myTheories.map(t => t.name).includes(theory.name)}
+              isLiked={
+                user &&
+                user.favourite_theories.map(t => t.name).includes(theory.name)
+              }
             />
           ))}
         </Card.Group>

@@ -1,5 +1,8 @@
 const baseUrl = "http://localhost:3000";
 const signInUrl = baseUrl + "/signin";
+const booksUrl = "http://localhost:3000/books";
+const authorsUrl = "http://localhost:3000/authors";
+const theoriesUrl = "http://localhost:3000/theories";
 
 export function signin(username, password) {
   return fetch(signInUrl, {
@@ -41,6 +44,18 @@ export function createUser(username, password, firstName, lastName) {
       throw new Error("Signup failed!");
     }
   });
+}
+
+export function getBooks() {
+  return fetch(booksUrl).then(response => response.json());
+}
+
+export function getAuthors() {
+  return fetch(authorsUrl).then(response => response.json());
+}
+
+export function getTheories() {
+  return fetch(theoriesUrl).then(response => response.json());
 }
 
 export function createFavouriteBook(bookId, userId) {
@@ -118,6 +133,9 @@ export function createReview(bookId, userId, stars, comment) {
 export default {
   signin,
   validate,
+  getBooks,
+  getAuthors,
+  getTheories,
   createFavouriteBook,
   deleteFavouriteBook,
   createFavouriteAuthor,

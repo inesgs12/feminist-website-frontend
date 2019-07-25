@@ -20,21 +20,25 @@ class Dashboard extends React.Component {
   }
 
   displayInfo = () => {
-    const { user, myBooks, myAuthors, myTheories } = this.props;
+    const { user } = this.props;
     const { activeItem } = this.state;
 
     switch (activeItem) {
       case "info":
         return (
           <div className="user-display">
-            <h3> {user.first_name} {user.last_name}</h3>
+            <h3>
+              {" "}
+              {user.first_name} {user.last_name}
+            </h3>
             <p> Username: {user.username}</p>
             <img className="user-photo" alt={user.photo} src={image} />
           </div>
         );
 
       case "My Books":
-        return myBooks.map(book => {
+        // debugger;
+        return user.favourite_books.map(book => {
           return (
             <div>
               <NavLink className="books-display" to={`/books/${book.title}`}>
@@ -46,28 +50,32 @@ class Dashboard extends React.Component {
         });
 
       case "My Authors":
-        return myAuthors.map(author => {
+        return user.favourite_authors.map(author => {
           return (
             <div>
-            <NavLink className="authors-display" to={`/authors/${author.name}`}>
-              {author.name}
-            </NavLink>
-            <br/>
+              <NavLink
+                className="authors-display"
+                to={`/authors/${author.name}`}
+              >
+                {author.name}
+              </NavLink>
+              <br />
             </div>
           );
         });
 
       case "My Theories":
-        return myTheories.map((theory, key) => {
+        return user.favourite_theories.map((theory, key) => {
           return (
             <div>
-            <NavLink
-              className="theories-display" id={key}
-              to={`/theories/${theory.name}`}
-            >
-              {theory.name}
-            </NavLink>
-            <br/>
+              <NavLink
+                className="theories-display"
+                id={key}
+                to={`/theories/${theory.name}`}
+              >
+                {theory.name}
+              </NavLink>
+              <br />
             </div>
           );
         });
@@ -80,7 +88,7 @@ class Dashboard extends React.Component {
   render() {
     const { activeItem } = this.state;
     const { displayInfo } = this;
-    const { user } = this.props
+    const { user } = this.props;
 
     return (
       <div className="user-info-grid" key={user.id}>
