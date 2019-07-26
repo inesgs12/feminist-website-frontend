@@ -25,12 +25,13 @@ class App extends React.Component {
 
   //signin/out ----------------------------------------
 
+  //edit sign in and sign out - ASK SAM - Monday!!!
+
   signin = user => {
     this.setState({
       user: user
     });
     localStorage.setItem("token", user.token);
-    // this.props.history.push(`/${user.username}`);
   };
 
   signout = () => {
