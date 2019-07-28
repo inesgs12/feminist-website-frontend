@@ -130,27 +130,6 @@ export function createReview(bookId, userId, stars, comment) {
   }).then(response => response.json());
 }
 
-export function updateReview(bookId, userId, stars, comment, reviewId) {
-  return fetch(baseUrl + "/reviews/" + reviewId, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      book_id: bookId,
-      user_id: userId,
-      star_rating: stars,
-      comment: comment
-    })
-  }).then(response => response.json());
-}
-
-export function deleteReview(reviewId) {
-  return fetch(baseUrl + "/reviews/" + reviewId, {
-    method: "DELETE"
-  });
-}
-
 export default {
   signin,
   validate,
@@ -164,7 +143,5 @@ export default {
   createFavouriteTheory,
   deleteFavouriteTheory,
   createUser,
-  createReview,
-  updateReview,
-  deleteReview
+  createReview
 };
