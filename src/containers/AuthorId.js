@@ -50,15 +50,19 @@ class AuthorId extends React.Component {
             <br />
           </div>
           <br />
-          <h3>{this.state.author.bio}</h3>
+          <h3 className="author-bio">{this.state.author.bio}</h3>
           <div>
             <h4>
               {" "}
-              Books:{" "}
+              Books <br />
               {author.books.map((book, index) => (
-                <NavLink key={index} to={`/books/${book.title}`}>
+                <NavLink
+                  className="books-by-author"
+                  key={index}
+                  to={`/books/${book.title}`}
+                >
                   {" "}
-                  {book.title}{" "}
+                  {book.title} <br />
                 </NavLink>
               ))}
             </h4>

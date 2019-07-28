@@ -20,7 +20,8 @@ class App extends React.Component {
     user: null,
     books: [],
     authors: [],
-    theories: []
+    theories: [],
+    searchTerm: ""
   };
 
   //signin/out ----------------------------------------
@@ -62,9 +63,15 @@ class App extends React.Component {
 
   //sort books, authors and theories -----------------
 
-  sortBooksByTitle = () => {
+  sortBooksByTitleDown = () => {
     this.setState({
       books: this.state.books.sort((a, b) => a.title.localeCompare(b.title))
+    });
+  };
+
+  sortBooksByTitleUp = () => {
+    this.setState({
+      books: this.state.books.sort((a, b) => b.title.localeCompare(a.title))
     });
   };
 
@@ -76,15 +83,33 @@ class App extends React.Component {
     });
   };
 
-  sortAuthorsByName = () => {
+  sortBooksByYear = () => {
+    this.setState({
+      books: this.state.books.sort((a, b) => a.year - b.year)
+    });
+  };
+
+  sortAuthorsByNameDown = () => {
     this.setState({
       authors: this.state.authors.sort((a, b) => a.name.localeCompare(b.name))
     });
   };
 
-  sortTheoriesByName = () => {
+  sortAuthorsByNameUp = () => {
+    this.setState({
+      authors: this.state.authors.sort((a, b) => b.name.localeCompare(a.name))
+    });
+  };
+
+  sortTheoriesByNameDown = () => {
     this.setState({
       theories: this.state.theories.sort((a, b) => a.name.localeCompare(b.name))
+    });
+  };
+
+  sortTheoriesByNameUp = () => {
+    this.setState({
+      theories: this.state.theories.sort((a, b) => b.name.localeCompare(a.name))
     });
   };
 
@@ -158,6 +183,17 @@ class App extends React.Component {
 
   // Reviews ------------------------------------------
 
+  // Search Bars --------------------------------------
+
+  updateSearchTerm = event => {
+    event.preventDefault();
+    this.setState({
+      searchTerm: event.target.value
+    });
+  };
+
+  // ---------------------------------------
+
   render() {
     const {
       signin,
@@ -168,12 +204,17 @@ class App extends React.Component {
       removeFavouriteAuthor,
       addFavouriteTheory,
       removeFavouriteTheory,
-      sortAuthorsByName,
-      sortBooksByTitle,
+      sortAuthorsByNameDown,
+      sortAuthorsByNameUp,
+      sortBooksByTitleUp,
+      sortBooksByTitleDown,
       sortBooksByAuthor,
-      sortTheoriesByName
+      sortBooksByYear,
+      sortTheoriesByNameDown,
+      sortTheoriesByNameUp,
+      updateSearchTerm
     } = this;
-    const { user, books, authors, theories } = this.state;
+    const { user, books, authors, theories, searchTerm } = this.state;
 
     return (
       <div className="App">
@@ -215,9 +256,13 @@ class App extends React.Component {
                 user={user}
                 addFavouriteBook={addFavouriteBook}
                 removeFavouriteBook={removeFavouriteBook}
-                sortBooksByTitle={sortBooksByTitle}
+                sortBooksByTitleUp={sortBooksByTitleUp}
+                sortBooksByTitleDown={sortBooksByTitleDown}
                 sortBooksByAuthor={sortBooksByAuthor}
+                sortBooksByYear={sortBooksByYear}
                 books={books}
+                updateSearchTerm={updateSearchTerm}
+                searchTerm={searchTerm}
                 {...props}
               />
             )}
@@ -250,7 +295,10 @@ class App extends React.Component {
                 authors={authors}
                 addFavouriteAuthor={addFavouriteAuthor}
                 removeFavouriteAuthor={removeFavouriteAuthor}
-                sortAuthorsByName={sortAuthorsByName}
+                sortAuthorsByNameDown={sortAuthorsByNameDown}
+                sortAuthorsByNameUp={sortAuthorsByNameUp}
+                updateSearchTerm={updateSearchTerm}
+                searchTerm={searchTerm}
                 {...props}
               />
             )}
@@ -282,8 +330,11 @@ class App extends React.Component {
                 user={user}
                 addFavouriteTheory={addFavouriteTheory}
                 removeFavouriteTheory={removeFavouriteTheory}
-                sortTheoriesByName={sortTheoriesByName}
+                sortTheoriesByNameDown={sortTheoriesByNameDown}
+                sortTheoriesByNameUp={sortTheoriesByNameUp}
                 theories={theories}
+                updateSearchTerm={updateSearchTerm}
+                searchTerm={searchTerm}
                 {...props}
               />
             )}

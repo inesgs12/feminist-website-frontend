@@ -16,17 +16,7 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .App-logo {
-  /* animation: App-logo-spin infinite 20s linear; */
   height: 10vmin;
   margin: none;
   padding: none;
@@ -86,6 +76,7 @@ a:active {
 body {
   font-family: "Quicksand", sans-serif;
   margin: 50px;
+  padding: 10px 30px 0 30px;
 }
 
 .book-details,
@@ -93,6 +84,12 @@ body {
   margin: 50px;
   text-align: justify;
   font-family: "Quicksand", sans-serif;
+}
+
+.author-bio {
+  text-align: justify;
+  font-family: "Quicksand", sans-serif;
+  font-weight: lighter;
 }
 
 h1:last-child,
@@ -165,9 +162,26 @@ div,
   float: left;
 }
 
-.options-bar {
+.options-bar,
+.books-dropdown {
+  display: inline-flex;
+  text-align: center;
+  padding: 20px;
+}
+
+.search-bar {
+  display: inline-flex;
+  text-align: center;
+  padding: 20px;
+}
+
+.container-filter {
   display: flexbox;
-  text-align: left;
+}
+.ui.labeled.icon.button,
+.ui.dropdown {
+  background-color: rgb(238, 238, 238);
+  color: #716f72;
 }
 
 .review-card {
@@ -185,6 +199,45 @@ div,
 .username-review {
   float: left;
 }
-.edit-review-button {
+.edit-review-button,
+.review-delete-button,
+.review-save-button {
   float: right;
+}
+
+.author-container,
+.theories-container,
+.book-container {
+  padding: 10px 20px 0 20px;
+  display: inline-block;
+}
+
+.book-cover-container,
+.author-card-container {
+  padding: 20%;
+  font-family: "Quicksand", sans-serif;
+  word-wrap: break-word;
+  font-size: larger;
+}
+
+.ui.card > .image:not(.ui) > img,
+.ui.cards > .card > .image:not(.ui) > img {
+  background-color: white;
+  padding: 20%;
+}
+
+.ui.card > .content > .description,
+.ui.cards > .card > .content > .description:hover {
+  color: rgb(78, 14, 78);
+}
+
+.ui.four.cards {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+a,
+.books-by-author {
+  color: rgb(78, 14, 78);
+  font-weight: lighter;
 }

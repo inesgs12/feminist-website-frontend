@@ -29,6 +29,12 @@ class BookId extends React.Component {
     });
   };
 
+  handleDeleteReview = review => {
+    this.setState({
+      reviews: this.state.reviews.filter(r => r.id !== review.id)
+    });
+  };
+
   updateFavouriteBooks = (book, user) => {
     if (user) {
       !this.props.isLiked
@@ -46,7 +52,7 @@ class BookId extends React.Component {
   render() {
     const { book, reviews } = this.state;
     const { user } = this.props;
-    const { handleChange } = this;
+    const { handleChange, handleDeleteReview } = this;
 
     if (book === null) return <h1>No book.</h1>;
 
@@ -93,6 +99,7 @@ class BookId extends React.Component {
                 user={user}
                 book={book}
                 review={review}
+                handleDeleteReview={handleDeleteReview}
               />
             ))}
           </Card.Group>
