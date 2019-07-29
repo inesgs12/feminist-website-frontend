@@ -273,6 +273,7 @@ class App extends React.Component {
             render={props => (
               <BookId
                 user={user}
+                books={books}
                 addFavouriteBook={addFavouriteBook}
                 removeFavouriteBook={removeFavouriteBook}
                 isLiked={

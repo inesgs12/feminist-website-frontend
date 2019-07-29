@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import ReviewCard from "../components/ReviewCard";
-import { Card, Icon } from "semantic-ui-react";
+import { Card, Icon, Grid } from "semantic-ui-react";
 import ReviewDashboard from "../components/ReviewDashboard";
 
 class BookId extends React.Component {
@@ -64,27 +64,29 @@ class BookId extends React.Component {
     if (book === null) return <h1>No book.</h1>;
 
     return (
-      <div>
-        <div className="book-details" key={book.id}>
-          <h1>{book.title}</h1> <br />
-          <div onClick={() => this.updateFavouriteBooks(book, user)}>
-            <Icon
-              className={this.props.isLiked ? "book-liked" : "book-not-liked"}
-              name="like"
-              size="big"
-            />
-            <br />
-          </div>
-          <br />
-          <img src={book.cover} alt={book.title} />
-          <br />
-          <ReviewDashboard
-            book={book}
-            user={user}
-            handleChange={handleChange}
-          />
-          <br />
-          <div>
+      <Grid>
+        <Grid.Row columns={1} key={book.id}>
+          <Grid.Column className="title-like">
+            <p className="book-title">{book.title}</p>
+            <div
+              className="like-button-book-id"
+              onClick={() => this.updateFavouriteBooks(book, user)}
+            >
+              <Icon
+                className={this.props.isLiked ? "book-liked" : "book-not-liked"}
+                name="like"
+                size="big"
+              />
+              <br />
+            </div>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row className="cover-details" columns={3}>
+          <Grid.Column>
+            <img className="book-cover" src={book.cover} alt={book.title} />
+          </Grid.Column>
+          <Grid.Column verticalAlign="middle" className="book-details-grid">
+            <p>Synopsis: {book.synopsis} </p>
             <p>
               Author:{" "}
               <NavLink key={book.author.id} to={`/authors/${book.author.name}`}>
@@ -95,11 +97,15 @@ class BookId extends React.Component {
             <p>Publisher: {book.publisher} </p>
             <p>Isbn-13: {book.isbn13} </p>
             <p>Language: {book.language} </p>
-            <p>Synopsis: {book.synopsis} </p>
-          </div>
-        </div>
-        <div className="review-card">
-          <Card.Group itemsPerRow={2}>
+            <ReviewDashboard
+              book={book}
+              user={user}
+              handleChange={handleChange}
+            />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row centered column={1} className="review-card">
+          <Card.Group className="card-group" itemsPerRow={2}>
             {reviews.map(review => (
               <ReviewCard
                 key={`review-${review.id}`}
@@ -111,8 +117,8 @@ class BookId extends React.Component {
               />
             ))}
           </Card.Group>
-        </div>
-      </div>
+        </Grid.Row>
+      </Grid>
     );
   }
 }
