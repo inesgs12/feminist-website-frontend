@@ -4,6 +4,15 @@ const booksUrl = "http://localhost:3000/books";
 const authorsUrl = "http://localhost:3000/authors";
 const theoriesUrl = "http://localhost:3000/theories";
 
+function handleUserData(data) {
+  localStorage.setItem("token", data.token);
+  return data;
+}
+
+export function removeUser() {
+  localStorage.removeItem("token");
+}
+
 export function signin(username, password) {
   return fetch(signInUrl, {
     method: "POST",
@@ -14,7 +23,9 @@ export function signin(username, password) {
       username,
       password
     })
-  }).then(response => response.json());
+  })
+    .then(response => response.json())
+    .then(handleUserData);
 }
 
 export function validate() {
@@ -22,7 +33,9 @@ export function validate() {
     headers: {
       Authorisation: localStorage.token
     }
-  }).then(response => response.json());
+  })
+    .then(response => response.json())
+    .then(handleUserData);
 }
 
 export function createUser(username, password, firstName, lastName) {
@@ -37,13 +50,15 @@ export function createUser(username, password, firstName, lastName) {
       first_name: firstName,
       last_name: lastName
     })
-  }).then(resp => {
-    if (resp.ok) {
-      return resp.json();
-    } else {
-      throw new Error("Signup failed!");
-    }
-  });
+  })
+    .then(resp => {
+      if (resp.ok) {
+        return resp.json();
+      } else {
+        throw new Error("Signup failed!");
+      }
+    })
+    .then(handleUserData);
 }
 
 export function getBooks() {
@@ -166,5 +181,6 @@ export default {
   createUser,
   createReview,
   updateReview,
-  deleteReview
+  deleteReview,
+  removeUser
 };

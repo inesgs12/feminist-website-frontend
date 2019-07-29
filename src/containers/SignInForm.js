@@ -2,7 +2,7 @@ import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-import { signin } from "../services/api";
+import api from "../services/api";
 
 class SignInForm extends React.Component {
   state = {
@@ -11,11 +11,11 @@ class SignInForm extends React.Component {
   };
 
   handleSubmit = () => {
-    signin(this.state.username, this.state.password).then(data => {
+    api.signin(this.state.username, this.state.password).then(data => {
       if (data.error) {
         alert(data.error);
       } else {
-        this.props.signin(data);
+        this.props.setUser(data);
         this.props.history.push(`/${this.props.user.username}`);
       }
     });

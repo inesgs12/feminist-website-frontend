@@ -29,9 +29,9 @@ class App extends React.Component {
 
   //edit sign in and sign out - ASK SAM - Monday!!!
 
-  setUser = user => {
+  setUser = data => {
     this.setState({
-      user: user
+      user: data.user
     });
   };
 
@@ -54,7 +54,7 @@ class App extends React.Component {
         } else {
           this.setUser(data);
         }
-      })
+      });
     }
     api.getBooks().then(books => this.setState({ books: books }));
     api.getTheories().then(theories => this.setState({ theories: theories }));
