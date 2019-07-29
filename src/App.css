@@ -202,6 +202,30 @@ div,
   text-align: justify;
 }
 
+.review-form {
+  padding: 30px;
+  font-family: "Quicksand", sans-serif;
+  width: 350px;
+  height: 350px;
+}
+
+.star-form {
+  padding: 10px;
+}
+
+.review-submit,
+.ui.button {
+  float: right;
+  font-family: "Quicksand", sans-serif;
+  margin-top: 20px;
+}
+
+.review-text,
+.ui.form input[type="checkbox"],
+.ui.form textarea {
+  height: 150px;
+}
+
 .ui.two.cards {
   padding: 0 50px 40px 50px;
 }

@@ -29,11 +29,10 @@ class App extends React.Component {
 
   //edit sign in and sign out - ASK SAM - Monday!!!
 
-  signin = user => {
+  setUser = user => {
     this.setState({
       user: user
     });
-    localStorage.setItem("token", user.token);
   };
 
   signout = () => {
@@ -41,7 +40,7 @@ class App extends React.Component {
       user: null
     });
     this.props.history.push("/");
-    localStorage.removeItem("token");
+    api.removeUser();
   };
 
   //onLoad -------------------------------------------
@@ -53,9 +52,9 @@ class App extends React.Component {
         if (data.error) {
           alert(data.error);
         } else {
-          this.signin(data);
+          this.setUser(data);
         }
-      });
+      })
     }
     api.getBooks().then(books => this.setState({ books: books }));
     api.getTheories().then(theories => this.setState({ theories: theories }));
@@ -197,7 +196,7 @@ class App extends React.Component {
 
   render() {
     const {
-      signin,
+      setUser,
       signout,
       addFavouriteBook,
       removeFavouriteBook,
@@ -219,7 +218,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Header user={user} signout={signout} signin={signin} />
+        <Header user={user} signout={signout} setUser={setUser} />
         <Switch>
           <Route
             exact
@@ -236,12 +235,12 @@ class App extends React.Component {
           <Route
             path="/signin"
             render={props => (
-              <SignInForm signin={signin} user={user} {...props} />
+              <SignInForm setUser={setUser} user={user} {...props} />
             )}
           />
           <Route
             path="/signup"
-            component={props => <SignUpForm signin={signin} {...props} />}
+            component={props => <SignUpForm setUser={setUser} {...props} />}
           />
           {user && (
             <Route

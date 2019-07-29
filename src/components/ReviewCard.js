@@ -1,25 +1,10 @@
 import React from "react";
 import StarRatings from "react-star-ratings";
-import { updateReview, deleteReview } from "../services/api";
+import { deleteReview } from "../services/api";
 import { Icon, Popup } from "semantic-ui-react";
+import EditReviewDashboard from "./EditReviewDashboard";
 
 class ReviewCard extends React.Component {
-  state = {
-    edit: false
-  };
-
-  editReview = () => {
-    this.setState({
-      edit: true
-    });
-  };
-
-  saveReview = () => {
-    this.setState({
-      edit: false
-    });
-  };
-
   removeReview = () => {
     const { review, handleDeleteReview } = this.props;
     deleteReview(review.id);
@@ -27,9 +12,8 @@ class ReviewCard extends React.Component {
   };
 
   render() {
-    const { review, user } = this.props;
-    const { edit } = this.state;
-    const { editReview, saveReview, removeReview } = this;
+    const { review, user, book, handleEditReview } = this.props;
+    const { removeReview } = this;
 
     return (
       <div className="ui card review-card">
@@ -49,33 +33,35 @@ class ReviewCard extends React.Component {
               />
             </div>
           )}
-          <div contentEditable={edit ? true : false}>
+          <div>
             <StarRatings
               rating={review.star_rating}
               starDimension="30px"
               starSpacing="5px"
-              starRatedColor="gold"
+              starRatedColor="rgb(78, 14, 78)"
             />
             <p className="review-comment">{review.comment}</p>
           </div>
           <p className="username-review">posted by: {review.user_id}</p>
           {user && review.user_id === user.id && (
             <div>
-              {!edit ? (
-                <div onClick={editReview}>
-                  <Popup
-                    content="Edit review"
-                    position="top right"
-                    trigger={
-                      <Icon
-                        className="edit-review-button"
-                        disabled
-                        name="edit"
-                      />
-                    }
-                  />
-                </div>
-              ) : (
+              <EditReviewDashboard
+                book={book}
+                user={user}
+                review={review}
+                handleEditReview={handleEditReview}
+              />
+              {/* {!edit ? ( */}
+              {/* <div onClick={editReview}>
+                <Popup
+                  content="Edit review"
+                  position="top right"
+                  trigger={
+                    <Icon className="edit-review-button" disabled name="edit" />
+                  }
+                />
+              </div> */}
+              {/* ) : (
                 <div onClick={saveReview}>
                   <Popup
                     content="Save review"
@@ -88,8 +74,8 @@ class ReviewCard extends React.Component {
                       />
                     }
                   />
-                </div>
-              )}
+                </div> */}
+              {/* )} */}
             </div>
           )}
         </div>
