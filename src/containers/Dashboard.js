@@ -26,7 +26,7 @@ class Dashboard extends React.Component {
     switch (activeItem) {
       case "info":
         return (
-          <div className="user-display">
+          <div className="user-display" key={user.username}>
             <h3>
               {" "}
               {user.first_name} {user.last_name}
@@ -40,7 +40,7 @@ class Dashboard extends React.Component {
         // debugger;
         return user.favourite_books.map(book => {
           return (
-            <div>
+            <div key={book.id}>
               <NavLink className="books-display" to={`/books/${book.title}`}>
                 {book.title}
               </NavLink>
@@ -52,7 +52,7 @@ class Dashboard extends React.Component {
       case "My Authors":
         return user.favourite_authors.map(author => {
           return (
-            <div>
+            <div key={author.id}>
               <NavLink
                 className="authors-display"
                 to={`/authors/${author.name}`}
@@ -67,7 +67,7 @@ class Dashboard extends React.Component {
       case "My Theories":
         return user.favourite_theories.map((theory, key) => {
           return (
-            <div>
+            <div key={theory.id}>
               <NavLink
                 className="theories-display"
                 id={key}

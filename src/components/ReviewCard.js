@@ -33,16 +33,23 @@ class ReviewCard extends React.Component {
               />
             </div>
           )}
-          <div>
-            <StarRatings
-              rating={review.star_rating}
-              starDimension="30px"
-              starSpacing="5px"
-              starRatedColor="rgb(78, 14, 78)"
-            />
+          <div className="star-and-comment">
+            <div className="stars-review-card">
+              <StarRatings
+                rating={review.star_rating}
+                starDimension="30px"
+                starSpacing="5px"
+                starRatedColor="rgb(78, 14, 78)"
+              />
+            </div>
+            <br />
+            <div>
             <p className="review-comment">{review.comment}</p>
           </div>
-          <p className="username-review">posted by: {review.user_id}</p>
+          </div>
+          <div className="username-review">
+            <p>posted by: {user ? user.username : null}</p>
+          </div>
           {user && review.user_id === user.id && (
             <div>
               <EditReviewDashboard
@@ -51,31 +58,6 @@ class ReviewCard extends React.Component {
                 review={review}
                 handleEditReview={handleEditReview}
               />
-              {/* {!edit ? ( */}
-              {/* <div onClick={editReview}>
-                <Popup
-                  content="Edit review"
-                  position="top right"
-                  trigger={
-                    <Icon className="edit-review-button" disabled name="edit" />
-                  }
-                />
-              </div> */}
-              {/* ) : (
-                <div onClick={saveReview}>
-                  <Popup
-                    content="Save review"
-                    position="top right"
-                    trigger={
-                      <Icon
-                        className="review-save-button"
-                        disabled
-                        name="save"
-                      />
-                    }
-                  />
-                </div> */}
-              {/* )} */}
             </div>
           )}
         </div>

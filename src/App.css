@@ -200,6 +200,7 @@ div,
 
 .review-comment {
   text-align: justify;
+  font-size: larger
 }
 
 .review-form {
@@ -211,6 +212,10 @@ div,
 
 .star-form {
   padding: 10px;
+}
+
+.stars-review-card{
+  text-align: left
 }
 
 .review-submit,
@@ -231,7 +236,7 @@ div,
 }
 
 .username-review {
-  float: left;
+  text-align: right
 }
 .edit-review-button,
 .review-delete-button,
@@ -292,4 +297,19 @@ a,
 
 .footer-text {
   color: rgb(78, 14, 78);
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+}
+
+.book-details-container {
+  display: flex;
+  width: 50%;
+}
+
+.title {
+  display: inline-block;
+  width: 100%;
 }
