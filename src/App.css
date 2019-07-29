@@ -4,6 +4,7 @@
 
 .App-header {
   font-family: "Quicksand", sans-serif;
+  position: relative;
 }
 
 .App-logo {
@@ -20,6 +21,10 @@
   height: 10vmin;
   margin: none;
   padding: none;
+}
+
+.push {
+  height: 10vh;
 }
 
 .navbar {
@@ -39,8 +44,9 @@
 .Homepage-link:hover {
   float: right;
   font-size: larger;
-  font-weight: bold;
+  font-weight: normal;
   color: grey;
+  display: block;
 }
 
 a,
@@ -162,6 +168,10 @@ div,
   float: left;
 }
 
+.homepage {
+  display: flexbox;
+}
+
 .options-bar,
 .books-dropdown {
   display: inline-flex;
@@ -240,4 +250,22 @@ a,
 .books-by-author {
   color: rgb(78, 14, 78);
   font-weight: lighter;
+}
+
+.Footer {
+  background-color: rgb(238, 238, 238);
+  padding: 12px;
+  margin-top: 6px;
+  width: 100%;
+  height: 5vh;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: block;
+}
+
+.footer-text {
+  color: rgb(78, 14, 78);
 }

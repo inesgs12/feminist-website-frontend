@@ -4,6 +4,7 @@ import "./App.css";
 import SignInForm from "./containers/SignInForm";
 import SignUpForm from "./containers/SignUpForm";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import HomePage from "./containers/HomePage";
 import Dashboard from "./containers/Dashboard";
 
@@ -341,6 +342,8 @@ class App extends React.Component {
           />
           {/* <Route component={() => <h1> Page not found </h1>} /> */}
         </Switch>
+        <div className="push" />
+        <Footer />
       </div>
     );
   }
