@@ -34,15 +34,4 @@ class TheoryCard extends React.Component {
   }
 }
 
-{/* <Card>
-        <div onClick={() => this.updateFavouriteTheories(theory, user)}>
-          <Icon
-            className={this.props.isLiked ? "theory-liked" : "theory-not-liked"}
-            name="like"
-            size="big"
-          />
-        </div>
-        <Card.Header>{theory.name} </Card.Header>
-        <Card.Content description={theory.history} />
-      </Card> */}
 export default TheoryCard;
