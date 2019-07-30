@@ -20,8 +20,6 @@ class ReviewDashboard extends Component {
     const { handleClick } = this;
     return (
       <main>
-        <br />
-
         <Dialog
           open={this.state.show}
           onClose={() => {
@@ -35,9 +33,11 @@ class ReviewDashboard extends Component {
             handleChange={handleChange}
           />
         </Dialog>
-        <Button className="add-review-button" onClick={this.handleClick}>
+        <div className="review-button-div">
+        <Button labelPosition="right" className="add-review-button" onClick={this.handleClick}>
           Add Review
         </Button>
+        </div>
       </main>
     );
   }
