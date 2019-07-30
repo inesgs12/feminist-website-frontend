@@ -219,6 +219,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header user={user} signout={signout} setUser={setUser} />
+        <div className="push-content"/>
         <Switch>
           <Route
             exact

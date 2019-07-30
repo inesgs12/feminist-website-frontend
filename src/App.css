@@ -4,7 +4,6 @@
 
 .App-header {
   font-family: "Quicksand", sans-serif;
-  position: relative;
 }
 
 .App-logo {
@@ -27,16 +26,22 @@
   height: 10vh;
 }
 
+.push-content {
+  height: 15vh;
+}
+
 .navbar {
   list-style-type: none;
   margin: 0;
   padding: 10px 30px 0 30px;
   overflow: hidden;
   background-color: white;
-  position: sticky;
+  overflow: hidden;
+  z-index: 9999;
   top: 0;
   width: 100%;
   display: flex;
+  position: fixed
 }
 
 .Homepage-link,
@@ -299,6 +304,7 @@ a,
   bottom: 0;
   right: 0;
   display: block;
+  z-index: 9999
 }
 
 .footer-text {
