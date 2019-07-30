@@ -31,7 +31,7 @@ class TheoriesList extends React.Component {
           />
         </div>
         <div className="theories-container">
-          <Card.Group itemsPerRow={1}>
+          <Card.Group stackable itemsPerRow={2}>
             {theories
               .filter(theory => theory.name.toLowerCase().includes(searchTerm))
               .map(theory => (

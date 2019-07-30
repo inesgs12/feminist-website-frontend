@@ -194,11 +194,15 @@ div,
   color: #716f72;
 }
 
+.div.centered.row.review-card {
+  padding-top: 0
+}
+
 .review-card,
 .card-group {
   font-family: "Quicksand", sans-serif;
   width: 100%;
-  padding: 50px;
+  padding: 15px 50px 50px;
 }
 
 .review-comment {
@@ -362,13 +366,43 @@ a,
 
 .book-year-others {
   text-align: justify;
-  margin-bottom: 0;
+  display: inline-flex
+}
+
+.display-margin {
+  margin: 0px, 0px;
+  display: inline-flex
+}
+
+.buy-book {
+  float: right;
+  display: inline-flex
+}
+
+.review-button-div {
+  display: block;
+  padding-top: 0px;
+  float: right
 }
 
 .add-review-button {
-  float: left;
+  float: right;
+  text-align: right
 }
 
 .author-in-book {
   font-size: larger;
 }
+
+.theory-like-button {
+  float: right;
+  display: inline-flex
+}
+
+.theory-card {
+  font-family: "Quicksand", sans-serif;
+}
+
+
+/* 
+.ui.card>.content>.header:not(.ui), .ui.cards>.card>.content>.header:not() */
