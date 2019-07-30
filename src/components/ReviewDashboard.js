@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Dialog from "@material-ui/core/Dialog";
 import ReviewForm from "./ReviewForm";
+import { Button } from "semantic-ui-react";
 
 class ReviewDashboard extends Component {
   state = { show: false };
@@ -34,9 +35,9 @@ class ReviewDashboard extends Component {
             handleChange={handleChange}
           />
         </Dialog>
-        <button type="button" onClick={this.handleClick}>
+        <Button className="add-review-button" onClick={this.handleClick}>
           Add Review
-        </button>
+        </Button>
       </main>
     );
   }

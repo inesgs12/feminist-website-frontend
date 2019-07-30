@@ -66,6 +66,8 @@ class ReviewForm extends React.Component {
           starSpacing="5px"
           className="star-form"
         />
+        <br />
+        <br />
         <Form.TextArea
           name="comment"
           label="Review"

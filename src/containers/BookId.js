@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import ReviewCard from "../components/ReviewCard";
-import { Card, Icon, Grid } from "semantic-ui-react";
+import { Card, Icon, Grid, Segment, Image, Button } from "semantic-ui-react";
 import ReviewDashboard from "../components/ReviewDashboard";
 
 class BookId extends React.Component {
@@ -58,14 +58,14 @@ class BookId extends React.Component {
 
   render() {
     const { book, reviews } = this.state;
-    const { user } = this.props;
+    const { user, books } = this.props;
     const { handleChange, handleDeleteReview, handleEditReview } = this;
 
     if (book === null) return <h1>No book.</h1>;
 
     return (
       <Grid>
-        <Grid.Row columns={1} key={book.id}>
+        <Grid.Row key={book.id}>
           <Grid.Column className="title-like">
             <p className="book-title">{book.title}</p>
             <div
@@ -81,31 +81,75 @@ class BookId extends React.Component {
             </div>
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row className="cover-details" columns={3}>
-          <Grid.Column>
-            <img className="book-cover" src={book.cover} alt={book.title} />
-          </Grid.Column>
-          <Grid.Column verticalAlign="middle" className="book-details-grid">
-            <p>Synopsis: {book.synopsis} </p>
-            <p>
-              Author:{" "}
-              <NavLink key={book.author.id} to={`/authors/${book.author.name}`}>
-                {book.author.name}
-              </NavLink>
-            </p>
-            <p>Year: {book.year} </p>
-            <p>Publisher: {book.publisher} </p>
-            <p>Isbn-13: {book.isbn13} </p>
-            <p>Language: {book.language} </p>
+        <Grid.Row className="cover-details" columns={4}>
+          <Grid.Column mobile={16} tablet={8} largeScreen={5}>
+            <Image className="book-cover" src={book.cover} alt={book.title} />
             <ReviewDashboard
               book={book}
               user={user}
               handleChange={handleChange}
+              className="add-review-button"
             />
+          </Grid.Column>
+          <Grid.Column
+            mobile={16}
+            tablet={8}
+            largeScreen={7}
+            verticalAlign="middle"
+            className="book-details-grid"
+          >
+            <p className="author-in-book">
+              Author:{" "}
+              <NavLink
+                className="book-author-link"
+                key={book.author.id}
+                to={`/authors/${book.author.name}`}
+              >
+                {book.author.name}
+              </NavLink>
+            </p>
+            <p> {book.synopsis} </p>
+            <div className="book-year-others">
+              <p className="book-year-others">Year: {book.year} </p>
+              <p className="book-year-others">Publisher: {book.publisher} </p>
+              <p className="book-year-others">Isbn-13: {book.isbn13} </p>
+              <p className="book-year-others">Language: {book.language} </p>
+            </div>
+            <br />
+            <Button
+              className="buy-book"
+              href={book.link}
+              position="right"
+              target="_blank"
+            >
+              Buy Book
+            </Button>
+          </Grid.Column>
+          <Grid.Column largeScreen={2} only="large screen" />
+          <Grid.Column
+            largeScreen={2}
+            only="large screen"
+            verticalAlign="middle"
+            width={2}
+          >
+            <div className="thumbnails-div">
+              <Image
+                className="book-thumbnail"
+                src={book.cover}
+                alt={book.title}
+              />{" "}
+              <br />
+              <Image
+                className="book-thumbnail"
+                src={book.cover}
+                alt={book.title}
+              />
+            </div>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row centered column={1} className="review-card">
-          <Card.Group className="card-group" itemsPerRow={2}>
+          <Grid.Column />
+          <Card.Group stackable className="card-group" itemsPerRow={3}>
             {reviews.map(review => (
               <ReviewCard
                 key={`review-${review.id}`}
@@ -117,6 +161,7 @@ class BookId extends React.Component {
               />
             ))}
           </Card.Group>
+          <Grid.Column />
         </Grid.Row>
       </Grid>
     );

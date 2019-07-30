@@ -198,11 +198,11 @@ div,
 .card-group {
   font-family: "Quicksand", sans-serif;
   width: 100%;
+  padding: 50px;
 }
 
 .review-comment {
   text-align: justify;
-  font-size: larger;
 }
 
 .review-form {
@@ -220,8 +220,7 @@ div,
   text-align: left;
 }
 
-.review-submit,
-.ui.button {
+.review-submit {
   float: right;
   font-family: "Quicksand", sans-serif;
   margin-top: 20px;
@@ -328,9 +327,48 @@ a,
 }
 
 .book-cover {
-  float: left;
+  padding: 40px;
+  border-style: solid;
+  border-color: rgb(247, 246, 246);
+  box-shadow: 5px 10px 8px rgb(240, 236, 240);
 }
 
 .book-details-grid {
   vertical-align: middle;
+  text-align: justify;
+  font-size: larger;
+}
+
+.book-thumbnail {
+  width: 100%;
+  height: auto;
+  padding: 10px;
+}
+
+.thumbnail-div {
+  float: right;
+  display: flexbox;
+  height: 230px;
+  width: 180px;
+}
+
+.ui.segment.book-thumbnail {
+  height: 50%;
+}
+
+.book-author-link {
+  color: rgb(78, 14, 78);
+}
+
+.book-year-others {
+  text-align: justify;
+  margin-bottom: 0;
+}
+
+.add-review-button {
+  float: left;
+}
+
+.author-in-book {
+  font-size: larger;
 }
