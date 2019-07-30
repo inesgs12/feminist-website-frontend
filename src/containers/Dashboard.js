@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Menu, Segment } from "semantic-ui-react";
+import { Menu, Segment } from "semantic-ui-react";
 import image from "./Panda-user-default-photo.png";
 import { NavLink } from "react-router-dom";
 
@@ -26,7 +26,7 @@ class Dashboard extends React.Component {
     switch (activeItem) {
       case "info":
         return (
-          <div className="user-display" key={user.username}>
+          <div className="user-display" key={user.id}>
             <h3>
               {" "}
               {user.first_name} {user.last_name}
@@ -92,9 +92,7 @@ class Dashboard extends React.Component {
 
     return (
       <div className="user-info-grid" key={user.id}>
-        <Grid centered >
-          <Grid.Column mobile={16} tablet={8} largeScreen={4}>
-            <Menu fluid vertical tabular>
+            <Menu stackable pointing secondary>
               <Menu.Item
                 name="info"
                 active={activeItem === "info"}
@@ -116,12 +114,7 @@ class Dashboard extends React.Component {
                 onClick={this.handleItemClick}
               />
             </Menu>
-          </Grid.Column>
-
-          <Grid.Column stretched mobile={16} tablet={8} largeScreen={6}>
-            <Segment>{displayInfo()}</Segment>
-          </Grid.Column>
-        </Grid>
+            <Segment >{displayInfo()}</Segment>
       </div>
     );
   }
