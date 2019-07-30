@@ -92,8 +92,8 @@ class Dashboard extends React.Component {
 
     return (
       <div className="user-info-grid" key={user.id}>
-        <Grid>
-          <Grid.Column width={4}>
+        <Grid centered >
+          <Grid.Column mobile={16} tablet={8} largeScreen={4}>
             <Menu fluid vertical tabular>
               <Menu.Item
                 name="info"
@@ -118,7 +118,7 @@ class Dashboard extends React.Component {
             </Menu>
           </Grid.Column>
 
-          <Grid.Column stretched width={12}>
+          <Grid.Column stretched mobile={16} tablet={8} largeScreen={6}>
             <Segment>{displayInfo()}</Segment>
           </Grid.Column>
         </Grid>
