@@ -41,7 +41,7 @@
   top: 0;
   width: 100%;
   display: flex;
-  position: fixed
+  position: fixed;
 }
 
 .Homepage-link,
@@ -199,15 +199,11 @@ div,
   color: #716f72;
 }
 
-.div.centered.row.review-card {
-  padding-top: 0
-}
-
 .review-card,
 .card-group {
   font-family: "Quicksand", sans-serif;
   width: 100%;
-  padding: 15px 50px 50px;
+  padding: 0px 50px 50px 70px;
 }
 
 .review-comment {
@@ -218,7 +214,7 @@ div,
   padding: 30px;
   font-family: "Quicksand", sans-serif;
   width: 350px;
-  height: 350px;
+  height: 400px;
 }
 
 .star-form {
@@ -304,7 +300,7 @@ a,
   bottom: 0;
   right: 0;
   display: block;
-  z-index: 9999
+  z-index: 9999;
 }
 
 .footer-text {
@@ -332,8 +328,13 @@ a,
   margin-right: 0;
 }
 
-.cover-details {
+.cover-details,
+.reviews-header {
   margin: 0px 50px;
+}
+
+.ui.three.cards {
+  margin: 0;
 }
 
 .book-cover {
@@ -372,28 +373,67 @@ a,
 
 .book-year-others {
   text-align: justify;
-  display: inline-flex
+  display: flex;
+  justify-content: space-between;
 }
 
 .display-margin {
   margin: 0px, 0px;
-  display: inline-flex
+  display: inline-flex;
 }
 
-.buy-book {
+.amazon {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ui.button.buy-book {
   float: right;
-  display: inline-flex
+  display: flex;
+  background: white;
+  text-align: right;
+  padding: 0;
+}
+
+.ui.button > .icon:not(.button) {
+  margin: 0;
+}
+
+.amazon.huge.icon.amazon-icon {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 .review-button-div {
   display: block;
   padding-top: 0px;
-  float: right
+  float: right;
 }
 
+.ui.header.review-word {
+  text-align: left;
+  font-family: "Quicksand", sans-serif;
+  color: #716f72;
+  padding-top: 30px;
+  padding-left: 5px;
+}
+
+.ui.button.add-review-button {
+  background: rgba(198, 198, 198, 0.1);
+  /* border-style: solid;
+  border-color: rgb(205, 205, 205) */
+  display: inline-flex;
+  text-align: right;
+
+  margin-right: 5px;
+}
 .add-review-button {
   float: right;
-  text-align: right
+  text-align: right;
 }
 
 .author-in-book {
@@ -402,13 +442,12 @@ a,
 
 .theory-like-button {
   float: right;
-  display: inline-flex
+  display: inline-flex;
 }
 
 .theory-card {
   font-family: "Quicksand", sans-serif;
 }
-
 
 /* 
 .ui.card>.content>.header:not(.ui), .ui.cards>.card>.content>.header:not() */

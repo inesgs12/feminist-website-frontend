@@ -48,7 +48,7 @@ class ReviewCard extends React.Component {
           </div>
           </div>
           <div className="username-review">
-            <p>posted by: {user ? user.username : null}</p>
+            <p>posted by: {review.review_user}</p>
           </div>
           {user && review.user_id === user.id && (
             <div>

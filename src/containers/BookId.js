@@ -1,14 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import ReviewCard from "../components/ReviewCard";
-import { Card, Icon, Grid, Image, Button } from "semantic-ui-react";
+import { Card, Icon, Grid, Image, Button, Header } from "semantic-ui-react";
 import ReviewDashboard from "../components/ReviewDashboard";
 
 class BookId extends React.Component {
   state = {
     book: null,
     reviews: null,
-    randomBook1: null, 
+    randomBook1: null,
     randomBook2: null
   };
 
@@ -26,12 +26,12 @@ class BookId extends React.Component {
   };
 
   getRandomBooks = () => {
-    //map over the array 
+    //map over the array
     //0 - this.props.book.length
-    //math random 
+    //math random
     //math floor
-    Math.floor(Math.random() * Math.floor(this.props.books.length))
-  }
+    Math.floor(Math.random() * Math.floor(this.props.books.length));
+  };
 
   handleChange = review => {
     this.setState({
@@ -94,7 +94,6 @@ class BookId extends React.Component {
         <Grid.Row className="cover-details" columns={4}>
           <Grid.Column mobile={16} tablet={8} largeScreen={5}>
             <Image className="book-cover" src={book.cover} alt={book.title} />
-            
           </Grid.Column>
           <Grid.Column
             mobile={16}
@@ -115,17 +114,17 @@ class BookId extends React.Component {
             </p>
             <p> {book.synopsis} </p>
             <div className="book-year-others">
-              <p className="details-margin">Year: {book.year} </p>
-              <p className="details-margin">Publisher: {book.publisher} </p>
-              <p className="details-margin">Isbn-13: {book.isbn13} </p>
-              <p className="details-margin">Language: {book.language} </p>
-            <Button
-              className="buy-book"
-              href={book.link}
-              target="_blank"
-            >
-             <Icon size="big" name="amazon"/>
-            </Button>
+              <span className="details-margin">
+                <p>Year: {book.year} </p>
+                <p className="details-margin">Publisher: {book.publisher} </p>
+                <p className="details-margin">Isbn-13: {book.isbn13} </p>
+                <p className="details-margin">Language: {book.language} </p>
+              </span>
+              <span className="buy-book">
+                <Button className="buy-book" href={book.link} target="_blank">
+                  <Icon size="huge" name="amazon" />
+                </Button>
+              </span>
             </div>
           </Grid.Column>
           <Grid.Column largeScreen={2} only="large screen" />
@@ -151,14 +150,29 @@ class BookId extends React.Component {
             </div>
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row centered column={1} className="review-card">
-          <Grid.Column />
-          <ReviewDashboard
+        <Grid.Row column={2} className="reviews-header">
+          <Grid.Column
+            verticalAlign="middle"
+            mobile={16}
+            tablet={4}
+            largeScreen={8}
+          >
+            <Header className="review-word" as="h3">
+              <Icon name="bookmark outline" />
+              <Header.Content>REVIEWS</Header.Content>
+            </Header>
+          </Grid.Column>
+          <Grid.Column mobile={16} tablet={4} largeScreen={8}>
+            <ReviewDashboard
               book={book}
               user={user}
               handleChange={handleChange}
               className="add-review-button"
             />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row column={1} className="review-card">
+          <Grid.Column />
           <Card.Group stackable className="card-group" itemsPerRow={3}>
             {reviews.map(review => (
               <ReviewCard
