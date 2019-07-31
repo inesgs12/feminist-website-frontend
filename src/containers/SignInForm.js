@@ -39,6 +39,8 @@ class SignInForm extends React.Component {
                 onChange={handleChange}
                 name="username"
               />
+            </Form.Group>
+            <Form.Group>
               <Form.Input
                 id="passwordInput"
                 label="Password"
@@ -47,8 +49,8 @@ class SignInForm extends React.Component {
                 name="password"
                 type="password"
               />
-              <Button onClick={handleSubmit}>Submit</Button>
             </Form.Group>
+            <Button onClick={handleSubmit}>Submit</Button>
           </Form>
         </Grid>
       </div>
