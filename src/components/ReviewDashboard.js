@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Dialog from "@material-ui/core/Dialog";
 import ReviewForm from "./ReviewForm";
-import { Button, Segment } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 
 class ReviewDashboard extends Component {
   state = { show: false };

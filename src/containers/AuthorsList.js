@@ -9,6 +9,12 @@ class AuthorsList extends React.Component {
     this.props.history.push(`/authors/${author.name}`);
   };
 
+  componentWillUnmount = () => {
+    const { resetSearch } = this.props;
+
+    resetSearch();
+  };
+
   render() {
     const {
       authors,

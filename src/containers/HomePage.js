@@ -3,8 +3,13 @@ import { Grid, Segment, Image } from "semantic-ui-react";
 import feminism3 from "./feminism3.png";
 
 class HomePage extends React.Component {
+
+
   render() {
-    // const { book } = this.props.books.first;
+    const { books } = this.props;
+
+    if (books === undefined) return <h1>Loading...</h1>;
+
     return (
       <Grid stackable className="homepage-grid">
         <Grid.Row className="first-row" columns={3}>
@@ -18,27 +23,36 @@ class HomePage extends React.Component {
             </Segment>
           </Grid.Column>
           <Grid.Column width={2} only="computer" />
-          <Grid.Column
+          {/* <Grid.Column
             className="feminism-and-books"
             only="computer"
             verticalAlign="middle"
             width={3}
-          >
-            <Segment className="feminism-and-books">
-              <Image className="image-1" src={feminism3} alt={feminism3} />
-            </Segment>
-            <Segment className="feminism-and-books">
-              <Image className="image-2" src={feminism3} alt={feminism3} />
-            </Segment>
-          </Grid.Column>
-          <Grid.Column only="computer" verticalAlign="middle" width={3}>
-            <Segment className="feminism-and-books">
-              <Image className="image-3" src={feminism3} alt={feminism3} />
-            </Segment>
-            <Segment className="feminism-and-books">
-              <Image className="image-4" src={feminism3} alt={feminism3} />
-            </Segment>
-          </Grid.Column>
+          > */}
+          {books.map((twoBooks, i) => {
+            return (
+              <Grid.Column
+                key={i}
+                className="feminism-and-books"
+                only="computer"
+                verticalAlign="middle"
+                width={3}
+              >
+                {twoBooks.map((book, idx) => {
+                  return (
+                    <Segment key={idx} className="feminism-and-books">
+                      <Image
+                        className="image"
+                        src={book.cover}
+                        alt={book.title}
+                      />
+                    </Segment>
+                  );
+                })}
+              </Grid.Column>
+            );
+          })}
+          {/* </Grid.Column> */}
         </Grid.Row>
         <Grid.Row columns={1}>
           <Grid.Column width={16}>
@@ -52,18 +66,6 @@ class HomePage extends React.Component {
           </Grid.Column>
         </Grid.Row>
       </Grid>
-      // <div className="homepage-grid">
-      //   <img className="feminism-definition" src={feminism3} alt={feminism3} />
-      //   <img className="book-1" src={feminism3} alt={feminism3} />
-      //   <img className="book-2" src={feminism3} alt={feminism3} />
-      //   <img className="book-3" src={feminism3} alt={feminism3} />
-      //   <img className="book-4" src={feminism3} alt={feminism3} />
-      //   <h4 className="about-fh">About FemHub</h4>
-      //   <p className="fh-paragraph">
-      //     A bit about FH..... lorem ipsum bla bla bla
-      //   </p>
-      //   <form className="contact-form">This is a form</form>
-      // </div>
     );
   }
 }

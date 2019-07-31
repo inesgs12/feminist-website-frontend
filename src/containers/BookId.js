@@ -8,14 +8,14 @@ class BookId extends React.Component {
   state = {
     book: null,
     reviews: null,
-    randomBook1: null,
-    randomBook2: null
+    randomBook1: {},
+    randomBook2: {}
   };
 
   getBookInfo = () => {
     const title = this.props.match.params.title;
     const url = `http://localhost:3000/books/${title}`;
-    fetch(url)
+    return fetch(url)
       .then(resp => resp.json())
       .then(book => {
         this.setState({
@@ -25,12 +25,20 @@ class BookId extends React.Component {
       });
   };
 
-  getRandomBooks = () => {
-    //map over the array
-    //0 - this.props.book.length
-    //math random
-    //math floor
-    Math.floor(Math.random() * Math.floor(this.props.books.length));
+  setRandomBooks = () => {
+    const { books } = this.props;
+
+    let book_one = books[Math.floor(Math.random() * Math.floor(books.length))];
+    let book_two = books[Math.floor(Math.random() * Math.floor(books.length))];
+
+    this.setState({
+      randomBook1: book_one || {},
+      randomBook2: book_two || {}
+    });
+  };
+
+  componentDidUpdate = prevProps => {
+    if (prevProps !== this.props) this.setRandomBooks();
   };
 
   handleChange = review => {
@@ -64,14 +72,16 @@ class BookId extends React.Component {
 
   componentDidMount() {
     this.getBookInfo();
+    // .then(() => this.setRandomBooks());
   }
 
   render() {
-    const { book, reviews } = this.state;
-    const { user, books } = this.props;
+    // debugger;
+    const { book, reviews, randomBook1, randomBook2 } = this.state;
+    const { user } = this.props;
     const { handleChange, handleDeleteReview, handleEditReview } = this;
 
-    if (book === null) return <h1>No book.</h1>;
+    if (book === null) return <h1>Loading...</h1>;
 
     return (
       <Grid stackable>
@@ -128,17 +138,16 @@ class BookId extends React.Component {
           <Grid.Column width={2} only="computer" />
           <Grid.Column width={2} only="computer" verticalAlign="middle">
             <div className="thumbnails-div">
-              {this.getRandomBooks()}
               <Image
                 className="book-thumbnail"
-                src={book.cover}
-                alt={book.title}
+                src={randomBook1.cover}
+                alt={randomBook1.title}
               />{" "}
               <br />
               <Image
                 className="book-thumbnail"
-                src={book.cover}
-                alt={book.title}
+                src={randomBook2.cover}
+                alt={randomBook2.title}
               />
             </div>
           </Grid.Column>

@@ -9,6 +9,12 @@ class BooksList extends React.Component {
     this.props.history.push(`/books/${book.title}`);
   };
 
+  componentWillUnmount = () => {
+    const { resetSearch } = this.props;
+
+    resetSearch();
+  };
+
   render() {
     const {
       books,

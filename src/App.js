@@ -25,6 +25,20 @@ class App extends React.Component {
     searchTerm: ""
   };
 
+  getRandomBooks = () => {
+    let { books } = this.state;
+
+    if (books.length === 0) return;
+
+    const randomizedBooks = [...books].sort(() => Math.random() - 0.5);
+    const randomBooks = [
+      randomizedBooks.slice(0, 2),
+      randomizedBooks.slice(2, 4)
+    ];
+
+    return randomBooks;
+  };
+
   //signin/out ----------------------------------------
 
   //edit sign in and sign out - ASK SAM - Monday!!!
@@ -60,7 +74,12 @@ class App extends React.Component {
     api.getTheories().then(theories => this.setState({ theories: theories }));
     api.getAuthors().then(authors => this.setState({ authors: authors }));
   }
-
+  // reset Search Term
+  resetSearch = () => {
+    this.setState({
+      searchTerm: ""
+    });
+  };
   //sort books, authors and theories -----------------
 
   sortBooksByTitleDown = () => {
@@ -212,14 +231,15 @@ class App extends React.Component {
       sortBooksByYear,
       sortTheoriesByNameDown,
       sortTheoriesByNameUp,
-      updateSearchTerm
+      updateSearchTerm,
+      resetSearch
     } = this;
     const { user, books, authors, theories, searchTerm } = this.state;
-
+    const randomBooks = this.getRandomBooks();
     return (
       <div className="App">
         <Header user={user} signout={signout} setUser={setUser} />
-        <div className="push-content"/>
+        <div className="push-content" />
         <Switch>
           <Route
             exact
@@ -227,7 +247,7 @@ class App extends React.Component {
             render={props => (
               <HomePage
                 {...props}
-                books={books}
+                books={randomBooks}
                 authors={authors}
                 theories={theories}
               />
@@ -264,6 +284,7 @@ class App extends React.Component {
                 books={books}
                 updateSearchTerm={updateSearchTerm}
                 searchTerm={searchTerm}
+                resetSearch={resetSearch}
                 {...props}
               />
             )}
@@ -301,6 +322,7 @@ class App extends React.Component {
                 sortAuthorsByNameUp={sortAuthorsByNameUp}
                 updateSearchTerm={updateSearchTerm}
                 searchTerm={searchTerm}
+                resetSearch={resetSearch}
                 {...props}
               />
             )}
@@ -337,6 +359,7 @@ class App extends React.Component {
                 theories={theories}
                 updateSearchTerm={updateSearchTerm}
                 searchTerm={searchTerm}
+                resetSearch={resetSearch}
                 {...props}
               />
             )}

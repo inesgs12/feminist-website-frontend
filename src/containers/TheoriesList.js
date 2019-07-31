@@ -5,6 +5,12 @@ import OptionsBar from "../components/OptionsBar";
 import SearchBar from "../components/SearchBar";
 
 class TheoriesList extends React.Component {
+  componentWillUnmount = () => {
+    const { resetSearch } = this.props;
+
+    resetSearch();
+  };
+
   render() {
     const {
       theories,

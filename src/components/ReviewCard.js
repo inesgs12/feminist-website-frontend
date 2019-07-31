@@ -18,7 +18,7 @@ class ReviewCard extends React.Component {
     return (
       <div className="ui card review-card">
         <div className="content">
-          {user && review.user_id === user.id && (
+          {user && review.review_user === user.username && (
             <div onClick={removeReview}>
               <Popup
                 content="Delete review"
@@ -44,13 +44,13 @@ class ReviewCard extends React.Component {
             </div>
             <br />
             <div>
-            <p className="review-comment">{review.comment}</p>
-          </div>
+              <p className="review-comment">{review.comment}</p>
+            </div>
           </div>
           <div className="username-review">
             <p>posted by: {review.review_user}</p>
           </div>
-          {user && review.user_id === user.id && (
+          {user && review.review_user === user.username && (
             <div>
               <EditReviewDashboard
                 book={book}
