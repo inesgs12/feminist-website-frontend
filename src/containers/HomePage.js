@@ -15,7 +15,7 @@ class HomePage extends React.Component {
           <Grid.Column
             verticalAlign="middle"
             className="feminism-and-books"
-            width={8}
+            width={10}
           >
             <Segment className="feminism-and-books">
               <Image
@@ -33,7 +33,7 @@ class HomePage extends React.Component {
                 className="column-books"
                 only="computer"
                 verticalAlign="middle"
-                width={3}
+                width={2}
               >
                 {twoBooks.map((book, idx) => {
                   return (
