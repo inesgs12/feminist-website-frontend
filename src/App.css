@@ -27,7 +27,7 @@
 }
 
 .push-content {
-  height: 15vh;
+  height: 12vh;
 }
 
 .navbar {
@@ -49,8 +49,8 @@
 .Homepage-link:hover {
   float: right;
   font-size: larger;
-  font-weight: normal;
-  color: grey;
+  font-weight: bold;
+  color: #2f046d;
   display: block;
 }
 
@@ -83,7 +83,9 @@ a:active {
   text-align: center;
   margin: 30px 30px;
 }
-
+.page {
+  width: 100%;
+}
 body {
   font-family: "Quicksand", sans-serif;
   margin: 50px;
@@ -132,7 +134,7 @@ a.item {
 .book-liked,
 .author-liked,
 .theory-liked {
-  color: rgb(78, 14, 78);
+  color: #2f046d;
 }
 
 .book-not-liked,
@@ -165,16 +167,95 @@ div,
 }
 
 .feminism-definition {
-  padding: 30px;
-  height: 50%;
-  width: 50%;
+  padding: 0;
   border: none;
   border-style: none;
-  float: left;
 }
 
-.homepage {
-  display: flexbox;
+.first-row {
+  margin: 50px;
+}
+.ui.grid > .row > .column {
+  padding: 0;
+}
+
+.div.eight.wide.column.feminist-and-books,
+.ui.grid > .column:not(.row),
+.ui.grid > .row > .column {
+  padding-left: 0;
+}
+
+.ui.segment.feminism-and-books {
+  box-shadow: none;
+  border: none;
+  border-style: none;
+  padding: 0;
+}
+* {
+  box-sizing: border-box;
+}
+
+.homepage-grid {
+  /* display: grid; */
+  /* padding: 20px; */
+  margin: 50px;
+}
+
+.book-1 {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  max-height: 150px;
+  max-width: 200px;
+}
+
+.book-2 {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  max-height: 150px;
+  max-width: 200px;
+}
+
+.book-3 {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  max-height: 150px;
+  max-width: 200px;
+}
+
+.book-4 {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  max-height: 150px;
+  max-width: 200px;
+}
+
+.about-fh {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+
+.fh-paragraph {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 4;
+  grid-row-end: 6;
+}
+
+.contact-form {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 6;
+  grid-row-end: 7;
 }
 
 .options-bar,
@@ -274,7 +355,7 @@ div,
 
 .ui.card > .content > .description,
 .ui.cards > .card > .content > .description:hover {
-  color: rgb(78, 14, 78);
+  color: #2f046d;
 }
 
 .ui.four.cards {
@@ -284,7 +365,7 @@ div,
 
 a,
 .books-by-author {
-  color: rgb(78, 14, 78);
+  color: #2f046d;
   font-weight: lighter;
 }
 
@@ -303,8 +384,12 @@ a,
   z-index: 9999;
 }
 
+.dashboard-link {
+  color: #2f046d;
+}
+
 .footer-text {
-  color: rgb(78, 14, 78);
+  color: #2f046d;
 }
 
 .book-title {
@@ -368,7 +453,7 @@ a,
 }
 
 .book-author-link {
-  color: rgb(78, 14, 78);
+  color: #2f046d;
 }
 
 .book-year-others {
