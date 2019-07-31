@@ -4,12 +4,13 @@ import ReviewCard from "../components/ReviewCard";
 import { Card, Icon, Grid, Image, Button, Header } from "semantic-ui-react";
 import ReviewDashboard from "../components/ReviewDashboard";
 
+const booksUrl = "http://localhost:3001/books/";
 class BookId extends React.Component {
   state = {
     book: null,
-    reviews: null,
-    randomBook1: {},
-    randomBook2: {}
+    reviews: null
+    // randomBook1: {},
+    // randomBook2: {}
   };
 
   getBookInfo = () => {
@@ -72,7 +73,6 @@ class BookId extends React.Component {
 
   componentDidMount() {
     this.getBookInfo();
-    // .then(() => this.setRandomBooks());
   }
 
   render() {
@@ -139,6 +139,7 @@ class BookId extends React.Component {
           <Grid.Column width={2} only="computer" verticalAlign="middle">
             <div className="thumbnails-div">
               <Image
+                href={booksUrl + randomBook1.title}
                 className="book-thumbnail"
                 src={randomBook1.cover}
                 alt={randomBook1.title}
@@ -146,6 +147,7 @@ class BookId extends React.Component {
               <br />
               <Image
                 className="book-thumbnail"
+                href={booksUrl + randomBook2.title}
                 src={randomBook2.cover}
                 alt={randomBook2.title}
               />

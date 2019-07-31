@@ -36,12 +36,12 @@ class App extends React.Component {
       randomizedBooks.slice(2, 4)
     ];
 
+    const twoRandomBook = randomizedBooks.slice(5, 6);
+
     return randomBooks;
   };
 
   //signin/out ----------------------------------------
-
-  //edit sign in and sign out - ASK SAM - Monday!!!
 
   setUser = data => {
     this.setState({
@@ -247,7 +247,7 @@ class App extends React.Component {
             render={props => (
               <HomePage
                 {...props}
-                books={randomBooks}
+                randomBooks={randomBooks}
                 authors={authors}
                 theories={theories}
               />
@@ -282,6 +282,7 @@ class App extends React.Component {
                 sortBooksByAuthor={sortBooksByAuthor}
                 sortBooksByYear={sortBooksByYear}
                 books={books}
+                randomBooks={randomBooks}
                 updateSearchTerm={updateSearchTerm}
                 searchTerm={searchTerm}
                 resetSearch={resetSearch}

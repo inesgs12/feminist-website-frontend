@@ -2,13 +2,12 @@ import React from "react";
 import { Grid, Segment, Image } from "semantic-ui-react";
 import feminism3 from "./feminism3.png";
 
+const booksUrl = "http://localhost:3001/books/";
 class HomePage extends React.Component {
-
-
   render() {
-    const { books } = this.props;
+    const { randomBooks } = this.props;
 
-    if (books === undefined) return <h1>Loading...</h1>;
+    if (randomBooks === undefined) return <h1>Loading...</h1>;
 
     return (
       <Grid stackable className="homepage-grid">
@@ -23,13 +22,7 @@ class HomePage extends React.Component {
             </Segment>
           </Grid.Column>
           <Grid.Column width={2} only="computer" />
-          {/* <Grid.Column
-            className="feminism-and-books"
-            only="computer"
-            verticalAlign="middle"
-            width={3}
-          > */}
-          {books.map((twoBooks, i) => {
+          {randomBooks.map((twoBooks, i) => {
             return (
               <Grid.Column
                 key={i}
@@ -42,6 +35,7 @@ class HomePage extends React.Component {
                   return (
                     <Segment key={idx} className="feminism-and-books">
                       <Image
+                        href={booksUrl + book.title}
                         className="image"
                         src={book.cover}
                         alt={book.title}
@@ -52,7 +46,6 @@ class HomePage extends React.Component {
               </Grid.Column>
             );
           })}
-          {/* </Grid.Column> */}
         </Grid.Row>
         <Grid.Row columns={1}>
           <Grid.Column width={16}>

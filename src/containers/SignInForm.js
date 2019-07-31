@@ -29,7 +29,8 @@ class SignInForm extends React.Component {
     const { handleChange, handleSubmit } = this;
 
     return (
-      <div>
+      <div className="sign-in-form">
+        <h3>SIGN IN</h3>
         <TextField
           id="usernameInput"
           label="Username"
@@ -49,7 +50,8 @@ class SignInForm extends React.Component {
           type="password"
         />
         <br />
-        <Button onClick={handleSubmit} variant="contained" color="primary">
+        <br />
+        <Button onClick={handleSubmit} variant="contained" color="inherit">
           SUBMIT
         </Button>
       </div>

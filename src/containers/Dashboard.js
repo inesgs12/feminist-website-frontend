@@ -31,7 +31,7 @@ class Dashboard extends React.Component {
               {" "}
               {user.first_name} {user.last_name}
             </h3>
-            <p> Username: {user.username}</p>
+            <p className="username-display"> Username: {user.username}</p>
             <img className="user-photo" alt={user.photo} src={image} />
           </div>
         );
@@ -40,13 +40,14 @@ class Dashboard extends React.Component {
         // debugger;
         return user.favourite_books.map(book => {
           return (
-            <div key={`book-${book.id}`}>
+            <div className="dashboard-link" key={`book-${book.id}`}>
               <NavLink
                 className="books-display dashboard-link"
                 to={`/books/${book.title}`}
               >
                 {book.title}
               </NavLink>
+              <br />
               <br />
             </div>
           );
@@ -63,6 +64,7 @@ class Dashboard extends React.Component {
                 {author.name}
               </NavLink>
               <br />
+              <br />
             </div>
           );
         });
@@ -74,10 +76,11 @@ class Dashboard extends React.Component {
               <NavLink
                 className="theories-display dashboard-link"
                 id={key}
-                to={`/theories/${theory.name}`}
+                to={`/theories/`}
               >
                 {theory.name}
               </NavLink>
+              <br />
               <br />
             </div>
           );
@@ -97,27 +100,31 @@ class Dashboard extends React.Component {
       <div className="user-info-grid" key={user.id}>
         <Menu stackable pointing secondary>
           <Menu.Item
+            className="user-info-font"
             name="info"
             active={activeItem === "info"}
             onClick={this.handleItemClick}
           />
           <Menu.Item
+            className="user-info-font"
             name="My Books"
             active={activeItem === "MyBooks"}
             onClick={this.handleItemClick}
           />
           <Menu.Item
+            className="user-info-font"
             name="My Authors"
             active={activeItem === "MyAuthors"}
             onClick={this.handleItemClick}
           />
           <Menu.Item
+            className="user-info-font"
             name="My Theories"
             active={activeItem === "MyTheories"}
             onClick={this.handleItemClick}
           />
         </Menu>
-        <Segment>{displayInfo()}</Segment>
+        <Segment className="info-displayed">{displayInfo()}</Segment>
       </div>
     );
   }

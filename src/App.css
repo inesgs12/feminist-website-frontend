@@ -44,12 +44,17 @@
   position: fixed;
 }
 
+.ui.card > .content > .description,
+.ui.cards > .card > .content > .description.author-card-container {
+  font-size: larger;
+}
+
 .Homepage-link,
 .Homepage-link:active,
 .Homepage-link:hover {
   float: right;
   font-size: larger;
-  font-weight: bold;
+  font-weight: normal;
   color: #2f046d;
   display: block;
 }
@@ -121,10 +126,19 @@ h5:first-child {
   font-family: "Quicksand", sans-serif;
 }
 
-.user-info-grid,
-.grid {
+.user-info-font {
+  font-size: larger;
+}
+.user-info-grid {
   font-family: "Quicksand", sans-serif;
   margin: 50px;
+  font-size: x-large;
+  /* width: 70%; */
+}
+
+.sign-in-form {
+  padding: 20px;
+  display: flexbox;
 }
 
 a.item {
@@ -143,6 +157,15 @@ a.item {
   color: rgb(184, 182, 182);
 }
 
+.book-not-liked:hover,
+.author-not-liked:hover {
+  color: #8152c2;
+}
+
+.like.big.icon.theory-not-liked:hover {
+  color: purple;
+}
+
 .i.icon,
 i.icons {
   font-size: 2em;
@@ -151,6 +174,17 @@ i.icons {
 .like-button {
   color: transparent;
   font-size: 2em;
+}
+
+.ui.card > .content .like.icon:hover,
+.ui.cards
+  > .card
+  > .content
+  .like.icon:hover
+  .theory-like-button:hover
+  .theory-not-liked:hover
+  .theory-liked:hover {
+  color: #663f9c !important;
 }
 
 .ui.card >,
@@ -344,7 +378,7 @@ div,
   padding: 20%;
   font-family: "Quicksand", sans-serif;
   word-wrap: break-word;
-  font-size: larger;
+  /* font-size: larger; */
 }
 
 .ui.card > .image:not(.ui) > img,
@@ -384,8 +418,19 @@ a,
   z-index: 9999;
 }
 
-.dashboard-link {
+.ui.secondary.pointing.menu.secondary.stackable {
+  justify-content: center;
+}
+
+.username-display {
+  font-size: larger;
+}
+
+.dashboard-link,
+.info-displayed {
   color: #2f046d;
+  font-size: larger;
+  margin: 10px;
 }
 
 .footer-text {

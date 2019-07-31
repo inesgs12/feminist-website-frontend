@@ -11,16 +11,12 @@ class Header extends React.Component {
             className="Homepage-link"
             to={`/${this.props.user.username}`}
           >
-            Profile
+            PROFILE
           </NavLink>
         </div>
         <div className="navbar-link">
-          <NavLink
-            onClick={this.props.signout}
-            className="Homepage-link"
-            to="/"
-          >
-            SignOut
+          <NavLink onClick={this.props.signout} className="Homepage-link">
+            SIGN OUT
           </NavLink>
         </div>
       </div>
@@ -28,12 +24,12 @@ class Header extends React.Component {
       <div>
         <div className="navbar-link">
           <NavLink className="Homepage-link" to="/signin">
-            SignIn
+            SIGN IN
           </NavLink>
         </div>
         <div className="navbar-link">
           <NavLink className="Homepage-link" to="/signup">
-            SignUp
+            SIGN UP
           </NavLink>
         </div>
       </div>
@@ -51,22 +47,22 @@ class Header extends React.Component {
           </div>
           <div className="navbar-link">
             <NavLink className="Homepage-link" to="/">
-              Home
+              HOME
             </NavLink>
           </div>
           <div className="navbar-link">
             <NavLink className="Homepage-link" to="/books">
-              Books
+              BOOKS
             </NavLink>
           </div>
           <div className="navbar-link">
             <NavLink className="Homepage-link" to="/authors">
-              Authors
+              AUTHORS
             </NavLink>
           </div>
           <div className="navbar-link">
             <NavLink className="Homepage-link" to="/theories">
-              Feminisms
+              THEORIES
             </NavLink>
           </div>
           <div className="navbar-link">{this.sessionHeader()}</div>
