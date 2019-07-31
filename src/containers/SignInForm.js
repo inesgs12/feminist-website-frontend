@@ -1,7 +1,5 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-
+import { Form, Button, Grid } from "semantic-ui-react";
 import api from "../services/api";
 
 class SignInForm extends React.Component {
@@ -30,31 +28,59 @@ class SignInForm extends React.Component {
 
     return (
       <div className="sign-in-form">
-        <h3>SIGN IN</h3>
-        <TextField
-          id="usernameInput"
-          label="Username"
-          value={username}
-          onChange={handleChange}
-          margin="normal"
-          name="username"
-        />
-        <br />
-        <TextField
-          id="passwordInput"
-          label="Password"
-          value={password}
-          onChange={handleChange}
-          margin="normal"
-          name="password"
-          type="password"
-        />
-        <br />
-        <br />
-        <Button onClick={handleSubmit} variant="contained" color="inherit">
-          SUBMIT
-        </Button>
+        <Grid segment centered>
+          <Form className="sign-in-form" onSubmit={handleSubmit}>
+            <h3>Sign in</h3>
+            <Form.Group>
+              <Form.Input
+                id="usernameInput"
+                label="Username"
+                value={username}
+                onChange={handleChange}
+                name="username"
+              />
+              <Form.Input
+                id="passwordInput"
+                label="Password"
+                value={password}
+                onChange={handleChange}
+                name="password"
+                type="password"
+              />
+              <Button onClick={handleSubmit}>Submit</Button>
+            </Form.Group>
+          </Form>
+        </Grid>
       </div>
+
+      // <div className="sign-in-form">
+      //   <h3>SIGN IN</h3>
+      //   <form onSubmit={handleSubmit}>
+      //     <TextField
+      //       id="usernameInput"
+      //       label="Username"
+      //       value={username}
+      //       onChange={handleChange}
+      //       margin="normal"
+      //       name="username"
+      //     />
+      //     <br />
+      //     <TextField
+      //       id="passwordInput"
+      //       label="Password"
+      //       value={password}
+      //       onChange={handleChange}
+      //       margin="normal"
+      //       name="password"
+      //       type="password"
+      //     />
+      //     <br />
+      //     <br />
+      //     <Button onClick={handleSubmit} variant="contained" color="inherit">
+      //       SUBMIT
+      //     </Button>
+      //   </form>
+      // </div>
     );
   }
 }

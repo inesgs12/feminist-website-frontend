@@ -83,7 +83,9 @@ a:active {
   margin-right: auto;
   font-size: larger;
 }
-
+.ui.form.sign-in-form {
+  margin: 100px, 200px, 200px 0;
+}
 .sign-in-up-form {
   text-align: center;
   margin: 30px 30px;

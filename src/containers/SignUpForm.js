@@ -1,7 +1,6 @@
 import React from "react";
 import { createUser } from "../services/api";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import { Form, Button, Grid } from "semantic-ui-react";
 
 class SignUpForm extends React.Component {
   handleSubmit = event => {
@@ -22,7 +21,24 @@ class SignUpForm extends React.Component {
     const { handleSubmit } = this;
     return (
       <div className="sign-in-up-form">
-        <h3 className="form-headers">Sign Up:</h3>
+        <Grid segment centered>
+          <Form onSubmit={handleSubmit} className="sign-in-up-form">
+            <h3>Sign Up</h3>
+            <Form.Group>
+              <Form.Input name="firstName" label="First Name" />
+              <Form.Input name="lastName" label="Last Name" />
+            </Form.Group>
+            <Form.Group>
+              <Form.Input name="username" label="Username" />
+              <Form.Input name="password" label="Password" type="password" />
+            </Form.Group>
+            {/* <Form.Group> */}
+            <Button type="submit">Submit</Button>
+            {/* </Form.Group> */}
+          </Form>
+        </Grid>
+
+        {/* <h3 className="form-headers">Sign Up:</h3>
         <form onSubmit={handleSubmit}>
           <p className="form-subheaders">First Name:</p>
           <TextField name="firstName" />
@@ -37,7 +53,7 @@ class SignUpForm extends React.Component {
           <Button type="submit" variant="contained" color="secondary">
             SUBMIT
           </Button>
-        </form>
+        </form> */}
       </div>
     );
   }
