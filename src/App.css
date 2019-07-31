@@ -200,6 +200,25 @@ div,
   width: 20%;
 }
 
+.image-homepage {
+  height: 230px;
+  padding: 10px;
+}
+
+.column-homepage {
+  vertical-align: middle;
+}
+
+.ui.segment.segment-covers {
+  float: right;
+  display: flexbox;
+  max-height: 230px;
+  box-shadow: none;
+  border: none;
+  border-style: none;
+  vertical-align: middle;
+}
+
 .feminism-definition {
   padding: 0;
   border: none;
@@ -208,6 +227,7 @@ div,
 
 .first-row {
   margin: 50px;
+  vertical-align: middle;
 }
 .ui.grid > .row > .column {
   padding: 0;

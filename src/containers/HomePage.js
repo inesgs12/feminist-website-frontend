@@ -12,7 +12,11 @@ class HomePage extends React.Component {
     return (
       <Grid stackable className="homepage-grid">
         <Grid.Row className="first-row" columns={3}>
-          <Grid.Column className="feminism-and-books" width={8}>
+          <Grid.Column
+            verticalAlign="middle"
+            className="feminism-and-books"
+            width={8}
+          >
             <Segment className="feminism-and-books">
               <Image
                 className="feminism-definition"
@@ -26,17 +30,17 @@ class HomePage extends React.Component {
             return (
               <Grid.Column
                 key={i}
-                className="feminism-and-books"
+                className="column-books"
                 only="computer"
                 verticalAlign="middle"
                 width={3}
               >
                 {twoBooks.map((book, idx) => {
                   return (
-                    <Segment key={idx} className="feminism-and-books">
-                      <Image
+                    <Segment key={idx} className="segment-covers">
+                      <img
                         href={booksUrl + book.title}
-                        className="image"
+                        className="image-homepage"
                         src={book.cover}
                         alt={book.title}
                       />
