@@ -74,9 +74,9 @@ class BookId extends React.Component {
     if (book === null) return <h1>No book.</h1>;
 
     return (
-      <Grid>
-        <Grid.Row key={book.id}>
-          <Grid.Column className="title-like">
+      <Grid stackable>
+        <Grid.Row key={book.id} column={1}>
+          <Grid.Column className="title-like" width={16}>
             <p className="book-title">{book.title}</p>
             <div
               className="like-button-book-id"
@@ -92,13 +92,11 @@ class BookId extends React.Component {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row className="cover-details" columns={4}>
-          <Grid.Column mobile={16} tablet={8} largeScreen={5}>
+          <Grid.Column width={5}>
             <Image className="book-cover" src={book.cover} alt={book.title} />
           </Grid.Column>
           <Grid.Column
-            mobile={16}
-            tablet={8}
-            largeScreen={7}
+            width={7}
             verticalAlign="middle"
             className="book-details-grid"
           >
@@ -127,13 +125,8 @@ class BookId extends React.Component {
               </span>
             </div>
           </Grid.Column>
-          <Grid.Column largeScreen={2} only="large screen" />
-          <Grid.Column
-            largeScreen={2}
-            only="large screen"
-            verticalAlign="middle"
-            width={2}
-          >
+          <Grid.Column width={2} only="computer" />
+          <Grid.Column width={2} only="computer" verticalAlign="middle">
             <div className="thumbnails-div">
               {this.getRandomBooks()}
               <Image
@@ -151,12 +144,7 @@ class BookId extends React.Component {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row column={2} className="reviews-header">
-          <Grid.Column
-            verticalAlign="middle"
-            mobile={16}
-            tablet={4}
-            largeScreen={8}
-          >
+          <Grid.Column verticalAlign="middle" width={8}>
             <Header className="review-word" as="h3">
               <Icon name="bookmark outline" />
               <Header.Content>REVIEWS</Header.Content>
