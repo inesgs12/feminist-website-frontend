@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Segment, Image } from "semantic-ui-react";
 import feminism3 from "./feminism3.png";
+import about from "./About.png";
 
 const booksUrl = "http://localhost:3001/books/";
 class HomePage extends React.Component {
@@ -51,15 +52,12 @@ class HomePage extends React.Component {
             );
           })}
         </Grid.Row>
-        <Grid.Row columns={1}>
-          <Grid.Column width={16}>
-            <h4>About FemHub</h4>
-            <p> this is a paragraph about the about portion of it </p>
+        <Grid.Row columns={3}>
+          <Grid.Column width={8}>
+            <Image src={about} alt="about femhub" />
           </Grid.Column>
-        </Grid.Row>
-        <Grid.Row columns={1}>
-          <Grid.Column width={16}>
-            <p> this is where the form goes </p>
+          <Grid.Column width={8}>
+            <h4>This is where the contact form goes</h4>
           </Grid.Column>
         </Grid.Row>
       </Grid>

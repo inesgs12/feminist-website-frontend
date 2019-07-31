@@ -219,6 +219,7 @@ div,
   border: none;
   border-style: none;
   vertical-align: middle;
+  padding: 0;
 }
 
 .feminism-definition {
@@ -255,6 +256,7 @@ div,
   /* display: grid; */
   /* padding: 20px; */
   margin: 50px;
+  /* padding-top: 80px */
 }
 
 .book-1 {
