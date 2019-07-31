@@ -26,7 +26,7 @@ class Dashboard extends React.Component {
     switch (activeItem) {
       case "info":
         return (
-          <div className="user-display" key={user.id}>
+          <div className="user-display" key={`user-${user.id}`}>
             <h3>
               {" "}
               {user.first_name} {user.last_name}
@@ -40,8 +40,11 @@ class Dashboard extends React.Component {
         // debugger;
         return user.favourite_books.map(book => {
           return (
-            <div key={book.id}>
-              <NavLink className="books-display" to={`/books/${book.title}`}>
+            <div key={`book-${book.id}`}>
+              <NavLink
+                className="books-display dashboard-link"
+                to={`/books/${book.title}`}
+              >
                 {book.title}
               </NavLink>
               <br />
@@ -52,9 +55,9 @@ class Dashboard extends React.Component {
       case "My Authors":
         return user.favourite_authors.map(author => {
           return (
-            <div key={author.id}>
+            <div key={`author-${author.id}`}>
               <NavLink
-                className="authors-display"
+                className="authors-display dashboard-link"
                 to={`/authors/${author.name}`}
               >
                 {author.name}
@@ -67,9 +70,9 @@ class Dashboard extends React.Component {
       case "My Theories":
         return user.favourite_theories.map((theory, key) => {
           return (
-            <div key={theory.id}>
+            <div key={`theory-${theory.id}`}>
               <NavLink
-                className="theories-display"
+                className="theories-display dashboard-link"
                 id={key}
                 to={`/theories/${theory.name}`}
               >
@@ -89,32 +92,32 @@ class Dashboard extends React.Component {
     const { activeItem } = this.state;
     const { displayInfo } = this;
     const { user } = this.props;
-
+    // debugger;
     return (
       <div className="user-info-grid" key={user.id}>
-            <Menu stackable pointing secondary>
-              <Menu.Item
-                name="info"
-                active={activeItem === "info"}
-                onClick={this.handleItemClick}
-              />
-              <Menu.Item
-                name="My Books"
-                active={activeItem === "MyBooks"}
-                onClick={this.handleItemClick}
-              />
-              <Menu.Item
-                name="My Authors"
-                active={activeItem === "MyAuthors"}
-                onClick={this.handleItemClick}
-              />
-              <Menu.Item
-                name="My Theories"
-                active={activeItem === "MyTheories"}
-                onClick={this.handleItemClick}
-              />
-            </Menu>
-            <Segment >{displayInfo()}</Segment>
+        <Menu stackable pointing secondary>
+          <Menu.Item
+            name="info"
+            active={activeItem === "info"}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            name="My Books"
+            active={activeItem === "MyBooks"}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            name="My Authors"
+            active={activeItem === "MyAuthors"}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            name="My Theories"
+            active={activeItem === "MyTheories"}
+            onClick={this.handleItemClick}
+          />
+        </Menu>
+        <Segment>{displayInfo()}</Segment>
       </div>
     );
   }
