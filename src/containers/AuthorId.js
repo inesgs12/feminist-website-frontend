@@ -1,6 +1,7 @@
 import React from "react";
 import { Icon } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
+import swal from 'sweetalert';
 
 class AuthorId extends React.Component {
   state = {
@@ -21,7 +22,7 @@ class AuthorId extends React.Component {
         ? this.props.addFavouriteAuthor(author, user)
         : this.props.removeFavouriteAuthor(author, user);
     } else {
-      alert("Log in to add author to your favourites");
+      swal("Log in to add author to your favourites");
     }
   };
 

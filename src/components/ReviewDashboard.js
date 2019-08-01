@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Dialog from "@material-ui/core/Dialog";
 import ReviewForm from "./ReviewForm";
 import { Button } from "semantic-ui-react";
+import swal from 'sweetalert';
+
 
 class ReviewDashboard extends Component {
   state = { show: false };
@@ -11,7 +13,7 @@ class ReviewDashboard extends Component {
     if (user) {
       this.setState({ show: !this.state.show });
     } else {
-      alert("Log in to leave a review");
+      swal("Log in to leave a review");
     }
   };
 

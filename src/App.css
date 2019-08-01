@@ -99,11 +99,17 @@ body {
   padding: 10px 30px 0 30px;
 }
 
-.book-details,
-.author-details {
+.book-details {
   margin: 50px;
   text-align: justify;
   font-family: "Quicksand", sans-serif;
+}
+
+.author-details {
+  margin: 50px 350px;
+  text-align: justify;
+  font-family: "Quicksand", sans-serif;
+  text-align: center
 }
 
 .author-bio {
@@ -489,6 +495,7 @@ a,
 .cover-details,
 .reviews-header {
   margin: 0px 50px;
+  vertical-align: middle
 }
 
 .ui.three.cards {
@@ -500,6 +507,7 @@ a,
   border-style: solid;
   border-color: rgb(247, 246, 246);
   box-shadow: 5px 10px 8px rgb(240, 236, 240);
+  vertical-align: middle
 }
 
 .book-details-grid {

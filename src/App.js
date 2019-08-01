@@ -1,5 +1,7 @@
 import React from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
+import swal from 'sweetalert';
+
 import "./App.css";
 import SignInForm from "./containers/SignInForm";
 import SignUpForm from "./containers/SignUpForm";
@@ -74,7 +76,7 @@ class App extends React.Component {
     if (localStorage.token) {
       api.validate().then(data => {
         if (data.error) {
-          alert(data.error);
+          console.log(data.error);
         } else {
           this.setUser(data);
         }

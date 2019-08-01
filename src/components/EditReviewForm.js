@@ -2,6 +2,7 @@ import React from "react";
 import { updateReview } from "../services/api";
 import { Button, Form } from "semantic-ui-react";
 import StarRatings from "react-star-ratings";
+import swal from 'sweetalert';
 
 class EditReviewForm extends React.Component {
   state = {
@@ -35,7 +36,7 @@ class EditReviewForm extends React.Component {
     updateReview(book.id, user.id, stars, reviewComment, review.id).then(
       data => {
         if (data.error) {
-          alert(data.error);
+          swal("Update failed - Please enter comment and star rating");
         } else {
           handleEditReview(data);
         }
@@ -70,9 +71,8 @@ class EditReviewForm extends React.Component {
         <Form.TextArea
           name="comment"
           label="Review"
-          value={reviewComment}
           className="review-text"
-        />
+        >{reviewComment}</Form.TextArea>
         <div className="review-submit">
           <Button className="review-submit" onClick={popUp} type="submit">
             Submit

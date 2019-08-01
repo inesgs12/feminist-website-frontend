@@ -38,7 +38,7 @@ class BooksList extends React.Component {
           <SearchBar
             updateSearchTerm={updateSearchTerm}
             searchTerm={searchTerm}
-          />
+        />
         </div>
         <div className="book-container">
           <Card.Group centered>

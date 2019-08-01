@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import ReviewCard from "../components/ReviewCard";
 import { Card, Icon, Grid, Image, Button, Header } from "semantic-ui-react";
 import ReviewDashboard from "../components/ReviewDashboard";
+import swal from 'sweetalert';
 
 const booksUrl = "http://localhost:3001/books/";
 class BookId extends React.Component {
@@ -68,7 +69,7 @@ class BookId extends React.Component {
         ? this.props.addFavouriteBook(book, user)
         : this.props.removeFavouriteBook(book, user);
     } else {
-      alert("Log in to add book to your favourites");
+      swal("Log in to add book to your favourites");
     }
   };
 
@@ -77,7 +78,7 @@ class BookId extends React.Component {
   }
 
   render() {
-    debugger;
+    // debugger;
     const { book, reviews } = this.state;
     const { user, twoRandomBooks } = this.props;
     const { handleChange, handleDeleteReview, handleEditReview } = this;
@@ -167,7 +168,7 @@ class BookId extends React.Component {
             </div>
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row column={2} className="reviews-header">
+        <Grid.Row column={1} className="reviews-header">
           <Grid.Column verticalAlign="middle" width={8}>
             <Header className="review-word" as="h3">
               <Icon name="bookmark outline" />

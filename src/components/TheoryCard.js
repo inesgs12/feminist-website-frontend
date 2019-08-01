@@ -1,6 +1,7 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
 import { Icon } from "semantic-ui-react";
+import swal from 'sweetalert'
 
 class TheoryCard extends React.Component {
   updateFavouriteTheories = (theory, user) => {
@@ -9,7 +10,7 @@ class TheoryCard extends React.Component {
         ? this.props.addFavouriteTheory(theory, user)
         : this.props.removeFavouriteTheory(theory, user);
     } else {
-      alert("Log in to add theory/movement to your favourites");
+      swal("Log in to add theory/movement to your favourites");
     }
   };
 

@@ -2,6 +2,8 @@ import React from "react";
 import { createReview } from "../services/api";
 import { Button, Form } from "semantic-ui-react";
 import StarRatings from "react-star-ratings";
+import swal from 'sweetalert';
+
 
 class ReviewForm extends React.Component {
   state = {
@@ -35,7 +37,7 @@ class ReviewForm extends React.Component {
 
     createReview(book.id, user.id, stars, reviewComment).then(data => {
       if (data.error) {
-        alert(data.error);
+        swal(data.error);
       } else {
         handleChange(data);
       }

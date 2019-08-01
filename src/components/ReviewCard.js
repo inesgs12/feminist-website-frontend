@@ -3,12 +3,29 @@ import StarRatings from "react-star-ratings";
 import { deleteReview } from "../services/api";
 import { Icon, Popup } from "semantic-ui-react";
 import EditReviewDashboard from "./EditReviewDashboard";
+import swal from 'sweetalert';
+
 
 class ReviewCard extends React.Component {
   removeReview = () => {
     const { review, handleDeleteReview } = this.props;
-    deleteReview(review.id);
-    handleDeleteReview(review);
+    swal({
+      text: "Are you sure you want to delete this review?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal("Review Deleted", {
+          icon: "success",
+        }).then(deleteReview(review.id));
+        handleDeleteReview(review);
+      } else {
+        swal("Your review is safe");
+      }
+    })
+    
   };
 
   render() {

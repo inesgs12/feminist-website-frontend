@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Dialog from "@material-ui/core/Dialog";
 import EditReviewForm from "./EditReviewForm";
 import { Icon, Popup } from "semantic-ui-react";
+import swal from 'sweetalert';
 
 class EditReviewDashboard extends Component {
   state = { show: false };
@@ -12,7 +13,7 @@ class EditReviewDashboard extends Component {
     if (user) {
       this.setState({ show: !this.state.show });
     } else {
-      alert("You can only edit your own reviews");
+      swal("You can only edit your own reviews");
     }
   };
 

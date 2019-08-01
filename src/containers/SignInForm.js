@@ -1,6 +1,8 @@
 import React from "react";
 import { Form, Button, Grid } from "semantic-ui-react";
 import api from "../services/api";
+import swal from 'sweetalert';
+
 
 class SignInForm extends React.Component {
   state = {
@@ -11,10 +13,10 @@ class SignInForm extends React.Component {
   handleSubmit = () => {
     api.signin(this.state.username, this.state.password).then(data => {
       if (data.error) {
-        alert(data.error);
+        swal(data.error);
       } else {
         this.props.setUser(data);
-        this.props.history.push(`/${this.props.user.username}`);
+        this.props.history.push("/");
       }
     });
   };

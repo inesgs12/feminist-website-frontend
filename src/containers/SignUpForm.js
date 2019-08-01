@@ -1,6 +1,8 @@
 import React from "react";
 import { createUser } from "../services/api";
 import { Form, Button, Grid } from "semantic-ui-react";
+import swal from 'sweetalert';
+
 
 class SignUpForm extends React.Component {
   handleSubmit = event => {
@@ -12,7 +14,11 @@ class SignUpForm extends React.Component {
     let lastName = event.target.lastName.value;
     // debugger;
     createUser(username, password, firstName, lastName)
-      .then(() => alert("User created"))
+      .then(() => swal({
+        title: "User Created",
+        text: "Please Log In",
+        icon: "success",
+      }))
       .catch(err => console.log(err));
 
     this.props.history.push("/signin");
