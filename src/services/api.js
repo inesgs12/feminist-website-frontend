@@ -38,7 +38,7 @@ export function validate() {
     .then(handleUserData);
 }
 
-export function createUser(username, password, firstName, lastName) {
+export function createUser(username, password) {
   return fetch(baseUrl + "/signup", {
     method: "POST",
     headers: {
@@ -46,9 +46,9 @@ export function createUser(username, password, firstName, lastName) {
     },
     body: JSON.stringify({
       username: username,
-      password: password,
-      first_name: firstName,
-      last_name: lastName
+      password: password
+      // first_name: firstName,
+      // last_name: lastName
     })
   })
     .then(resp => {

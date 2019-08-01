@@ -27,11 +27,11 @@ class Dashboard extends React.Component {
       case "info":
         return (
           <div className="user-display" key={`user-${user.id}`}>
-            <h3>
+            {/* <h3>
               {" "}
               {user.first_name} {user.last_name}
-            </h3>
-            <p className="username-display"> Username: {user.username}</p>
+            </h3> */}
+            <h1 className="username-dish3lay">{user.username}</h1>
             <img className="user-photo" alt={user.photo} src={image} />
           </div>
         );
