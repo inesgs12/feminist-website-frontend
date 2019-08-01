@@ -77,12 +77,13 @@ class BookId extends React.Component {
   }
 
   render() {
-    // debugger;
-    const { book, reviews, randomBook1, randomBook2 } = this.state;
-    const { user } = this.props;
+    debugger;
+    const { book, reviews } = this.state;
+    const { user, twoRandomBooks } = this.props;
     const { handleChange, handleDeleteReview, handleEditReview } = this;
 
     if (book === null) return <h1>Loading...</h1>;
+    if (twoRandomBooks === null) return <h1>Loading...</h1>;
 
     return (
       <Grid stackable>
@@ -139,7 +140,19 @@ class BookId extends React.Component {
           <Grid.Column width={2} only="computer" />
           <Grid.Column width={2} only="computer" verticalAlign="middle">
             <div className="thumbnails-div">
-              <Image
+              {twoRandomBooks &&
+                twoRandomBooks.map((book, i) => {
+                  return (
+                    <Image
+                      key={i}
+                      href={booksUrl + book.title}
+                      className="book-thumbnail"
+                      src={book.cover}
+                      alt={book.title}
+                    />
+                  );
+                })}
+              {/* <Image
                 href={booksUrl + randomBook1.title}
                 className="book-thumbnail"
                 src={randomBook1.cover}
@@ -151,7 +164,7 @@ class BookId extends React.Component {
                 href={booksUrl + randomBook2.title}
                 src={randomBook2.cover}
                 alt={randomBook2.title}
-              />
+              /> */}
             </div>
           </Grid.Column>
         </Grid.Row>

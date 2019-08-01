@@ -25,6 +25,8 @@ class App extends React.Component {
     searchTerm: ""
   };
 
+  // get random books to display in HomePage and BookId -----
+
   getRandomBooks = () => {
     let { books } = this.state;
 
@@ -35,16 +37,19 @@ class App extends React.Component {
       randomizedBooks.slice(0, 2),
       randomizedBooks.slice(2, 4)
     ];
-
-    // this.bookIdRandomBooks(randomizedBooks);
-
     return randomBooks;
   };
 
-  // bookIdRandomBooks = randomizedBooks => {
-  //   const twoBooks = randomizedBooks.slice(5, 6);
-  //   return twoBooks;
-  // };
+  getBookIdRandomBooks = () => {
+    let { books } = this.state;
+
+    if (books.length === 0) return;
+
+    const randomizedBooks = [...books].sort(() => Math.random() - 0.5);
+    const twoRandomBooks = randomizedBooks.slice(4, 6);
+
+    return twoRandomBooks;
+  };
 
   //signin/out ----------------------------------------
 
@@ -241,7 +246,8 @@ class App extends React.Component {
     } = this;
     const { user, books, authors, theories, searchTerm } = this.state;
     const randomBooks = this.getRandomBooks();
-    // const twoBooks = this.bookIdRandomBooks();
+    const twoRandomBooks = this.getBookIdRandomBooks();
+
     return (
       <div className="App">
         <Header user={user} signout={signout} setUser={setUser} />
@@ -312,7 +318,7 @@ class App extends React.Component {
                     .includes(props.match.params.title)
                 }
                 authors={authors}
-                // twoBooks={twoBooks}
+                twoRandomBooks={twoRandomBooks}
                 {...props}
               />
             )}
