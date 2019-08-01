@@ -84,12 +84,7 @@ class App extends React.Component {
     api.getTheories().then(theories => this.setState({ theories: theories }));
     api.getAuthors().then(authors => this.setState({ authors: authors }));
   }
-  // reset Search Term
-  resetSearch = () => {
-    this.setState({
-      searchTerm: ""
-    });
-  };
+
   //sort books, authors and theories -----------------
 
   sortBooksByTitleDown = () => {
@@ -218,6 +213,13 @@ class App extends React.Component {
     event.preventDefault();
     this.setState({
       searchTerm: event.target.value
+    });
+  };
+
+  // reset Search Term
+  resetSearch = () => {
+    this.setState({
+      searchTerm: ""
     });
   };
 

@@ -43,7 +43,11 @@ class BooksList extends React.Component {
         <div className="book-container">
           <Card.Group centered>
             {books
-              .filter(book => book.title.toLowerCase().includes(searchTerm))
+              .filter(
+                book =>
+                  book.title.toLowerCase().includes(searchTerm) ||
+                  book.author.name.toLowerCase().includes(searchTerm)
+              )
               .map(book => (
                 <BookCard
                   key={`book-${book.id}`}
