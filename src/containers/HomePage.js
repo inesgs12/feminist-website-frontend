@@ -62,8 +62,8 @@ class HomePage extends React.Component {
         <Grid.Row>
           <Grid.Column width={6} />
           <Grid.Column width={4}>
-            <Item className="mail-icon" centered href="mailto:inesgs@gmail.com">
-              <Icon className="mail-icon" centered size="big" name="mail" />
+            <Item className="mail-icon" href="mailto:inesgs@gmail.com">
+              <Icon className="mail-icon" size="big" name="mail" />
             </Item>
           </Grid.Column>
         </Grid.Row>

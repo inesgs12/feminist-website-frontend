@@ -82,8 +82,7 @@ class BookId extends React.Component {
     const { user, twoRandomBooks } = this.props;
     const { handleChange, handleDeleteReview, handleEditReview } = this;
 
-    if (book === null) return <h1>Loading...</h1>;
-    if (twoRandomBooks === null) return <h1>Loading...</h1>;
+    if (book === null || twoRandomBooks == null) return <h1>Loading...</h1>;
 
     return (
       <Grid stackable>
