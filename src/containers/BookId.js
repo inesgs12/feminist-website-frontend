@@ -8,9 +8,9 @@ const booksUrl = "http://localhost:3001/books/";
 class BookId extends React.Component {
   state = {
     book: null,
-    reviews: null
-    // randomBook1: {},
-    // randomBook2: {}
+    reviews: null,
+    randomBook1: {},
+    randomBook2: {}
   };
 
   getBookInfo = () => {
@@ -62,6 +62,7 @@ class BookId extends React.Component {
   };
 
   updateFavouriteBooks = (book, user) => {
+    // debugger;
     if (user) {
       !this.props.isLiked
         ? this.props.addFavouriteBook(book, user)

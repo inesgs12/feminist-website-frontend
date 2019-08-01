@@ -28,7 +28,7 @@ class SignInForm extends React.Component {
 
     return (
       <div className="sign-in-form">
-        <Grid segment centered>
+        <Grid segment="true" centered>
           <Form className="sign-in-form" onSubmit={handleSubmit}>
             <h3>Sign in</h3>
             <Form.Group>

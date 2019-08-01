@@ -36,10 +36,15 @@ class App extends React.Component {
       randomizedBooks.slice(2, 4)
     ];
 
-    const twoRandomBook = randomizedBooks.slice(5, 6);
+    // this.bookIdRandomBooks(randomizedBooks);
 
     return randomBooks;
   };
+
+  // bookIdRandomBooks = randomizedBooks => {
+  //   const twoBooks = randomizedBooks.slice(5, 6);
+  //   return twoBooks;
+  // };
 
   //signin/out ----------------------------------------
 
@@ -236,6 +241,7 @@ class App extends React.Component {
     } = this;
     const { user, books, authors, theories, searchTerm } = this.state;
     const randomBooks = this.getRandomBooks();
+    // const twoBooks = this.bookIdRandomBooks();
     return (
       <div className="App">
         <Header user={user} signout={signout} setUser={setUser} />
@@ -306,6 +312,7 @@ class App extends React.Component {
                     .includes(props.match.params.title)
                 }
                 authors={authors}
+                // twoBooks={twoBooks}
                 {...props}
               />
             )}

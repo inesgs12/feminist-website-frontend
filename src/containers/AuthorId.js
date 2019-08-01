@@ -34,7 +34,7 @@ class AuthorId extends React.Component {
     const { user } = this.props;
 
     if (this.state.author === null) {
-      return <h1>Author not found</h1>;
+      return <h1>Loading...</h1>;
     } else {
       return (
         <div key={author.id} className="author-details">

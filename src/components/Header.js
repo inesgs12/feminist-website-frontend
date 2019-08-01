@@ -15,7 +15,11 @@ class Header extends React.Component {
           </NavLink>
         </div>
         <div className="navbar-link">
-          <NavLink onClick={this.props.signout} className="Homepage-link">
+          <NavLink
+            onClick={this.props.signout}
+            className="Homepage-link"
+            to="/"
+          >
             SIGN OUT
           </NavLink>
         </div>

@@ -40,7 +40,7 @@ class Dashboard extends React.Component {
         // debugger;
         return user.favourite_books.map(book => {
           return (
-            <div className="dashboard-link" key={`book-${book.id}`}>
+            <div key={`book-${book.id}`}>
               <NavLink
                 className="books-display dashboard-link"
                 to={`/books/${book.title}`}
