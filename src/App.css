@@ -230,6 +230,7 @@ div,
 
 .first-row {
   margin: 50px;
+  margin-bottom: 0;
   vertical-align: middle;
 }
 .ui.grid > .row > .column {
