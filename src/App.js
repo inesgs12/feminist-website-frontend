@@ -17,6 +17,7 @@ import BookId from "./containers/BookId";
 import AuthorsList from "./containers/AuthorsList";
 import AuthorId from "./containers/AuthorId";
 import TheoriesList from "./containers/TheoriesList";
+import TheoryId from "./containers/TheoryId"
 
 class App extends React.Component {
   state = {
@@ -378,6 +379,25 @@ class App extends React.Component {
                 updateSearchTerm={updateSearchTerm}
                 searchTerm={searchTerm}
                 resetSearch={resetSearch}
+                {...props}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/theories/:name"
+            render={props => (
+              <TheoryId
+                user={user}
+                addFavouriteTheory={addFavouriteTheory}
+                removeFavouriteTheory={removeFavouriteTheory}
+                books={books}
+                isLiked={
+                  user &&
+                  user.favourite_theories
+                    .map(t => t.name)
+                    .includes(props.match.params.name)
+                }
                 {...props}
               />
             )}

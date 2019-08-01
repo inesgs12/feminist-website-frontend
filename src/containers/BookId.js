@@ -152,19 +152,6 @@ class BookId extends React.Component {
                     />
                   );
                 })}
-              {/* <Image
-                href={booksUrl + randomBook1.title}
-                className="book-thumbnail"
-                src={randomBook1.cover}
-                alt={randomBook1.title}
-              />{" "}
-              <br />
-              <Image
-                className="book-thumbnail"
-                href={booksUrl + randomBook2.title}
-                src={randomBook2.cover}
-                alt={randomBook2.title}
-              /> */}
             </div>
           </Grid.Column>
         </Grid.Row>

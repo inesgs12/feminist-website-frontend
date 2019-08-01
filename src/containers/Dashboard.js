@@ -76,7 +76,7 @@ class Dashboard extends React.Component {
               <NavLink
                 className="theories-display dashboard-link"
                 id={key}
-                to={`/theories/`}
+                to={`/theories/${theory.name}`}
               >
                 {theory.name}
               </NavLink>

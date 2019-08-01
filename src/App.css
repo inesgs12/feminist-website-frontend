@@ -112,7 +112,14 @@ body {
   text-align: center
 }
 
-.author-bio {
+.theory-details {
+  margin: 50px 350px;
+  text-align: justify;
+  font-family: "Quicksand", sans-serif;
+  text-align: center
+}
+
+.author-bio, .theory-description {
   text-align: justify;
   font-family: "Quicksand", sans-serif;
   font-weight: lighter;

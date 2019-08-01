@@ -5,6 +5,9 @@ import OptionsBar from "../components/OptionsBar";
 import SearchBar from "../components/SearchBar";
 
 class TheoriesList extends React.Component {
+  showTheory = theory => {
+    this.props.history.push(`/theories/${theory.name}`);
+  };
   componentWillUnmount = () => {
     const { resetSearch } = this.props;
 
@@ -15,13 +18,13 @@ class TheoriesList extends React.Component {
     const {
       theories,
       user,
-      addFavouriteTheory,
-      removeFavouriteTheory,
       sortTheoriesByNameDown,
       sortTheoriesByNameUp,
       updateSearchTerm,
       searchTerm
     } = this.props;
+
+    const { showTheory } = this;
 
     return (
       <div className="theories-container">
@@ -37,7 +40,7 @@ class TheoriesList extends React.Component {
           />
         </div>
         <div className="theories-container">
-          <Card.Group stackable itemsPerRow={2}>
+          <Card.Group stackable itemsPerRow={4}>
             {theories
               .filter(theory => theory.name.toLowerCase().includes(searchTerm))
               .map(theory => (
@@ -45,14 +48,7 @@ class TheoriesList extends React.Component {
                   key={`theory-${theory.id}`}
                   theory={theory}
                   user={user}
-                  addFavouriteTheory={addFavouriteTheory}
-                  removeFavouriteTheory={removeFavouriteTheory}
-                  isLiked={
-                    user &&
-                    user.favourite_theories
-                      .map(t => t.name)
-                      .includes(theory.name)
-                  }
+                  showTheory={showTheory}
                 />
               ))}
           </Card.Group>
