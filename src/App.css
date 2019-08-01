@@ -228,6 +228,9 @@ div,
   border-style: none;
 }
 
+.mail-icon {
+  color: #2f046d;
+}
 .first-row {
   margin: 50px;
   margin-bottom: 0;

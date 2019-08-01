@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Segment, Image } from "semantic-ui-react";
+import { Grid, Segment, Image, Icon, Item } from "semantic-ui-react";
 import feminism3 from "./feminism3.png";
 import about from "./About.png";
 
@@ -53,13 +53,21 @@ class HomePage extends React.Component {
           })}
         </Grid.Row>
         <Grid.Row columns={3}>
+          <Grid.Column width={4} />
           <Grid.Column width={8}>
             <Image src={about} alt="about femhub" />
           </Grid.Column>
-          <Grid.Column width={8}>
-            <h4>This is where the contact form goes</h4>
+          <Grid.Column width={4} />
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column width={6} />
+          <Grid.Column width={4}>
+            <Item className="mail-icon" centered href="mailto:inesgs@gmail.com">
+              <Icon className="mail-icon" centered size="big" name="mail" />
+            </Item>
           </Grid.Column>
         </Grid.Row>
+        <Grid.Column width={6} />
       </Grid>
     );
   }
