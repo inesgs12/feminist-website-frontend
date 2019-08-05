@@ -22,7 +22,7 @@ class TheoryId extends React.Component {
         ? this.props.addFavouriteTheory(theory, user)
         : this.props.removeFavouriteTheory(theory, user);
     } else {
-      swal("Log in to add author to your favourites");
+      swal("Log in to add theory/movement to your favourites");
     }
   };
 
