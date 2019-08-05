@@ -246,7 +246,9 @@ div,
   color: #2f046d;
 }
 .first-row {
-  margin: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 20px;
   margin-bottom: 0;
   vertical-align: middle;
 }
