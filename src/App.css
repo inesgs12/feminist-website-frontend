@@ -27,13 +27,13 @@
 }
 
 .push-content {
-  height: 12vh;
+  height: 16vh;
 }
 
 .navbar {
   list-style-type: none;
   margin: 0;
-  padding: 10px 30px 0 30px;
+  padding: 10px 30px 20px 30px;
   overflow: hidden;
   background-color: white;
   overflow: hidden;
@@ -494,7 +494,8 @@ a,
 .title-like {
   text-align: left;
   margin-left: 50px;
-  padding-top: 50px;
+  padding-top: 40px;
+  margin-top: 50px;
 }
 
 .ui.grid {
