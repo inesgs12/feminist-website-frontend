@@ -5,7 +5,7 @@ import { Card, Icon, Grid, Image, Button, Header } from "semantic-ui-react";
 import ReviewDashboard from "../components/ReviewDashboard";
 import swal from "sweetalert";
 
-const booksUrl = "https://thefeministhub.net/books/";
+const booksUrl = "https://www.thefeministhub.net/books/";
 class BookId extends React.Component {
   state = {
     book: null,
