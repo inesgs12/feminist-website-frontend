@@ -33,7 +33,7 @@
 .navbar {
   list-style-type: none;
   margin: 0;
-  padding: 10px 30px 20px 30px;
+  padding: 10px 30px 0 30px;
   overflow: hidden;
   background-color: white;
   overflow: hidden;
@@ -109,17 +109,18 @@ body {
   margin: 50px 350px;
   text-align: justify;
   font-family: "Quicksand", sans-serif;
-  text-align: center
+  text-align: center;
 }
 
 .theory-details {
   margin: 50px 350px;
   text-align: justify;
   font-family: "Quicksand", sans-serif;
-  text-align: center
+  text-align: center;
 }
 
-.author-bio, .theory-description {
+.author-bio,
+.theory-description {
   text-align: justify;
   font-family: "Quicksand", sans-serif;
   font-weight: lighter;
@@ -245,9 +246,7 @@ div,
   color: #2f046d;
 }
 .first-row {
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-top: 50px;
+  margin: 50px;
   margin-bottom: 0;
   vertical-align: middle;
 }
@@ -493,8 +492,7 @@ a,
 .title-like {
   text-align: left;
   margin-left: 50px;
-  padding-top: 40px;
-  margin-top: 50px;
+  padding-top: 50px;
 }
 
 .ui.grid {
@@ -505,7 +503,7 @@ a,
 .cover-details,
 .reviews-header {
   margin: 0px 50px;
-  vertical-align: middle
+  vertical-align: middle;
 }
 
 .ui.three.cards {
@@ -517,7 +515,7 @@ a,
   border-style: solid;
   border-color: rgb(247, 246, 246);
   box-shadow: 5px 10px 8px rgb(240, 236, 240);
-  vertical-align: middle
+  vertical-align: middle;
 }
 
 .book-details-grid {
