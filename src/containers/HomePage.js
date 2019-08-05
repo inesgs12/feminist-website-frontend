@@ -3,7 +3,7 @@ import { Grid, Segment, Image, Icon, Item } from "semantic-ui-react";
 import feminism3 from "./feminism3.png";
 import about from "./About.png";
 
-const booksUrl = "https://the-feminist-hub.herokuapp.com/books/";
+const booksUrl = "https://www.thefeministhub.net/books/";
 class HomePage extends React.Component {
   render() {
     const { randomBooks } = this.props;
