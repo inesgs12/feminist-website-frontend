@@ -1,6 +1,5 @@
 import React from "react";
 import { Icon } from "semantic-ui-react";
-import { NavLink } from "react-router-dom";
 import swal from "sweetalert";
 
 class TheoryId extends React.Component {
@@ -11,7 +10,7 @@ class TheoryId extends React.Component {
   getTheoryInfo = () => {
     const name = this.props.match.params.name;
     const base = "https://the-feminist-hub-backend.herokuapp.com/";
-    const theoryIdUrl = base + `/theories/${name}`;
+    const theoryIdUrl = base + `theories/${name}`;
     fetch(theoryIdUrl)
       .then(resp => resp.json())
       .then(theory => this.setState({ theory: theory }));
