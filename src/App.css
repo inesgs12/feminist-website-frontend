@@ -109,18 +109,17 @@ body {
   margin: 50px 350px;
   text-align: justify;
   font-family: "Quicksand", sans-serif;
-  text-align: center;
+  text-align: center
 }
 
 .theory-details {
   margin: 50px 350px;
   text-align: justify;
   font-family: "Quicksand", sans-serif;
-  text-align: center;
+  text-align: center
 }
 
-.author-bio,
-.theory-description {
+.author-bio, .theory-description {
   text-align: justify;
   font-family: "Quicksand", sans-serif;
   font-weight: lighter;
@@ -237,7 +236,7 @@ div,
 }
 
 .feminism-definition {
-  padding-top: 30px;
+  padding: 0;
   border: none;
   border-style: none;
 }
@@ -275,8 +274,8 @@ div,
 .homepage-grid {
   /* display: grid; */
   /* padding: 20px; */
-  margin: 0px 50px 50px 50px;
-  /* padding-top: 30px; */
+  margin: 50px;
+  /* padding-top: 80px */
 }
 
 .book-1 {
@@ -506,7 +505,7 @@ a,
 .cover-details,
 .reviews-header {
   margin: 0px 50px;
-  vertical-align: middle;
+  vertical-align: middle
 }
 
 .ui.three.cards {
@@ -518,7 +517,7 @@ a,
   border-style: solid;
   border-color: rgb(247, 246, 246);
   box-shadow: 5px 10px 8px rgb(240, 236, 240);
-  vertical-align: middle;
+  vertical-align: middle
 }
 
 .book-details-grid {
