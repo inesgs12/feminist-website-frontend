@@ -1,8 +1,7 @@
-const baseUrl = "http://localhost:3000";
-const signInUrl = baseUrl + "/signin";
-const booksUrl = "http://localhost:3000/books";
-const authorsUrl = "http://localhost:3000/authors";
-const theoriesUrl = "http://localhost:3000/theories";
+const baseUrl = "https://the-feminist-hub-backend.herokuapp.com/";
+const booksUrl = "https://the-feminist-hub-backend.herokuapp.com/books";
+const authorsUrl = "https://the-feminist-hub-backend.herokuapp.com/authors";
+const theoriesUrl = "https://the-feminist-hub-backend.herokuapp.com/theories";
 
 function handleUserData(data) {
   localStorage.setItem("token", data.token);
@@ -39,7 +38,7 @@ export function validate() {
 }
 
 export function createUser(username, password) {
-  return fetch(baseUrl + "/signup", {
+  return fetch(baseUrl + "signup", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -74,7 +73,7 @@ export function getTheories() {
 }
 
 export function createFavouriteBook(bookId, userId) {
-  return fetch(baseUrl + "/favourite_books", {
+  return fetch(baseUrl + "favourite_books", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -87,13 +86,13 @@ export function createFavouriteBook(bookId, userId) {
 }
 
 export function deleteFavouriteBook(bookId, userId) {
-  return fetch(baseUrl + "/favourite_books/" + bookId + "/" + userId, {
+  return fetch(baseUrl + "favourite_books/" + bookId + "/" + userId, {
     method: "DELETE"
   });
 }
 
 export function createFavouriteAuthor(authorId, userId) {
-  return fetch(baseUrl + "/favourite_authors", {
+  return fetch(baseUrl + "favourite_authors", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -106,13 +105,13 @@ export function createFavouriteAuthor(authorId, userId) {
 }
 
 export function deleteFavouriteAuthor(authorId, userId) {
-  return fetch(baseUrl + "/favourite_authors/" + authorId + "/" + userId, {
+  return fetch(baseUrl + "favourite_authors/" + authorId + "/" + userId, {
     method: "DELETE"
   });
 }
 
 export function createFavouriteTheory(theoryId, userId) {
-  return fetch(baseUrl + "/favourite_theories", {
+  return fetch(baseUrl + "favourite_theories", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -125,13 +124,13 @@ export function createFavouriteTheory(theoryId, userId) {
 }
 
 export function deleteFavouriteTheory(theoryId, userId) {
-  return fetch(baseUrl + "/favourite_theories/" + theoryId + "/" + userId, {
+  return fetch(baseUrl + "favourite_theories/" + theoryId + "/" + userId, {
     method: "DELETE"
   });
 }
 
 export function createReview(bookId, userId, stars, comment) {
-  return fetch(baseUrl + "/reviews", {
+  return fetch(baseUrl + "reviews", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -146,7 +145,7 @@ export function createReview(bookId, userId, stars, comment) {
 }
 
 export function updateReview(bookId, userId, stars, comment, reviewId) {
-  return fetch(baseUrl + "/reviews/" + reviewId, {
+  return fetch(baseUrl + "reviews/" + reviewId, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json"
@@ -161,7 +160,7 @@ export function updateReview(bookId, userId, stars, comment, reviewId) {
 }
 
 export function deleteReview(reviewId) {
-  return fetch(baseUrl + "/reviews/" + reviewId, {
+  return fetch(baseUrl + "reviews/" + reviewId, {
     method: "DELETE"
   });
 }

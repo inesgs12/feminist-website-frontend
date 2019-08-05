@@ -1,7 +1,7 @@
 import React from "react";
 import { Icon } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 
 class AuthorId extends React.Component {
   state = {
@@ -10,7 +10,8 @@ class AuthorId extends React.Component {
 
   getAuthorInfo = () => {
     const name = this.props.match.params.name;
-    const authorIdUrl = `http://localhost:3000/authors/${name}`;
+    const base = "https://the-feminist-hub-backend.herokuapp.com/";
+    const authorIdUrl = base + `authors/${name}`;
     fetch(authorIdUrl)
       .then(resp => resp.json())
       .then(author => this.setState({ author: author }));

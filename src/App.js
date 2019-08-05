@@ -72,7 +72,7 @@ class App extends React.Component {
   //onLoad -------------------------------------------
 
   componentDidMount() {
-    //this should only run if there is a token not everytime the page loads, the alerts are annoying.
+    //this should only run if there is a token not everytime the page loads
     if (localStorage.token) {
       api.validate().then(data => {
         if (data.error) {
