@@ -1,4 +1,5 @@
 const baseUrl = "https://the-feminist-hub-backend.herokuapp.com/";
+const signInUrl = "https://the-feminist-hub-backend.herokuapp.com/signin";
 const booksUrl = "https://the-feminist-hub-backend.herokuapp.com/books";
 const authorsUrl = "https://the-feminist-hub-backend.herokuapp.com/authors";
 const theoriesUrl = "https://the-feminist-hub-backend.herokuapp.com/theories";
@@ -28,7 +29,7 @@ export function signin(username, password) {
 }
 
 export function validate() {
-  return fetch(baseUrl + "/validate", {
+  return fetch(baseUrl + "validate", {
     headers: {
       Authorisation: localStorage.token
     }
