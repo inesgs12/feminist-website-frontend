@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
-import swal from 'sweetalert';
 
 import "./App.css";
 import SignInForm from "./containers/SignInForm";

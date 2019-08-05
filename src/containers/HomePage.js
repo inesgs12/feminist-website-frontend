@@ -39,7 +39,7 @@ class HomePage extends React.Component {
                 {twoBooks.map((book, idx) => {
                   return (
                     <Segment key={idx} className="segment-covers">
-                      <img
+                      <Image
                         href={booksUrl + book.title}
                         className="image-homepage"
                         src={book.cover}

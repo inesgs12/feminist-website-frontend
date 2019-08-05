@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import logo from "./images/FEMHUB.png";
+import logo from "./images/logo.png";
 
 class Header extends React.Component {
   sessionHeader = () => {
