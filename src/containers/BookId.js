@@ -5,7 +5,7 @@ import { Card, Icon, Grid, Image, Button, Header } from "semantic-ui-react";
 import ReviewDashboard from "../components/ReviewDashboard";
 import swal from "sweetalert";
 
-const booksUrl = "https://the-feminist-hub-backend.herokuapp.com/books/";
+const booksUrl = "https://the-feminist-hub.herokuapp.com/books/";
 class BookId extends React.Component {
   state = {
     book: null,
@@ -16,7 +16,7 @@ class BookId extends React.Component {
 
   getBookInfo = () => {
     const title = this.props.match.params.title;
-    const url = booksUrl + `${title}`;
+    const url = `https://the-feminist-hub-backend.herokuapp.com/books/${title}`;
     return fetch(url)
       .then(resp => resp.json())
       .then(book => {
