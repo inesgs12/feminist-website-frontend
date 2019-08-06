@@ -38,15 +38,17 @@ class BooksList extends React.Component {
           <SearchBar
             updateSearchTerm={updateSearchTerm}
             searchTerm={searchTerm}
-        />
+          />
         </div>
         <div className="book-container">
           <Card.Group centered>
             {books
               .filter(
                 book =>
-                  book.title.toLowerCase().includes(searchTerm) ||
-                  book.author.name.toLowerCase().includes(searchTerm)
+                  book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  book.author.name
+                    .toLowerCase()
+                    .includes(searchTerm.toLowerCase())
               )
               .map(book => (
                 <BookCard

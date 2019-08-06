@@ -214,7 +214,7 @@ class App extends React.Component {
   updateSearchTerm = event => {
     event.preventDefault();
     this.setState({
-      searchTerm: event.target.value.toLowerCase()
+      searchTerm: event.target.value
     });
   };
 
