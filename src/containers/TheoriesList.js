@@ -40,7 +40,7 @@ class TheoriesList extends React.Component {
           />
         </div>
         <div className="theories-container">
-          <Card.Group stackable itemsPerRow={4}>
+          <Card.Group centered>
             {theories
               .filter(theory =>
                 theory.name.toLowerCase().includes(searchTerm.toLowerCase())
