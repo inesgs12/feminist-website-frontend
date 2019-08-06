@@ -42,7 +42,9 @@ class TheoriesList extends React.Component {
         <div className="theories-container">
           <Card.Group stackable itemsPerRow={4}>
             {theories
-              .filter(theory => theory.name.toLowerCase().includes(searchTerm))
+              .filter(theory =>
+                theory.name.toLowerCase().includes(searchTerm.toLowerCase())
+              )
               .map(theory => (
                 <TheoryCard
                   key={`theory-${theory.id}`}

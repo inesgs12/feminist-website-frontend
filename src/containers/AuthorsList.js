@@ -42,7 +42,9 @@ class AuthorsList extends React.Component {
         <div className="author-container">
           <Card.Group centered>
             {authors
-              .filter(author => author.name.toLowerCase().includes(searchTerm))
+              .filter(author =>
+                author.name.toLowerCase().includes(searchTerm.toLowerCase())
+              )
               .map((author, index) => (
                 <AuthorCard
                   key={`author-${index}`}
