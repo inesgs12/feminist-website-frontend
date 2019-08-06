@@ -522,6 +522,7 @@ a,
   vertical-align: middle;
   text-align: justify;
   font-size: larger;
+  font-family: "Quicksand", sans-serif;
 }
 
 .book-thumbnail {
@@ -612,6 +613,11 @@ a,
 
 .author-in-book {
   font-size: larger;
+  font-family: "Quicksand", sans-serif;
+}
+
+.synopsis {
+  font-family: "Quicksand", sans-serif;
 }
 
 .theory-like-button {

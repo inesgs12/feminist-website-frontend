@@ -122,7 +122,7 @@ class BookId extends React.Component {
                 {book.author.name}
               </NavLink>
             </p>
-            <p> {book.synopsis} </p>
+            <p className="synopsis"> {book.synopsis} </p>
             <div className="book-year-others">
               <span className="details-margin">
                 <p>Year: {book.year} </p>
