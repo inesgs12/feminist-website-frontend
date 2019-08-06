@@ -16,7 +16,7 @@ import BookId from "./containers/BookId";
 import AuthorsList from "./containers/AuthorsList";
 import AuthorId from "./containers/AuthorId";
 import TheoriesList from "./containers/TheoriesList";
-import TheoryId from "./containers/TheoryId"
+import TheoryId from "./containers/TheoryId";
 
 class App extends React.Component {
   state = {
@@ -214,7 +214,7 @@ class App extends React.Component {
   updateSearchTerm = event => {
     event.preventDefault();
     this.setState({
-      searchTerm: event.target.value
+      searchTerm: event.target.value.toLowerCase()
     });
   };
 
