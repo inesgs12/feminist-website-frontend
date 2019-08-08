@@ -24,7 +24,7 @@ At the moment, it's **not** mobile-friendly but **I intend to built it using Rea
 - React.JS
 - HTML / CSS / Semantic UI
 - OAuth / bcrypt / JWS
-- Postgres
+- PostgreSQL
 
 ## Features
 
