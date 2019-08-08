@@ -6,6 +6,9 @@ Live site @ thefeministhub.net
 
 [BackEnd](https://github.com/inesgs12/feminist-website-backend)
 
+username: ines 
+password: ines
+
 ## About
 
 The goal is that the Feminist Hub becomes your go-to page for all things feminist - where you can learn about feminism and join a community of like-minded people.
