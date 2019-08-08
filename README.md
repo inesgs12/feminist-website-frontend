@@ -1,13 +1,10 @@
 # The Feminist Hub
 
-Live site @ thefeministhub.net
+[Live site](thefeministhub.net) (username: ines / password: ines)
 
 [Demo](https://youtu.be/AigI6MtiBjo)
 
 [BackEnd](https://github.com/inesgs12/feminist-website-backend)
-
-username: ines 
-password: ines
 
 ## About
 
