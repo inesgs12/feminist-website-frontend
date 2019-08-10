@@ -577,8 +577,8 @@ a,
   padding: 0;
 }
 
-.amazon {
-  text-align: center
+.i.amazon.huge.icon {
+  margin: 0
 }
 
 .ui.button > .icon:not(.button) {
