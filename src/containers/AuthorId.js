@@ -53,7 +53,7 @@ class AuthorId extends React.Component {
                       this.props.isLiked ? "author-liked" : "author-not-liked"
                     }
                     name="like"
-                    size="large"
+                    size="big"
                   />
                   <br />
                 </div>
