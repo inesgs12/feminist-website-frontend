@@ -47,7 +47,7 @@ class AuthorId extends React.Component {
             </Grid.Row>
             <Grid.Row className="like-button-row" centered columns={1}>
               <Grid.Column width={8} className="like-button">
-                <div onClick={() => this.updateFavouriteAuthors(author, user)}>
+                <div className="like-button" onClick={() => this.updateFavouriteAuthors(author, user)}>
                   <Icon
                     className={
                       this.props.isLiked ? "author-liked" : "author-not-liked"

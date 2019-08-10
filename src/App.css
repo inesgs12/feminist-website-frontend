@@ -112,7 +112,7 @@ body {
   text-align: center;
 }
 
-.author-id-name, .like-button {
+.author-id-name, .ui.grid .centered.row>.column:not(.aligned):not(.justified).like-button {
   text-align: center
 }
 
