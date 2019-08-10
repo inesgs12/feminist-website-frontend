@@ -112,8 +112,11 @@ body {
   text-align: center;
 }
 
-.author-id-name, .ui.grid .centered.row>.column:not(.aligned):not(.justified).author-like-button {
-  text-align: center
+.author-id-name,
+.ui.grid
+  .centered.row
+  > .column:not(.aligned):not(.justified).author-like-button {
+  text-align: center;
 }
 
 .theory-details {
@@ -447,7 +450,7 @@ a,
 .books-by-author {
   color: #2f046d;
   font-weight: lighter;
-  text-align: center
+  text-align: center;
 }
 
 .Footer {
@@ -577,8 +580,10 @@ a,
   padding: 0;
 }
 
-.i.amazon.huge.icon, .ui.button>.icon:not(.button).amazon, .ui.button>.icon:not(.button).amazon {
-  margin: 0
+.i.amazon.huge.icon,
+.amazon.ui.button > .icon:not(.button),
+.amazon.ui.button > .icon:not(.button) {
+  margin: 0;
 }
 
 .ui.button > .icon:not(.button) {

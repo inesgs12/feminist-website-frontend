@@ -44,29 +44,32 @@ class AuthorId extends React.Component {
             <Grid.Column centered width={8} className="author-name-row">
               <h1 className="author-id-name">{this.state.author.name}</h1>
             </Grid.Column>
-            </Grid.Row>
-            <Grid.Row className="author-like-button-row" centered columns={1}>
-              <Grid.Column textAlign={center} width={8} className="author-like-button">
-                <div className="author-like-button" onClick={() => this.updateFavouriteAuthors(author, user)}>
-                  <Icon
-                    className={
-                      this.props.isLiked ? "author-liked" : "author-not-liked"
-                    }
-                    name="like"
-                    size="big"
-                  />
-                  <br />
-                </div>
+          </Grid.Row>
+          <Grid.Row className="author-like-button-row" centered columns={1}>
+            <Grid.Column width={8} className="author-like-button">
+              <div
+                className="author-like-button"
+                onClick={() => this.updateFavouriteAuthors(author, user)}
+              >
+                <Icon
+                  className={
+                    this.props.isLiked ? "author-liked" : "author-not-liked"
+                  }
+                  name="like"
+                  size="big"
+                />
                 <br />
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row className="author-bio-row" centered columns={1}>
-              <Grid.Column width={8} classname="author-bio">
-                <h3 className="author-bio">{this.state.author.bio}</h3>
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row className="author-books-row" centered columns={1}>
-              <Grid.Column width={8} className="books-by-author">
+              </div>
+              <br />
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row className="author-bio-row" centered columns={1}>
+            <Grid.Column width={8} classname="author-bio">
+              <h3 className="author-bio">{this.state.author.bio}</h3>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row className="author-books-row" centered columns={1}>
+            <Grid.Column width={8} className="books-by-author">
               <h4 className="books-by-author">
                 {" "}
                 Books <br />
@@ -81,9 +84,9 @@ class AuthorId extends React.Component {
                   </NavLink>
                 ))}
               </h4>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       );
     }
   }
