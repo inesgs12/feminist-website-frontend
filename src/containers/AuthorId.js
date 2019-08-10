@@ -1,5 +1,5 @@
 import React from "react";
-import { Icon } from "semantic-ui-react";
+import { Icon, Grid, GridColumn } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 import swal from "sweetalert";
 
@@ -39,7 +39,58 @@ class AuthorId extends React.Component {
       return <h1>Loading...</h1>;
     } else {
       return (
-        <div key={author.id} className="author-details">
+        <Grid stackable key={author.id} className="author-details">
+          <Grid.Row className="first-row-author" centered columns={1}>
+            <Grid.Column width={8} className="author-name-row">
+              <h1>{this.state.author.name}</h1>
+            </Grid.Column>
+            </Grid.Row>
+            <Grid.Row className="like-button-row" centered columns={1}>
+              <Grid.Column width={8} className="author-name-row">
+                <div onClick={() => this.updateFavouriteAuthors(author, user)}>
+                  <Icon
+                    className={
+                      this.props.isLiked ? "author-liked" : "author-not-liked"
+                    }
+                    name="like"
+                    size="big"
+                  />
+                  <br />
+                </div>
+                <br />
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row className="author-bio-row" centered columns={1}>
+              <Grid.Column width={8} classname="author-bio">
+                <h3 className="author-bio">{this.state.author.bio}</h3>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row className="author-books-row" centered columns={1}>
+              <Grid.Column width={8} className="books-by-author">
+              <h4>
+                {" "}
+                Books <br />
+                {author.books.map((book, index) => (
+                  <NavLink
+                    className="books-by-author"
+                    key={index}
+                    to={`/books/${book.title}`}
+                  >
+                    {" "}
+                    {book.title} <br />
+                  </NavLink>
+                ))}
+              </h4>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+      );
+    }
+  }
+}
+
+{
+  /* <div key={author.id} className="author-details">
           <h1>{this.state.author.name}</h1>
           <div onClick={() => this.updateFavouriteAuthors(author, user)}>
             <Icon
@@ -69,10 +120,7 @@ class AuthorId extends React.Component {
               ))}
             </h4>
           </div>
-        </div>
-      );
-    }
-  }
+        </div> */
 }
 
 export default AuthorId;
