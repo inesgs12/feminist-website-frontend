@@ -41,12 +41,12 @@ class AuthorId extends React.Component {
       return (
         <Grid stackable key={author.id} className="author-details">
           <Grid.Row className="first-row-author" centered columns={1}>
-            <Grid.Column width={8} className="author-name-row">
-              <h1>{this.state.author.name}</h1>
+            <Grid.Column centered width={8} className="author-name-row">
+              <h1 className="author-id-name">{this.state.author.name}</h1>
             </Grid.Column>
             </Grid.Row>
             <Grid.Row className="like-button-row" centered columns={1}>
-              <Grid.Column width={8} className="author-name-row">
+              <Grid.Column width={8} className="like-button">
                 <div onClick={() => this.updateFavouriteAuthors(author, user)}>
                   <Icon
                     className={
@@ -67,7 +67,7 @@ class AuthorId extends React.Component {
             </Grid.Row>
             <Grid.Row className="author-books-row" centered columns={1}>
               <Grid.Column width={8} className="books-by-author">
-              <h4>
+              <h4 className="books-by-author">
                 {" "}
                 Books <br />
                 {author.books.map((book, index) => (

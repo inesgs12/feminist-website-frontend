@@ -106,10 +106,14 @@ body {
 }
 
 .author-details {
-  margin: 50px 350px;
+  /* margin: 50px 350px; */
   text-align: justify;
   font-family: "Quicksand", sans-serif;
   text-align: center;
+}
+
+.author-id-name, .like-button-row, .author-liked, .author-not-liked {
+  text-align: center
 }
 
 .theory-details {
@@ -443,6 +447,7 @@ a,
 .books-by-author {
   color: #2f046d;
   font-weight: lighter;
+  text-align: center
 }
 
 .Footer {
