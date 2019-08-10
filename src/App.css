@@ -191,9 +191,9 @@ i.icons {
   font-size: 2em;
 }
 
-.like-button {
+.author-like-button {
   color: transparent;
-  font-size: 2em;
+  /* font-size: 2em; */
 }
 
 .ui.card > .content .like.icon:hover,
