@@ -567,7 +567,7 @@ a,
 
 .amazon {
   padding: 0;
-  margin: 0;
+  margin: 0 !important;
   display: flex;
   justify-content: space-between;
 }
@@ -581,9 +581,10 @@ a,
 }
 
 .i.amazon.huge.icon,
+.amazon.huge.icon,
 .amazon.ui.button > .icon:not(.button),
 .amazon.ui.button > .icon:not(.button) {
-  margin: 0;
+  margin: 0 !important;
 }
 
 .ui.button > .icon:not(.button) {
@@ -591,7 +592,7 @@ a,
 }
 
 .amazon.huge.icon.amazon-icon {
-  margin: 0;
+  margin: 0 !important;
   padding: 0;
   display: flex;
   justify-content: space-between;
