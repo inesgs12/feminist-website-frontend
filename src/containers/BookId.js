@@ -132,7 +132,7 @@ class BookId extends React.Component {
               </span>
               <span className="buy-book">
                 <Button className="buy-book" href={book.link} target="_blank">
-                  <Icon size="huge" name="amazon" />
+                  <Icon className="amazon" size="huge" name="amazon" />
                 </Button>
               </span>
             </div>
