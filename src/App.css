@@ -577,7 +577,7 @@ a,
   padding: 0;
 }
 
-.i.amazon.huge.icon {
+.i.amazon.huge.icon, .ui.button>.icon:not(.button).amazon, .ui.button>.icon:not(.button).amazon {
   margin: 0
 }
 
