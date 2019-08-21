@@ -277,7 +277,7 @@ div,
   box-sizing: border-box;
 }
 
-.homepage-grid {
+.ui.grid.homepage-grid {
   /* display: grid; */
   /* padding: 20px; */
   margin: 50px;
