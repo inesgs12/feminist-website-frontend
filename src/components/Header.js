@@ -15,31 +15,63 @@ class Header extends React.Component {
   };
 
   sessionHeader = () => {
+    const { navbarResponsive } = this.state;
     return this.props.user ? (
-      <div className="navbar-link">
-        {/* <div className="navbar-link"> */}
-        <NavLink className="Homepage-link" to={`/${this.props.user.username}`}>
-          PROFILE
-        </NavLink>
-        {/* </div> */}
-        {/* <div className="navbar-link"> */}
-        <NavLink onClick={this.props.signout} className="Homepage-link" to="/">
-          SIGN OUT
-        </NavLink>
-        {/* </div> */}
+      <div>
+        <div
+          className={
+            navbarResponsive && navbarResponsive
+              ? "navbar-link-responsive"
+              : "navbar-link"
+          }
+        >
+          <NavLink
+            className="Homepage-link"
+            to={`/${this.props.user.username}`}
+          >
+            PROFILE
+          </NavLink>
+        </div>
+        <div
+          className={
+            navbarResponsive && navbarResponsive
+              ? "navbar-link-responsive"
+              : "navbar-link"
+          }
+        >
+          <NavLink
+            onClick={this.props.signout}
+            className="Homepage-link"
+            to="/"
+          >
+            SIGN OUT
+          </NavLink>
+        </div>
       </div>
     ) : (
-      <div className="navbar-link">
-        {/* <div className="navbar-link"> */}
-        <NavLink className="Homepage-link" to="/signin">
-          SIGN IN
-        </NavLink>
-        {/* </div> */}
-        {/* <div className="navbar-link"> */}
-        <NavLink className="Homepage-link" to="/signup">
-          SIGN UP
-        </NavLink>
-        {/* </div> */}
+      <div>
+        <div
+          className={
+            navbarResponsive && navbarResponsive
+              ? "navbar-link-responsive"
+              : "navbar-link"
+          }
+        >
+          <NavLink className="Homepage-link" to="/signin">
+            SIGN IN
+          </NavLink>
+        </div>
+        <div
+          className={
+            navbarResponsive && navbarResponsive
+              ? "navbar-link-responsive"
+              : "navbar-link"
+          }
+        >
+          <NavLink className="Homepage-link" to="/signup">
+            SIGN UP
+          </NavLink>
+        </div>
       </div>
     );
   };
@@ -81,7 +113,15 @@ class Header extends React.Component {
               THEORIES
             </NavLink>
           </div>
-          <div>{this.sessionHeader()}</div>
+          <div
+            className={
+              navbarResponsive && navbarResponsive
+                ? "navbar-link-responsive"
+                : "navbar-link"
+            }
+          >
+            {this.sessionHeader()}
+          </div>
           <div className="hamburger" onClick={handleClickHamburger}>
             <i className="fa fa-bars" />
           </div>
