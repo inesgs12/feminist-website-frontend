@@ -3,6 +3,17 @@ import { NavLink } from "react-router-dom";
 import logo from "./images/logo.png";
 
 class Header extends React.Component {
+  state = {
+    navbarResponsive: false
+  };
+
+  handleClickHamburger = () => {
+    console.log("Hamburger clicked!");
+    this.setState({
+      navbarResponsive: !this.state.navbarResponsive
+    });
+  };
+
   sessionHeader = () => {
     return this.props.user ? (
       <div>
@@ -41,10 +52,17 @@ class Header extends React.Component {
   };
 
   render() {
+    const { handleClickHamburger } = this;
+    const { navbarResponsive } = this.state;
     return (
       <header className="App-header">
-        <nav className="navbar">
-          <div className="navbar-link title">
+        <nav
+          className={navbarResponsive && navbarResponsive
+              ? "navbar-responsive"
+              : "navbar"
+          }
+        >
+          <div className="navbar-logo title">
             <NavLink to="/">
               <img src={logo} className="App-logo" alt="logo" />
             </NavLink>
@@ -70,6 +88,9 @@ class Header extends React.Component {
             </NavLink>
           </div>
           <div className="navbar-link">{this.sessionHeader()}</div>
+          <div className="hamburger" onClick={handleClickHamburger}>
+            <i className="fa fa-bars" />
+          </div>
         </nav>
       </header>
     );
