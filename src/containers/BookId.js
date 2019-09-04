@@ -5,7 +5,11 @@ import { Card, Icon, Grid, Image, Button, Header } from "semantic-ui-react";
 import ReviewDashboard from "../components/ReviewDashboard";
 import swal from "sweetalert";
 
-const booksUrl = "https://www.thefeministhub.net/books/";
+//window.location.host + books
+
+const booksUrl = !window.location.href.includes("localhost")
+  ? "https://www.thefeministhub.net/books/"
+  : "http://localhost:3000/books/";
 class BookId extends React.Component {
   state = {
     book: null,
@@ -42,6 +46,7 @@ class BookId extends React.Component {
   componentDidUpdate = prevProps => {
     if (prevProps !== this.props) this.setRandomBooks();
   };
+  // randomize books before passing them as props so that I canset the books in components did mount?
 
   handleChange = review => {
     this.setState({

@@ -2,25 +2,49 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import logo from "./images/logo.png";
 
+const WIDTH_BREAKPOINT = 800;
+
 class Header extends React.Component {
   state = {
-    navbarResponsive: false
+    shouldNavbarBeResponsive: false,
+    shouldShowMobileView: true
   };
 
   handleClickHamburger = () => {
     console.log("Hamburger clicked!");
     this.setState({
-      navbarResponsive: !this.state.navbarResponsive
+      shouldNavbarBeResponsive: !this.state.shouldNavbarBeResponsive
     });
   };
 
+  handleResize = () => {
+    if (window.innerWidth >= WIDTH_BREAKPOINT) {
+      this.setState({
+        shouldShowMobileView: false
+      });
+    } else {
+      this.setState({
+        shouldShowMobileView: true
+      });
+    }
+  };
+
+  componentDidMount() {
+    console.log("mounting");
+    window.addEventListener("resize", this.handleResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.handleResize);
+  }
+
   sessionHeader = () => {
-    const { navbarResponsive } = this.state;
+    const { shouldNavbarBeResponsive, shouldShowMobileView } = this.state;
     return this.props.user ? (
       <div>
         <div
           className={
-            navbarResponsive && navbarResponsive
+            shouldNavbarBeResponsive && shouldShowMobileView
               ? "navbar-link-responsive"
               : "navbar-link"
           }
@@ -34,7 +58,7 @@ class Header extends React.Component {
         </div>
         <div
           className={
-            navbarResponsive && navbarResponsive
+            shouldNavbarBeResponsive && shouldShowMobileView
               ? "navbar-link-responsive"
               : "navbar-link"
           }
@@ -52,7 +76,7 @@ class Header extends React.Component {
       <div>
         <div
           className={
-            navbarResponsive && navbarResponsive
+            shouldNavbarBeResponsive && shouldShowMobileView
               ? "navbar-link-responsive"
               : "navbar-link"
           }
@@ -63,7 +87,7 @@ class Header extends React.Component {
         </div>
         <div
           className={
-            navbarResponsive && navbarResponsive
+            shouldNavbarBeResponsive && shouldShowMobileView
               ? "navbar-link-responsive"
               : "navbar-link"
           }
@@ -78,12 +102,12 @@ class Header extends React.Component {
 
   render() {
     const { handleClickHamburger } = this;
-    const { navbarResponsive } = this.state;
+    const { shouldNavbarBeResponsive, shouldShowMobileView } = this.state;
     return (
       <header className="App-header">
         <nav
           className={
-            navbarResponsive && navbarResponsive
+            shouldNavbarBeResponsive && shouldShowMobileView
               ? "navbar-responsive"
               : "navbar"
           }
@@ -115,7 +139,7 @@ class Header extends React.Component {
           </div>
           <div
             className={
-              navbarResponsive && navbarResponsive
+              shouldNavbarBeResponsive && shouldShowMobileView
                 ? "navbar-link-responsive"
                 : "navbar-link"
             }

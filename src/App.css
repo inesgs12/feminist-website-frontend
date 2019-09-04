@@ -8,18 +8,13 @@
 
 .App-logo {
   height: 10vmin;
+  /* height: 75px; */
   margin: none;
   padding: none;
 }
 
 .App-link {
   color: #61dafb;
-}
-
-.App-logo {
-  height: 10vmin;
-  margin: none;
-  padding: none;
 }
 
 .push {
@@ -51,7 +46,10 @@
 @media only screen and (max-width: 800px) {
   .hamburger {
     float: left;
-    display: block;
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+    justify-content: center;
   }
 
   .navbar .navbar-link a {
@@ -318,10 +316,7 @@ div,
 }
 
 .ui.grid.homepage-grid {
-  /* display: grid; */
-  /* padding: 20px; */
-  margin: 50px;
-  /* padding-top: 80px */
+  margin: 80px 0;
 }
 
 .book-1 {
@@ -496,7 +491,7 @@ a,
 .Footer {
   background-color: rgb(238, 238, 238);
   padding: 12px;
-  margin-top: 6px;
+  margin-top: 20px;
   width: 100%;
   height: 5vh;
   text-align: center;
