@@ -40,7 +40,8 @@ class HomePage extends React.Component {
                   return (
                     <Segment key={idx} className="segment-covers">
                       <Image
-                        href={booksUrl + book.title}
+                        // href={booksUrl + book.title}
+                        href={"/books/" + book.title}
                         className="image-homepage"
                         src={book.cover}
                         alt={book.title}
