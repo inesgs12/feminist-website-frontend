@@ -50,6 +50,7 @@ class Header extends React.Component {
           }
         >
           <NavLink
+            onClick={this.handleClickHamburger}
             className="Homepage-link"
             to={`/${this.props.user.username}`}
           >
@@ -81,7 +82,11 @@ class Header extends React.Component {
               : "navbar-link"
           }
         >
-          <NavLink className="Homepage-link" to="/signin">
+          <NavLink
+            onClick={this.handleClickHamburger}
+            className="Homepage-link"
+            to="/signin"
+          >
             SIGN IN
           </NavLink>
         </div>
@@ -92,7 +97,11 @@ class Header extends React.Component {
               : "navbar-link"
           }
         >
-          <NavLink className="Homepage-link" to="/signup">
+          <NavLink
+            onClick={this.handleClickHamburger}
+            className="Homepage-link"
+            to="/signup"
+          >
             SIGN UP
           </NavLink>
         </div>
@@ -118,22 +127,38 @@ class Header extends React.Component {
             </NavLink>
           </div>
           <div className="navbar-link">
-            <NavLink className="Homepage-link" to="/">
+            <NavLink
+              onClick={handleClickHamburger}
+              className="Homepage-link"
+              to="/"
+            >
               HOME
             </NavLink>
           </div>
           <div className="navbar-link">
-            <NavLink className="Homepage-link" to="/books">
+            <NavLink
+              onClick={handleClickHamburger}
+              className="Homepage-link"
+              to="/books"
+            >
               BOOKS
             </NavLink>
           </div>
           <div className="navbar-link">
-            <NavLink className="Homepage-link" to="/authors">
+            <NavLink
+              onClick={handleClickHamburger}
+              className="Homepage-link"
+              to="/authors"
+            >
               AUTHORS
             </NavLink>
           </div>
           <div className="navbar-link">
-            <NavLink className="Homepage-link" to="/theories">
+            <NavLink
+              onClick={handleClickHamburger}
+              className="Homepage-link"
+              to="/theories"
+            >
               THEORIES
             </NavLink>
           </div>
