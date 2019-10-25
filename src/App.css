@@ -679,5 +679,11 @@ a,
   font-family: "Quicksand", sans-serif;
 }
 
+button.ui.button.contribute-button {
+  font-family: "Quicksand", sans-serif;
+  background: rgba(204, 201, 207, 0.39);
+  /* background: rgba(48, 4, 109, 0.39); */
+  color: rgb(47, 4, 109);
+}
 /* 
 .ui.card>.content>.header:not(.ui), .ui.cards>.card>.content>.header:not() */

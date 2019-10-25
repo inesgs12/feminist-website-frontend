@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Segment, Image, Icon, Item } from "semantic-ui-react";
+import { Grid, Segment, Image, Icon, Item, Button } from "semantic-ui-react";
 import feminism3 from "./feminism3.png";
 import about from "./About.png";
 
@@ -65,6 +65,11 @@ class HomePage extends React.Component {
           <Grid.Column width={4}>
             <Item className="mail-icon" href="mailto:inesgs@gmail.com">
               <Icon className="mail-icon" size="big" name="mail" />
+            </Item>
+            <br />
+            <br />
+            <Item href="https://github.com/inesgs12/feminist-website-frontend">
+              <Button className="contribute-button">contribute</Button>
             </Item>
           </Grid.Column>
         </Grid.Row>
