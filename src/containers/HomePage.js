@@ -1,10 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import { Grid, Segment, Image, Icon, Item, Button } from "semantic-ui-react";
 import feminism3 from "./feminism3.png";
 import about from "./About.png";
 
-const booksUrl = "https://www.thefeministhub.net/books/";
-class HomePage extends React.Component {
+class HomePage extends Component {
   render() {
     const { randomBooks } = this.props;
 
@@ -27,31 +26,26 @@ class HomePage extends React.Component {
             </Segment>
           </Grid.Column>
           <Grid.Column width={2} only="computer" />
-          {randomBooks.map((twoBooks, i) => {
-            return (
-              <Grid.Column
-                key={i}
-                className="column-books"
-                only="computer"
-                verticalAlign="middle"
-                width={2}
-              >
-                {twoBooks.map((book, idx) => {
-                  return (
-                    <Segment key={idx} className="segment-covers">
-                      <Image
-                        // href={booksUrl + book.title}
-                        href={"/books/" + book.title}
-                        className="image-homepage"
-                        src={book.cover}
-                        alt={book.title}
-                      />
-                    </Segment>
-                  );
-                })}
-              </Grid.Column>
-            );
-          })}
+          {randomBooks.map((twoBooks, i) => (
+            <Grid.Column
+              key={i}
+              className="column-books"
+              only="computer"
+              verticalAlign="middle"
+              width={2}
+            >
+              {twoBooks.map((book, idx) => (
+                <Segment key={idx} className="segment-covers">
+                  <Image
+                    href={`/books/${book.title}`}
+                    className="image-homepage"
+                    src={book.cover}
+                    alt={book.title}
+                  />
+                </Segment>
+              ))}
+            </Grid.Column>
+          ))}
         </Grid.Row>
         <Grid.Row columns={3}>
           <Grid.Column width={4} />
