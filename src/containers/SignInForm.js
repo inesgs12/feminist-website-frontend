@@ -1,10 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import { Form, Button, Grid } from "semantic-ui-react";
 import api from "../services/api";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 
-
-class SignInForm extends React.Component {
+class SignInForm extends Component {
   state = {
     username: "",
     password: ""
@@ -30,7 +29,7 @@ class SignInForm extends React.Component {
 
     return (
       <div className="sign-in-form">
-        <Grid segment="true" centered>
+        <Grid centered>
           <Form className="sign-in-form" onSubmit={handleSubmit}>
             <h3>Sign in</h3>
             <Form.Group>

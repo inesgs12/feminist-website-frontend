@@ -1,10 +1,9 @@
-import React from "react";
-import { createUser } from "../services/api";
+import React, { Component } from "react";
 import { Form, Button, Grid } from "semantic-ui-react";
-import swal from 'sweetalert';
+import swal from "sweetalert";
+import { createUser } from "../services/api";
 
-
-class SignUpForm extends React.Component {
+class SignUpForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
@@ -15,34 +14,40 @@ class SignUpForm extends React.Component {
     // debugger;
     createUser(username, password).then(data => {
       if (data.error) {
-        swal("Please fill out all required fields. Passwords must be 4 characters or longer.")
+        swal(
+          "Please fill out all required fields. Passwords must be 4 characters or longer."
+        );
       } else {
         swal({
-          title:"User Created", 
+          title: "User Created",
           text: "Please Log In",
-          icon: "success",
-        })
+          icon: "success"
+        });
         this.props.history.push("/signin");
       }
-    })}
-
+    });
+  };
 
   render() {
-    const { handleSubmit } = this;
     return (
       <div className="sign-in-up-form">
-        <Grid segment centered>
-          <Form onSubmit={handleSubmit} className="sign-in-up-form">
+        <Grid centered>
+          <Form onSubmit={this.handleSubmit} className="sign-in-up-form">
             <h3>Sign Up</h3>
             {/* <Form.Group>
               <Form.Input name="firstName" label="First Name" />
               <Form.Input name="lastName" label="Last Name" />
             </Form.Group> */}
             <Form.Group>
-              <Form.Input name="username" label="Username" />
+              <Form.Input id="usernameInput" label="Username" name="username" />
             </Form.Group>
             <Form.Group>
-              <Form.Input name="password" label="Password" type="password" />
+              <Form.Input
+                id="passwordInput"
+                label="Password"
+                name="password"
+                type="password"
+              />
             </Form.Group>
             {/* <Form.Group> */}
             <Button type="submit">Submit</Button>

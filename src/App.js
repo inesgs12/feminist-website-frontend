@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 
 import "./App.css";
@@ -18,7 +18,7 @@ import AuthorId from "./containers/AuthorId";
 import TheoriesList from "./containers/TheoriesList";
 import TheoryId from "./containers/TheoryId";
 
-class App extends React.Component {
+class App extends Component {
   state = {
     user: null,
     books: [],
@@ -82,9 +82,9 @@ class App extends React.Component {
         }
       });
     }
-    api.getBooks().then(books => this.setState({ books: books }));
-    api.getTheories().then(theories => this.setState({ theories: theories }));
-    api.getAuthors().then(authors => this.setState({ authors: authors }));
+    api.getBooks().then(books => this.setState({ books }));
+    api.getTheories().then(theories => this.setState({ theories }));
+    api.getAuthors().then(authors => this.setState({ authors }));
   }
 
   //sort books, authors and theories -----------------
