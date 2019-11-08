@@ -47,12 +47,12 @@ class AuthorId extends Component {
         key={author.id}
         className="author-details"
       >
-        <Grid.Row className="first-row-author" columns={1}>
+        <Grid.Row columns={1}>
           <Grid.Column width={8} className="author-name-row">
             <h1 className="author-id-name">{author.name}</h1>
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row className="author-like-button-row" columns={1}>
+        <Grid.Row columns={1}>
           <Grid.Column width={8} className="author-like-button">
             <div
               className="author-like-button"

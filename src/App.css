@@ -143,11 +143,10 @@ body {
   font-family: "Quicksand", sans-serif;
 }
 
-.author-details {
-  /* margin: 50px 350px; */
+.author-details,
+.theory-details {
   text-align: justify;
   font-family: "Quicksand", sans-serif;
-  text-align: center;
 }
 
 .author-id-name,
@@ -157,11 +156,17 @@ body {
   text-align: center;
 }
 
+.theory-id-name,
+.ui.grid
+  .centered.row
+  > .column:not(.aligned):not(.justified).theory-like-button {
+  text-align: center;
+}
+
 .theory-details {
   margin: 50px 350px;
   text-align: justify;
   font-family: "Quicksand", sans-serif;
-  text-align: center;
 }
 
 .author-bio,
@@ -671,7 +676,7 @@ a,
 }
 
 .theory-like-button {
-  float: right;
+  /* float: right; */
   display: inline-flex;
 }
 
