@@ -11,10 +11,12 @@ class Header extends React.Component {
   };
 
   handleClickHamburger = () => {
+   if (window.innerWidth <= WIDTH_BREAKPOINT) {
     console.log("Hamburger clicked!");
     this.setState({
       shouldNavbarBeResponsive: !this.state.shouldNavbarBeResponsive
-    });
+    })
+  }
   };
 
   handleResize = () => {
