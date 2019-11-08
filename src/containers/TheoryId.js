@@ -1,5 +1,5 @@
 import React from "react";
-import { Icon } from "semantic-ui-react";
+import { Icon, Grid } from "semantic-ui-react";
 import swal from "sweetalert";
 
 class TheoryId extends React.Component {
@@ -38,21 +38,43 @@ class TheoryId extends React.Component {
       return <h1>Loading...</h1>;
     } else {
       return (
-        <div key={theory.id} className="theory-details">
-          <h1>{this.state.theory.name}</h1>
-          <div onClick={() => this.updateFavouriteTheories(theory, user)}>
-            <Icon
-              className={
-                this.props.isLiked ? "theory-liked" : "theory-not-liked"
-              }
-              name="like"
-              size="big"
-            />
-            <br />
-          </div>
-          <br />
-          <h3 className="theory-description">{this.state.theory.history}</h3>
-        </div>
+        <Grid
+          stackable
+          key={theory.id}
+          className="theory-details"
+          textAlign="center"
+        >
+          <Grid.Row columns={1}>
+            <Grid.Column width={8} className="theory-name-row">
+              <h1 className="theory-id-name">{this.state.theory.name}</h1>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row columns={1}>
+            <Grid.Column width={8} className="theory-like-button">
+              <div
+                className="theory-like-button"
+                onClick={() => this.updateFavouriteTheories(theory, user)}
+              >
+                <Icon
+                  className={
+                    this.props.isLiked ? "theory-liked" : "theory-not-liked"
+                  }
+                  name="like"
+                  size="big"
+                />
+                <br />
+              </div>
+              <br />
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row className="theory-info-row" columns={1}>
+            <Grid.Column width={8} className="theory-info">
+              <h3 className="theory-description">
+                {this.state.theory.history}
+              </h3>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       );
     }
   }
