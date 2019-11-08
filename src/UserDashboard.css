@@ -1,0 +1,22 @@
+.user-photo {
+  height: 10%;
+  width: 10%;
+}
+
+.dashboard-link,
+.info-displayed {
+  color: #2f046d;
+  font-size: larger;
+  margin: 10px;
+}
+
+.user-info-grid {
+  font-family: "Quicksand", sans-serif;
+  margin: 50px;
+  font-size: x-large;
+  /* width: 70%; */
+}
+
+.user-info-font {
+  font-size: larger;
+}
