@@ -4,7 +4,7 @@ import logo from "./images/logo.png";
 
 const WIDTH_BREAKPOINT = 800;
 
-class Header extends React.Component {
+class Navbar extends React.Component {
   state = {
     shouldNavbarBeResponsive: false,
     shouldShowMobileView: true
@@ -179,4 +179,4 @@ class Header extends React.Component {
     );
   }
 }
-export default Header;
+export default Navbar;

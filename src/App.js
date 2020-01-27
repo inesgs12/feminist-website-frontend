@@ -4,7 +4,7 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import "./App.css";
 import SignInForm from "./containers/SignInForm";
 import SignUpForm from "./containers/SignUpForm";
-import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import HomePage from "./containers/HomePage";
 import Dashboard from "./containers/Dashboard";
@@ -254,7 +254,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Header user={user} signout={signout} setUser={setUser} />
+        <Navbar user={user} signout={signout} setUser={setUser} />
         <div className="push-content" />
         <Switch>
           <Route
